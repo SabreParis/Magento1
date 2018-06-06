@@ -1,0 +1,26 @@
+<?php /** @var $this Mage_Checkout_Block_Cart_Minicart */ ?>
+
+<?php if ($this->getSummaryCount()> 0 ):?>
+<div class="header-title">
+    <div class="title">
+        <p>
+            <?php echo $this->__('My cart')?>
+        </p>
+    </div>
+    <div class="info-cart">
+        <ul>
+            <li class="count-number"><?php echo $this->getSummaryCount() ?></li>
+            <?php if ($this->getSummaryCount()==1):?>
+                <li class="item"><span><?php echo $this->__('item')?></span></li>
+            <?php else:?>
+                <li class="item"><span><?php echo $this->__('items')?></span></li>
+            <?php endif; ?>
+        </ul>
+    </div>
+    <div class="totals">
+        <span><?php echo $this->getQuote()->getStore()->formatPrice($this->getQuote()->getGrandTotal(), false); ?></span>
+    </div>
+    <?php echo $this->getChildHtml('link_cart'); ?>
+    <?php echo $this->getChildHtml('livraison-offerte'); ?>
+</div>
+<?php endif;?>

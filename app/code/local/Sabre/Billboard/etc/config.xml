@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created : 02/10/2015
+ *
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <modules>
+        <Sabre_Billboard>
+            <version>0.0.1</version>
+        </Sabre_Billboard>
+    </modules>
+    <global>
+        <blocks>
+            <sabrebillboard>
+                <class>Sabre_Billboard_Block</class>
+            </sabrebillboard>
+        </blocks>
+        <helpers>
+            <sabrebillboard>
+                <class>Sabre_Billboard_Helper</class>
+            </sabrebillboard>
+        </helpers>
+        <models>
+            <sabrebillboard>
+                <class>Sabre_Billboard_Model</class>
+                <resourceModel>sabrebillboard_resource</resourceModel>
+            </sabrebillboard>
+            <sabrebillboard_resource>
+                <class>Sabre_Billboard_Model_Resource</class>
+            </sabrebillboard_resource>
+
+            <ayalinebillboard>
+                <rewrite>
+                    <billboard>Sabre_Billboard_Model_Billboard</billboard>
+                </rewrite>
+            </ayalinebillboard>
+        </models>
+        <resources>
+            <sabrebillboard_setup>
+                <setup>
+                    <module>Sabre_Billboard</module>
+                </setup>
+            </sabrebillboard_setup>
+        </resources>
+
+        <events>
+            <controller_front_init_routers>
+                <observers>
+                    <sabrebillboard>
+                        <class>Sabre_Billboard_Controller_Billboard</class>
+                        <method>initControllerRouters</method>
+                    </sabrebillboard>
+                </observers>
+            </controller_front_init_routers>
+        </events>
+    </global>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <sabrebillboard>
+                    <file>sabre/billboard.xml</file>
+                </sabrebillboard>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Sabre_Billboard>
+                    <files>
+                        <default>Sabre_Billboard.csv</default>
+                    </files>
+                </Sabre_Billboard>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <frontend>
+        <routers>
+            <sabrebillboard>
+                <use>standard</use>
+                <args>
+                    <module>Sabre_Billboard</module>
+                    <frontName>billboard</frontName>
+                </args>
+            </sabrebillboard>
+        </routers>
+        <translate>
+            <modules>
+                <Sabre_Billboard>
+                    <files>
+                        <default>Sabre_Billboard.csv</default>
+                    </files>
+                </Sabre_Billboard>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <sabrebillboard>
+                    <file>sabre/billboard.xml</file>
+                </sabrebillboard>
+            </updates>
+        </layout>
+    </frontend>
+</config>

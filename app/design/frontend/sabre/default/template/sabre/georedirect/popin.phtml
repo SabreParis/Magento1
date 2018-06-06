@@ -1,0 +1,64 @@
+<?php
+/* @var $this Sabre_GeoRedirect_Block_Popin */
+/* @var $helper Sabre_GeoRedirect_Helper_Data */
+$helper = $this->helper('sabre_georedirect');
+
+?>
+<?php if ($this->canShow()): ?>
+
+    <?php
+    $currentWebsite = $this->getCurrentWebsite();
+    $destinationWebsite = $this->getDestinationWebsite();
+    ?>
+
+    <?php if ($destinationWebsite) :?>
+
+    <div id="georedirect-popin-box" class="georedirect-popin-box hidden">
+        <form id="georedirect-popin-form" action="<?php echo $this->getFormActionUrl() ?>" method="post">
+            <input type="hidden" id="input_redirect_choice" name="redirect_choice">
+            <input type="hidden" id="input_redirect_website" name="redirect_website">
+            <div class="title"><?php echo $helper->getWording($helper::WORDING_TITLE, $currentWebsite, $destinationWebsite) ?></div>
+            <div class="content">
+            <div class="infos"><?php echo $helper->getWording($helper::WORDING_TEXT, $currentWebsite, $destinationWebsite) ?></div>
+            <div class="choice">
+                <div><a class="submit-button" href="#" data-website="<?php echo $currentWebsite->getCode() ?>" data-value="<?php echo Sabre_GeoRedirect_Helper_Data::ACTION_STAY ?>"><img src="<?php echo $this->getSkinUrl("/images/country/{$currentWebsite->getCode()}.png") ?>" /> <?php echo $helper->getWording($helper::WORDING_STAY, $currentWebsite, $destinationWebsite) ?></a></div>
+                <div><a class="submit-button" href="#" data-website="<?php echo $destinationWebsite->getCode() ?>" data-value="<?php echo Sabre_GeoRedirect_Helper_Data::ACTION_LEAVE ?>"><img src="<?php echo $this->getSkinUrl("/images/country/{$destinationWebsite->getCode()}.png") ?>" /> <?php echo $helper->getWording($helper::WORDING_LEAVE, $currentWebsite, $destinationWebsite) ?></a></div>
+            </div>
+            </div>
+        </form>
+        <div class="background"></div>
+    </div>
+
+
+    <script type="text/javascript">
+        (function ($j) {
+            $j(function () {
+                var $popinContentHtml = $j('#georedirect-popin-box').html();
+                $j('#georedirect-popin-box').remove();
+                $j.fancybox($popinContentHtml,
+                    {
+                        'hideOnOverlayClick': false,
+                        'onClosed': function () {
+                            var $redirectChoiceInput = $j('#input_redirect_choice');
+                            $redirectChoiceInput.val(0);
+                            $form.submit();
+                        }
+                    });
+                var $form = $j('#georedirect-popin-form');
+                var $redirectChoiceInput = $j('#input_redirect_choice');
+                var $redirectWebsiteInput = $j('#input_redirect_website');
+                $j('#georedirect-popin-form').on('click', '.submit-button', function () {
+                    var $redirectChoiceValue = $(this).getAttribute('data-value');
+                    var $redirectWebsiteValue = $(this).getAttribute('data-website');
+                    $redirectChoiceInput.val($redirectChoiceValue);
+                    $redirectWebsiteInput.val($redirectWebsiteValue);
+                    $form.submit();
+                    return false;
+                });
+            });
+        })(jQuery);
+    </script>
+
+    <?php endif; ?>
+
+<?php endif; ?>

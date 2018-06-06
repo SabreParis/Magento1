@@ -1,0 +1,101 @@
+<?php
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/** @var $this Sabre_Checkout_Block_Express_Table */
+/** @var $_product Mage_Catalog_Model_Product */
+
+$_nbProducts = $this->getProducts()->count();
+$_counter = 1;
+$_half = ceil($_nbProducts / 2);
+$_expressOrderLabel = Mage::helper('sabre_checkout')->getUpdateExpressOrderLabel($this->getProduct());
+?>
+
+<form id="table-express-form" action="<?php echo $this->getExpressAddToCartUrl(); ?>" method="post"
+      autocomplete="off" style="display: none;">
+    <div class="product-view">
+        <div class="product-shop">
+            <div class="add-to-cart">
+                <div class="bloc-right">
+                    <button type="submit" title="<?php echo $_expressOrderLabel; ?>"
+                            id="product-addtocart-button"
+                            class="button btn-cart express">
+                        <span><?php echo $_expressOrderLabel; ?></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="clearer"></div>
+
+        <div id="express-messages"><?php echo $this->getMessagesBlock()->toHtml(); ?></div>
+
+    </div>
+    <ul class="table-global">
+        <li class="table-header">
+            <ul>
+                <li><?php echo $this->__('Items'); ?></li>
+                <li><?php echo $this->__('Qty'); ?></li>
+                <li><?php echo $this->__('Unit price'); ?></li>
+            </ul>
+        </li>
+        <?php foreach ($this->getProducts() as $_product): ?>
+        <?php
+        $_productId = $_product->getId();
+        $customName = Mage::helper('sabre_catalog')->getCustomName($_product->getName());
+        $_productName = $this->stripTags($customName, null, true);
+        $_isSaleable = $_product->isSaleable();
+        $_quoteItemId = $_product->getData('quote_item_id'); // from join left in collection
+        $_quoteItemQty = $_product->getData('quote_item_qty'); // from join left in collection
+
+        $_cssClass = $_quoteItemQty ? ' item-in-cart' : '';
+        $_cssClass .= $_isSaleable ? '' : ' item-unavailable';
+        ?>
+
+        <li class="<?php echo $_cssClass; ?>">
+            <ul>
+                <li><label for="<?php echo "product-{$_productId}"; ?>"><?php echo $_productName; ?></label></li>
+                <li>
+                    <?php if ($_isSaleable): ?>
+                        <input id="<?php echo "product-{$_productId}"; ?>" type="text" maxlength="6"
+                               name="<?php echo "product[{$_productId}][new_qty]"; ?>"
+                               value="<?php echo $_quoteItemQty ?: ''; ?>">
+                        <input type="hidden" name="<?php echo "product[{$_productId}][old_qty]"; ?>"
+                               value="<?php echo $_quoteItemQty ?: ''; ?>">
+                        <input type="hidden" name="<?php echo "product[{$_productId}][item_id]"; ?>"
+                               value="<?php echo $_quoteItemId ?: 0; ?>">
+                    <?php else: ?>
+                        &nbsp;
+                    <?php endif; ?>
+                </li>
+                <li>
+                    <?php echo $this->getPriceHtml($_product, false, '-express'); ?>
+                </li>
+            </ul>
+        </li>
+
+        <?php if ($_counter == $_half): ?>
+    </ul>
+    <ul class="table-global">
+        <li class="table-header">
+            <ul>
+                <li><?php echo $this->__('Items'); ?></li>
+                <li><?php echo $this->__('Qty'); ?></li>
+                <li><?php echo $this->__('Unit price'); ?></li>
+            </ul>
+        </li>
+
+        <?php endif; ?>
+
+        <?php $_counter++; ?>
+        <?php endforeach; ?>
+    </ul>
+    <div class="clearer"></div>
+
+</form>

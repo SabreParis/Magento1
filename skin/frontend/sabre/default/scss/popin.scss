@@ -1,0 +1,75 @@
+.fancybox-skin{
+  border-radius: 0!important;
+  padding:0 !important;
+  .fancybox-inner{
+    width: 100%;
+    position: relative;
+    .background {
+      background: url(../images/pays.png) 0 0 no-repeat transparent;
+      display: block;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      height: 115px;
+      z-index: 9999999;
+      width: 143px;
+      background-size: 170px;
+      opacity: 0.125;
+    }
+    #georedirect-popin-form {
+      .title{
+        padding: 10px 0;
+        background: #3f3f48;
+        color: white;
+        font-family: "Josefin Sans";
+        font-size: 20px;
+        text-transform: uppercase;
+      }
+      .content{
+        padding: 20px 8px;
+        .infos{
+          font-size: 18px;
+          padding: 0 65px 20px;
+        }
+        .choice{
+          text-align: left;
+          width: 300px;
+          margin: auto;
+          > div {
+            margin-bottom: 2px;
+            padding: 4px;
+            border:1px solid #9f9f9f;
+            cursor: pointer;
+            a {
+              font-family: Josefin Sans;
+              color: black;
+              font-size: 17px;
+              img{
+                vertical-align: top;
+
+                padding-right: 2px;
+              }
+            }
+            &:hover{
+              opacity: 0.5;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.fancybox-margin{
+  margin-right: 0!important;
+}
+.fancybox-lock {
+  overflow: visible !important;
+  .fancybox-overlay{
+    overflow-y: auto!important;
+  }
+  body {
+    overflow: visible !important;
+  }
+}
+

@@ -1,0 +1,32 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+/* @var $this Sabre_Catalog_Block_Product_View_ProductsVariant */
+
+$productsArticleVariant = $this->getProductsArticleVariant();
+$curProduct = $this->getProduct();
+?>
+<?php if (count($productsArticleVariant)): ?>
+    <div class="more-articles">
+        <h2><?php echo $this->__('Model range') ?></h2>
+        <div class="articles">
+            <ul>
+                <?php
+                /* @var $_product Mage_Catalog_Model_Product */
+                foreach ($productsArticleVariant as $_product): ?>
+                    <?php $attributeSetName=strtolower(Mage::getModel('eav/entity_attribute_set')->load($_product->getAttributeSetId())->getAttributeSetName())?>
+                    <li <?php if ($_product->getData('a_article') == $curProduct->getData('a_article')): ?> class="checked" <?php endif; ?>>
+                        <a href="<?php echo $_product->getProductUrl() ?>" class="infobule-infos-product">
+                            <img src="<?php echo $this->getAttributeArticleImgUrl($_product) ?>" alt="<?php echo $this->escapeHtml($_product->getAttributeText('a_article')); ?>" title=""/>
+                             <span><?php echo $this->escapeHtml($_product->getAttributeText('a_article_'.$attributeSetName)); ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+<?php endif; ?>

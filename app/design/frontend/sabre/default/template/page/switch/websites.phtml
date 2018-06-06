@@ -1,0 +1,22 @@
+<?php
+/* @var $this Sabre_MultiWebsites_Block_Switcher_Website */
+$websites = $this->getWebsites();
+?>
+
+<?php if (count($websites)>0): ?>
+<div>
+    <span>
+    <?php if (count($websites)>1): ?><?php echo $this->helper('sabre_multiwebsites')->__('Please, visit our other websites : ')?>
+    <?php else:?><?php echo $this->helper('sabre_multiwebsites')->__('Please, visit our other website : ')?>
+    <?php endif;?>
+    </span>
+    <div id="sabrewsswitcher">
+        <ul>
+        <?php foreach ($websites as $website): ?>
+            <?php /* @var $website Mage_Core_Model_Website */ ?>
+            <li><a title="<?php echo $website->getName() ?>" href="<?php echo $website->getDefaultStore()->getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB)?>"><img src="<?php echo $this->getSkinUrl("/images/country/{$website->getCode()}.png") ?>" /></a></li>
+        <?php endforeach;?>
+        </ul>
+    </div>
+</div>
+<?php endif;?>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created : 2015
+ * 
+ * @category Sabre
+ * @package Sabre_Catalog
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+ <config>
+    <modules>
+        <Sabre_Catalog>
+            <version>0.0.1</version>
+        </Sabre_Catalog>
+    </modules>
+    <global>
+        <helpers>
+            <sabre_catalog>
+                <class>Sabre_Catalog_Helper</class>
+            </sabre_catalog>
+        </helpers>
+        <blocks>
+            <sabre_catalog>
+                <class>Sabre_Catalog_Block</class>
+            </sabre_catalog>
+            <catalog>
+                <rewrite>
+                    <layer_filter_attribute>Sabre_Catalog_Block_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite>
+            </catalog>
+        </blocks>
+        <models>
+            <sabre_catalog>
+                <class>Sabre_Catalog_Model</class>
+                <resourceModel>sabre_catalog_resource</resourceModel>
+            </sabre_catalog>
+            <sabre_catalog_resource>
+                <class>Sabre_Catalog_Model_Resource</class>
+            </sabre_catalog_resource>
+
+            <catalog_resource>
+                <rewrite>
+                    <layer_filter_attribute>Sabre_Catalog_Model_Resource_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite>
+            </catalog_resource>
+            <catalog>
+                <rewrite>
+                    <product>Sabre_Catalog_Model_Product</product>
+                    <layer_filter_attribute>Sabre_Catalog_Model_Layer_Filter_Attribute</layer_filter_attribute>
+                    <layer>Sabre_Catalog_Model_Layer</layer>
+                </rewrite>
+            </catalog>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <catalog>
+                <args>
+                    <modules>
+                        <sabre_catalog before="Mage_Catalog">Sabre_Catalog</sabre_catalog>
+                    </modules>
+                </args>
+            </catalog>
+        </routers>
+        <layout>
+            <updates>
+                <sabre_catalog module="Sabre_Catalog">
+                    <file>sabre/catalog.xml</file>
+                </sabre_catalog>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Sabre_Catalog>
+                    <files>
+                        <default>Sabre_Catalog.csv</default>
+                    </files>
+                </Sabre_Catalog>
+            </modules>
+        </translate>
+        <events>
+            <catalog_controller_category_init_after>
+                <observers>
+                    <sabre_catalog_set_last_visited_category_url>
+                        <class>sabre_catalog/observer</class>
+                        <method>setLastVisitedCategoryUrl</method>
+                    </sabre_catalog_set_last_visited_category_url>
+                </observers>
+            </catalog_controller_category_init_after>
+            <catalog_controller_product_view>
+                <observers>
+                    <sabre_catalog_set_referer_category_url>
+                        <class>sabre_catalog/observer</class>
+                        <method>setProductRefererCategoryUrl</method>
+                    </sabre_catalog_set_referer_category_url>
+                </observers>
+            </catalog_controller_product_view>
+        </events>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Sabre_Catalog>
+                    <files>
+                        <default>Sabre_Catalog.csv</default>
+                    </files>
+                </Sabre_Catalog>
+            </modules>
+        </translate>
+    </adminhtml>
+ </config>

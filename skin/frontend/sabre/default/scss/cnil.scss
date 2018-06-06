@@ -1,0 +1,39 @@
+
+$color-p-white: white;
+
+
+div#cnil {text-align: center;
+  z-index: 999;display: block;
+  position: fixed;
+  background: rgba(50, 50, 50, 0.81);
+  bottom: 0px;
+  width: 100%;
+  padding: 10px 25%;
+  height: 50px;
+  line-height: 50px;
+}
+
+#cnil p{
+  color: $color-p-white;
+  text-align: center;
+  padding: 0 40px 0 0px;
+  font-size: 13px;
+  font-weight: 700;
+  height: 50px;
+  line-height: 15px;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+#cnil #cnil-close {
+  border: 2px solid;
+  cursor: pointer;
+  float: right;
+  padding: 5px 7px;
+  margin: 0 0px 0 10px;
+}
+#cnil #cnil-close:hover,#cnil #cnil-close:focus,#cnil #cnil-close{
+  color: white!important;
+}

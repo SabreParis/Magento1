@@ -1,0 +1,83 @@
+<?xml version="1.0"?><!--
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+
+<config>
+
+    <modules>
+        <Sabre_Checkout>
+            <version>0.1.0</version>
+        </Sabre_Checkout>
+    </modules>
+
+    <global>
+        <blocks>
+            <sabre_checkout>
+                <class>Sabre_Checkout_Block</class>
+            </sabre_checkout>
+        </blocks>
+        <helpers>
+            <sabre_checkout>
+                <class>Sabre_Checkout_Helper</class>
+            </sabre_checkout>
+        </helpers>
+        <models>
+            <sabre_checkout>
+                <class>Sabre_Checkout_Model</class>
+                <resourceModel>sabre_checkout_resource</resourceModel>
+            </sabre_checkout>
+            <sabre_checkout_resource>
+                <class>Sabre_Checkout_Model_Resource</class>
+            </sabre_checkout_resource>
+        </models>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <a_is_set/>
+                        <a_article/>
+                        <a_model/>
+                        <color/>
+                    </product_attributes>
+                </item>
+            </quote>
+        </sales>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <sabre_checkout>
+                    <file>sabre/checkout.xml</file>
+                </sabre_checkout>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Sabre_Checkout>
+                    <files>
+                        <default>Sabre_Checkout.csv</default>
+                    </files>
+                </Sabre_Checkout>
+            </modules>
+        </translate>
+        <routers>
+            <checkout>
+                <args>
+                    <modules>
+                        <sabre_checkout before="Owebia_Shipping2_Checkout">Sabre_Checkout</sabre_checkout>
+                    </modules>
+                </args>
+            </checkout>
+        </routers>
+    </frontend>
+
+</config>

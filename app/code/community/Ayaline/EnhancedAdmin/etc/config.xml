@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2013
+ * 
+ * @category Ayaline
+ * @package Ayaline_EnhancedAdmin
+ * @author aYaline
+ * @copyright Ayaline - 2013 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <modules>
+        <Ayaline_EnhancedAdmin>
+            <version>0.1.5</version>
+        </Ayaline_EnhancedAdmin>
+    </modules>
+
+    <global>
+        <blocks>
+            <ayaline_enhancedadmin>
+                <class>Ayaline_EnhancedAdmin_Block</class>
+            </ayaline_enhancedadmin>
+        </blocks>
+        <helpers>
+            <ayaline_enhancedadmin>
+                <class>Ayaline_EnhancedAdmin_Helper</class>
+            </ayaline_enhancedadmin>
+        </helpers>
+        <models>
+            <ayaline_enhancedadmin>
+                <class>Ayaline_EnhancedAdmin_Model</class>
+                <resourceModel>ayaline_enhancedadmin_resource</resourceModel>
+            </ayaline_enhancedadmin>
+            <ayaline_enhancedadmin_resource>
+                <class>Ayaline_EnhancedAdmin_Model_Resource</class>
+                <entities>
+                    <resource>
+                        <table>ayaline_enhancedadmin_resource</table>
+                    </resource>
+                </entities>
+            </ayaline_enhancedadmin_resource>
+
+            <core_resource>
+                <rewrite>
+                    <resource>Ayaline_EnhancedAdmin_Model_Resource_Core_Resource</resource>
+                </rewrite>
+            </core_resource>
+
+        </models>
+        <resources>
+            <ayaline_enhancedadmin_setup>
+                <setup>
+                    <module>Ayaline_EnhancedAdmin</module>
+                </setup>
+            </ayaline_enhancedadmin_setup>
+        </resources>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ayaline_enhancedadmin before="Mage_Adminhtml">Ayaline_EnhancedAdmin_Adminhtml</ayaline_enhancedadmin>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <ayaline_enhancedadmin>
+                    <file>ayaline/enhanced_admin.xml</file>
+                </ayaline_enhancedadmin>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <enhanced_admin>
+        <setup>
+            <template>
+                <module>Ayaline_EnhancedAdmin</module>
+                <file>Model/System/Template/Setup.php</file>
+            </template>
+        </setup>
+    </enhanced_admin>
+
+</config>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2014
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<layout>
+
+    <default>
+
+        <remove name="google_analytics" />
+        <remove name="ayaline.google_analytics" />
+
+        <block type="ayaline_gua/tag" name="ayaline.google.universal.analytics.tag"
+               template="ayaline/google_universal_analytics/tag.phtml" />
+
+        <!--<reference name="before_body_end">-->
+        <reference name="head">
+            <action method="setChild" ifconfig="ayaline_gua/general/enabled">
+                <alias>ayaline.google.universal.analytics.tag</alias>
+                <block>ayaline.google.universal.analytics.tag</block>
+            </action>
+        </reference>
+
+    </default>
+
+    <checkout_onepage_index>
+        <reference name="ayaline.google.universal.analytics.tag">
+            <action method="setOnepageStepsFlag">
+                <flag>1</flag>
+            </action>
+        </reference>
+    </checkout_onepage_index>
+
+</layout>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Created : 2015
+ * 
+ * @category Sabre
+ * @package Sabre_Catalog
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<layout version="0.1.0">
+
+    <catalogsearch_resultajax_index translate="label">
+        <label>Catalog Category products page list (Asynchron)</label>
+        <block type="sabre_catalogsearch/layer" name="catalogsearch.leftnav" after="currency" template="catalog/layer/view.phtml">
+            <block type="core/text_list" name="catalog.leftnav.state.renderers" as="state_renderers" />
+        </block>
+        <block type="sabre_catalogsearch/product_list" name="root" template="sabre/catalog/product/ajax/list.phtml" output="toHtml" />
+    </catalogsearch_resultajax_index>
+    
+    <catalogsearch_result_index>
+        <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/sabre/catalog/autoload.js</name>
+            </action>
+        </reference>
+        <reference name="search_result_list">
+            <block type="sabre_catalogsearch/product_ajax_scriptAutoload" name="product_list_autoload_script" template="sabre/catalog/product/ajax/list/autoload_script.phtml" after="-" output="toHtml" />
+        </reference>
+    </catalogsearch_result_index>
+
+</layout>

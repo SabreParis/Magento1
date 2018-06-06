@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 2014
+ * 
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <menu>
+        <system>
+            <children>
+                <ayaline_enhancedadmin>
+                    <children>
+                        <dataflow_management translate="title" module="ayaline_dataflowmanager">
+                            <depends>
+                                <module>Ayaline_EnhancedAdmin</module>
+                            </depends>
+                            <title>Dataflow Manager</title>
+                            <sort_order>20</sort_order>
+                            <action>adminhtml/ayaline_dataflowManager</action>
+                        </dataflow_management>
+                    </children>
+                </ayaline_enhancedadmin>
+            </children>
+        </system>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <ayaline_enhancedadmin>
+                                <children>
+                                    <dataflow_management translate="title" module="ayaline_dataflowmanager">
+                                        <title>Dataflow Manager</title>
+                                        <children>
+                                            <view>
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </dataflow_management>
+                                </children>
+                            </ayaline_enhancedadmin>
+
+                            <config>
+                                <children>
+                                    <ayaline_dataflowmanager translate="title" module="ayaline_dataflowmanager">
+                                        <title>aYaline Dataflow Manager</title>
+                                    </ayaline_dataflowmanager>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

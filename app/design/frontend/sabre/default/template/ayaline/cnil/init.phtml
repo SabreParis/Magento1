@@ -1,0 +1,9 @@
+<?php
+/** @var $this Mage_Core_Block_Template */
+?>
+
+<script type="application/javascript">
+
+    aYaline.cnil.init('<?php echo $this->getLayout()->createBlock('cms/block')->setStoreId(Mage::app()->getStore()->getId())->setBlockId('cms-cockies')->toHtml(); ?>', {uaAccount: '<?php echo Mage::getSingleton('ayaline_gua/system_config')->getWebPropertyId(); ?>'});
+
+</script>

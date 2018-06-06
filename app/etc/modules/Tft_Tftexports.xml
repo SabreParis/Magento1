@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tft_Tftexports>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tft_Tftexports>
+    </modules>
+</config>

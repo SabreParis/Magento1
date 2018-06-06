@@ -1,0 +1,154 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/**
+ * Shop's Schedules
+ *
+ * @see Ayaline_Shop_Block_Adminhtml_Store_Edit_Tab_Schedules
+ */
+?>
+<?php $_helper = Mage::helper('ayalineshop') ?>
+<div class="entity-edit" id="matage-options-panel">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $_helper->__("Shop's schedules") ?></h4>
+    </div>
+    <div class="box">
+        <div class="hor-scroll">
+            <table class="dynamic-grid-schedules" cellspacing="0" cellpadding="0">
+                <tr id="schedules-options-table">
+                    <th><?php echo $_helper->__('Day') ?></th>
+                    <th><?php echo $_helper->__('Start hour PM') ?></th>
+                    <th><?php echo $_helper->__('End hour PM') ?></th>
+                    <th><?php echo $_helper->__('Start hour AM') ?></th>
+                    <th><?php echo $_helper->__('End hour AM') ?></th>
+                    <th><?php echo $_helper->__('Position') ?></th>
+                </tr>
+                <tr class="no-display template">
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="a-left">
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <input type="hidden" id="option-count-check" value=""/>
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    var optionDefaultInputType = 'radio';
+
+    // IE removes quotes from element.innerHTML whenever it thinks they're not needed, which breaks html.
+    var templateText =
+        '<tr class="option-row">' +
+        '<td><input name="schedules_data[{{num}}][day]" value="{{day}}" class="input-text required-option" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>' +
+        '<td><input name="schedules_data[{{num}}][hour_start_pm]" value="{{hour_start_pm}}" class="input-text" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>' +
+        '<td><input name="schedules_data[{{num}}][hour_end_pm]" value="{{hour_end_pm}}" class="input-text" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>' +
+        '<td><input name="schedules_data[{{num}}][hour_start_am]" value="{{hour_start_am}}" class="input-text" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>' +
+        '<td><input name="schedules_data[{{num}}][hour_end_am]" value="{{hour_end_am}}" class="input-text" type="text" <?php if ($this->getReadOnly()):?> disabled="disabled"<?php endif;?>/><\/td>' +
+        '<td class="a-left">' +
+        '<input type="hidden" class="delete-flag" name="schedules_data[{{num}}][delete]" value="" />' +
+        '<input type="hidden" class="delete-flag" name="schedules_data[{{num}}][id]" value="{{schedules_id}}" />' +
+        '<input type="hidden" class="position-flag" name="schedules_data[{{num}}][sort]" value="{{sort}}" />' +
+        '<\/td>' +
+        '<\/tr>';
+
+    var schedulesOption = {
+        table: $('schedules-options-table'),
+        templateSyntax: /(^|.|\r|\n)({{(\w+)}})/,
+        templateText: templateText,
+        itemCount: 0,
+        totalItems: 0,
+        add: function (data) {
+
+            this.template = new Template(this.templateText, this.templateSyntax);
+            if (!data.num) {
+                data.num = 'schedules_' + this.itemCount;
+            }
+            if (!data.intype)
+                data.intype = optionDefaultInputType;
+
+            Element.insert(this.table, {after: this.template.evaluate(data)});
+            this.bindRemoveButtons();
+            this.itemCount++;
+            this.totalItems++;
+            this.updateItemsCountField();
+        },
+        remove: function (event) {
+            var element = $(Event.findElement(event, 'tr')); // !!! Button already
+            // have table parent in safari
+            // Safari workaround
+            element.ancestors().each(function (parentItem) {
+                if (parentItem.hasClassName('option-row')) {
+                    element = parentItem;
+                    throw $break;
+                } else if (parentItem.hasClassName('box')) {
+                    throw $break;
+                }
+            });
+
+
+            if (element) {
+                var elementFlags = element.getElementsByClassName('delete-flag');
+                if (elementFlags[0]) {
+                    elementFlags[0].value = 1;
+                }
+
+                element.addClassName('no-display');
+                element.addClassName('template');
+                element.hide();
+                this.totalItems--;
+                this.updateItemsCountField();
+            }
+        },
+        updateItemsCountField: function () {
+            if (this.totalItems > 0) {
+                $('option-count-check').value = '1';
+            } else {
+                $('option-count-check').value = '';
+            }
+        },
+        bindRemoveButtons: function () {
+            var buttons = $$('.delete-option');
+            for (var i = 0; i < buttons.length; i++) {
+                if (!$(buttons[i]).binded) {
+                    $(buttons[i]).binded = true;
+                    Event.observe(buttons[i], 'click', this.remove.bind(this));
+                }
+            }
+        }
+
+    }
+    if ($('row-template')) {
+        $('row-template').remove();
+    }
+    schedulesOption.bindRemoveButtons();
+
+    if ($('add_new_option_button')) {
+        Event.observe('add_new_option_button', 'click', schedulesOption.add.bind(schedulesOption));
+    }
+    Validation.addAllThese([
+        ['required-option', '<?php echo Mage::helper('ayalineshop')->__('Failed') ?>', function (v) {
+            return !Validation.get('IsEmpty').test(v);
+        }]]);
+    Validation.addAllThese([
+        ['required-options-count', '<?php echo Mage::helper('ayalineshop')->__('Schedules is required') ?>', function (v) {
+            return !Validation.get('IsEmpty').test(v);
+        }]]);
+    <?php foreach ($this->getSchedules() as $_schedules): ?>
+    schedulesOption.add(<?php echo $_schedules->toJson() ?>);
+    <?php endforeach; ?>
+    //]]>
+</script>

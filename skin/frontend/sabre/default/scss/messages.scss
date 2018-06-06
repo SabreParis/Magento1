@@ -1,0 +1,136 @@
+@mixin triangle($direction: up, $size: 5px, $color: #000000) {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  display: block;
+
+  @if $direction == up {
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+    border-bottom: $size solid $color;
+    border-top: none;
+  }
+
+  @if $direction == down {
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+    border-top: $size solid $color;
+    border-bottom: none;
+  }
+
+  @if $direction == right {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    border-right: none;
+  }
+
+  @if $direction == left {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    border-left: none;
+  }
+}
+
+.messages {
+  margin-bottom: 0;
+
+  li {
+    margin: 0 !important;
+
+    li {
+      position: relative;
+      margin: 0 !important;
+      padding: 7px 10px 7px 20px;
+      background: $c-module-background;
+
+      &:before {
+        top: 50%;
+        left: 0;
+        margin-top: -6px;
+      }
+
+    }
+
+  }
+
+  .error-msg, .notice-msg, .success-msg {
+    background: none no-repeat scroll 0 0 $c-module-background;
+    border: none !important;
+    padding: 0 !important;
+    font-family: "Josefin Sans";
+    font-size: 20px !important;
+    font-weight: 400 !important;
+  }
+
+  .error-msg {
+
+    li {
+      color: $c-black;
+      border-left: 5px solid $c-danger;
+      /*background-color: $c-danger-background;*/
+
+      &:before {
+        @include triangle(right, 6px, $c-danger);
+      }
+    }
+  }
+
+  .notice-msg {
+
+    li {
+      color: $c-black;
+      border-left: 5px solid $c-warn;
+      /*background-color: $c-warn-background;*/
+
+      &:before {
+        @include triangle(right, 6px, $c-warn);
+      }
+    }
+  }
+
+  .success-msg {
+
+    li {
+      color: $c-black;
+      border-left: 5px solid $c-success;
+      /*background-color: $c-success-background;*/
+
+      &:before {
+        @include triangle(right, 6px, $c-success);
+      }
+    }
+  }
+}
+
+.note-msg{
+  border: none!important;
+  background-color: #f8f8f8;
+  color: #000000;
+  font-family: "Josefin Sans";
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  border-left: 5px solid #E26703!important;
+  padding: 7px 10px 7px 20px!important;
+  position:relative;
+  overflow: hidden;
+  &:before{
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    display: block;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+    border-left: 6px solid #E26703;
+    border-right: none;
+    left: 0;
+    top: 15px;
+  }
+}
+
+.minicart-message {
+  text-align: left;
+}

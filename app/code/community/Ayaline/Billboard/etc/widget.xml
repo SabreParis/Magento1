@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/08/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<widgets>
+
+    <ayalinebillboard_widget_billboards type="ayalinebillboard/widget_billboard" translate="name description label open"
+                                        module="ayalinebillboard">
+        <name>aYaline Billboard: Selection of billboards</name>
+        <description>Display selected billboards</description>
+        <parameters>
+            <billboards_identifier>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Billboards</label>
+                <type>label</type>
+                <helper_block>
+                    <type>ayalinebillboard/adminhtml_widget_billboard</type>
+                    <data>
+                        <button>
+                            <open>Select Billboards...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </billboards_identifier>
+            <template>
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>ayaline/billboard/widget/big.phtml</value>
+                <values>
+                    <default>
+                        <value>ayaline/billboard/widget/big.phtml</value>
+                        <label>Big template [ideal for content]</label>
+                    </default>
+                    <small>
+                        <value>ayaline/billboard/widget/small.phtml</value>
+                        <label>Small template [ideal for columns]</label>
+                    </small>
+                </values>
+            </template>
+            <filter_by_datetime>
+                <label>Enabled Billboard Datetime Filter</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <default>
+                        <value>0</value>
+                        <label>Use config</label>
+                    </default>
+                    <small>
+                        <value>1</value>
+                        <label>Yes</label>
+                    </small>
+                </values>
+            </filter_by_datetime>
+            <cache_lifetime>
+                <label>Cache Lifetime (Seconds)</label>
+                <visible>1</visible>
+                <type>text</type>
+                <description>Take the configuration value, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+            </cache_lifetime>
+        </parameters>
+    </ayalinebillboard_widget_billboards>
+
+    <ayalinebillboard_widget_billoard_types type="ayalinebillboard/widget_billboard_type"
+                                            translate="name description label open" module="ayalinebillboard">
+        <name>aYaline Billboard: Display billboards by type</name>
+        <description>Display billboards by billboard type</description>
+        <parameters>
+            <type_identifier>
+                <visible>1</visible>
+                <required>1</required>
+                <label>Billboard Type</label>
+                <type>label</type>
+                <helper_block>
+                    <type>ayalinebillboard/adminhtml_widget_billboard_type</type>
+                    <data>
+                        <button>
+                            <open>Select Billboard Type...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </type_identifier>
+            <template>
+                <label>Template</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>ayaline/billboard/widget/big.phtml</value>
+                <values>
+                    <default>
+                        <value>ayaline/billboard/widget/big.phtml</value>
+                        <label>Big template [ideal for content]</label>
+                    </default>
+                    <small>
+                        <value>ayaline/billboard/widget/small.phtml</value>
+                        <label>Small template [ideal for columns]</label>
+                    </small>
+                </values>
+            </template>
+            <filter_by_datetime>
+                <label>Enabled Billboard Datetime Filter</label>
+                <visible>1</visible>
+                <type>select</type>
+                <value>0</value>
+                <values>
+                    <default>
+                        <value>0</value>
+                        <label>Use config</label>
+                    </default>
+                    <small>
+                        <value>1</value>
+                        <label>Yes</label>
+                    </small>
+                </values>
+            </filter_by_datetime>
+            <cache_lifetime>
+                <label>Cache Lifetime (Seconds)</label>
+                <visible>1</visible>
+                <type>text</type>
+                <description>Take the configuration value, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+            </cache_lifetime>
+        </parameters>
+    </ayalinebillboard_widget_billoard_types>
+
+</widgets>

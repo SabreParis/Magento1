@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created : 2013
+ * 
+ * @category Ayaline
+ * @package Ayaline_EnhancedAdmin
+ * @author aYaline
+ * @copyright Ayaline - 2013 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<layout>
+
+    <!-- Setup Management -->
+    <adminhtml_ayaline_setup_index>
+        <update handle="editor" />
+        <reference name="head">
+            <action method="addJs">
+                <script>ayaline/enhanced_admin/setup.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="ayaline_enhancedadmin/adminhtml_setup" name="ayaline.enhancedadmin.setup" />
+        </reference>
+    </adminhtml_ayaline_setup_index>
+
+    <adminhtml_ayaline_setup_grid>
+        <block type="ayaline_enhancedadmin/adminhtml_setup_grid" name="root" output="toHtml" />
+    </adminhtml_ayaline_setup_grid>
+
+    <adminhtml_ayaline_setup_view>
+        <update handle="editor" />
+        <reference name="head">
+            <action method="addJs">
+                <script>ayaline/enhanced_admin/setup.js</script>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="ayaline_enhancedadmin/adminhtml_setup_view" name="ayaline.enhancedadmin.setup.view">
+                <!--<block type="ayaline_enhancedadmin/adminhtml_setup_view_grids_main"
+                       name="ayaline.enhancedadmin.setup.view.grids.main" />-->
+                <block type="ayaline_enhancedadmin/adminhtml_setup_view_grids_resource"
+                       name="ayaline.enhancedadmin.setup.view.grids.resource" />
+
+                <!--<action method="addGrid">
+                    <name>main</name>
+                    <block>ayaline.enhancedadmin.setup.view.grids.main</block>
+                </action>-->
+                <action method="addGrid">
+                    <name>resource</name>
+                    <block>ayaline.enhancedadmin.setup.view.grids.resource</block>
+                </action>
+            </block>
+
+            <block type="page/html_wrapper" name="ayaline.enhancedadmin.setup.view.file">
+                <action method="dependsOnChildren">
+                    <value>0</value>
+                </action>
+                <action method="setElementClass">
+                    <value>file-content</value>
+                </action>
+                <action method="setElementId">
+                    <value>file-container</value>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_ayaline_setup_view>
+
+    <adminhtml_ayaline_setup_viewfile>
+        <block type="ayaline_enhancedadmin/adminhtml_setup_view_file" name="root"
+               template="ayaline/enhanced_admin/setup/view/file.phtml" output="toHtml" />
+    </adminhtml_ayaline_setup_viewfile>
+
+    <adminhtml_ayaline_setup_resourcegrid>
+        <block type="ayaline_enhancedadmin/adminhtml_setup_view_grids_resource" name="root" output="toHtml" />
+    </adminhtml_ayaline_setup_resourcegrid>
+
+    <adminhtml_ayaline_setup_actions>
+        <block type="ayaline_enhancedadmin/adminhtml_setup_actions" name="root"
+               template="ayaline/enhanced_admin/setup/actions.phtml" output="toHtml" />
+    </adminhtml_ayaline_setup_actions>
+
+    <!-- Update Cache interface -->
+    <adminhtml_cache_index>
+        <remove name="cache" />
+        <reference name="content">
+            <block type="ayaline_enhancedadmin/adminhtml_cache" name="ayaline.enhancedadmin.cache" before="-" />
+        </reference>
+    </adminhtml_cache_index>
+
+</layout>

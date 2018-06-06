@@ -1,0 +1,61 @@
+<?php
+/**
+ * Created : 2015
+ * 
+ * @category Sabre
+ * @package Sabre_Catalog
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+?>
+<?php
+/**
+ * Product list template (ajax)
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+?>
+<?php if ($_productCollection->count()): ?>
+    <div class="scroller-page-container">
+            <?php $_collectionCount = $_productCollection->count() ?>
+            <ul class="products-grid infobulle">
+                <?php $i = 1; foreach ($_productCollection as $_product): ?>
+                <?php $attributeSetName=strtolower(Mage::getModel('eav/entity_attribute_set')->load($_product->getAttributeSetId())->getAttributeSetName());?>
+                <li class="item">
+                    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getProductName($_product), null, true) ?>" class="product-image">
+                        <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(120,150); ?>" width="120" height="150" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                        <span class="hidden-infos">
+                                    <?php echo $this->escapeHtml($_product->getAttributeText('a_article_'.$attributeSetName));?>
+                        </span>
+                    </a>
+                    <div class="infos">
+                        <h2 class="product-name">
+                            <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getProductName($_product), null, true) ?>">
+                                <?php echo $_product->getAttributeText('a_model') ?>&nbsp;&ndash;
+                                <span class="couleur"><?php echo $_product->getAttributeText('color') ?></span>
+                            </a>
+                        </h2>
+                        <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getProductName($_product), null, true) ?>">
+                            <?php if($_product->getRatingSummary()): ?>
+                                <?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+                            <?php endif; ?>
+                            <?php echo $this->getPriceHtml($_product, true) ?>
+                        </a>
+                    </div>
+                </li>
+                <?php 
+                // Loaded pages are structured vertically 
+                if ($i % 2 === 0 && $i !== $_collectionCount): ?>
+                </ul>
+                <ul class="products-grid infobulle">
+                <?php endif;?>
+                <?php $i++; endforeach; ?>
+            </ul>
+    </div>
+<?php endif; ?>

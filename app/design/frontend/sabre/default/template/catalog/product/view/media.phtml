@@ -1,0 +1,28 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<div id="product-view-gallery">
+    <?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+    $_hasImage = ($_product->getImage() != 'no_selection' && $_product->getImage());
+    ?>
+    <p class="product-image<?php if ($_hasImage): ?> product-image-zoom<?php endif; ?>">
+
+            <span class="full-zoom-link example-image-link">
+                <?php
+                $_img = '<img id="image" class="full-zoom-image" src="' . $this->helper('catalog/image')->init($_product, 'small_image')->resize(400, 500) . '" alt="' . $this->escapeHtml($this->getImageLabel()) . '" title="' . $this->escapeHtml($this->getImageLabel()) . '" data-zoom-image="' . $this->helper('catalog/image')->init($_product, 'image') . '" />';
+                echo $_helper->productAttribute($_product, $_img, 'image');
+                ?>
+            </span>
+        <a href="#gallery" class="zoom-notice" id="track_hint"><?php echo $this->__('View gallery') ?>
+            <span>"<?php echo $_product->getAttributeText('a_model'); ?>"</span>
+        </a>
+    </p>
+</div>
+

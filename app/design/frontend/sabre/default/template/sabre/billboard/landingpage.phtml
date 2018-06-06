@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * created : 06/10/2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Billboard
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/** @var $this Sabre_Billboard_Block_Landingpage */
+
+?>
+
+<div class="landing-page">
+
+    <?php if ($previousUrl = $this->getPreviousLandingPageUrl()): ?>
+        <span class="previous position-top">
+            <a href="<?php echo $previousUrl; ?>" title="<?php echo $this->__('Previous'); ?>">
+                <img  alt="<?php echo $this->__('Previous'); ?>" src="<?php echo $this->getSkinUrl('/images/flech_gauche.png') ?>" class="height-img"/>
+            </a>
+        </span>
+    <?php endif; ?>
+
+    <?php echo $this->getAdditionalContent(); ?>
+
+    <?php if ($nextUrl = $this->getNextLandingPageUrl()): ?>
+        <span class="next position-top">
+            <a href="<?php echo $nextUrl; ?>" title="<?php echo $this->__('Next'); ?>">
+                <img alt="<?php echo $this->__('Next'); ?>" src="<?php echo $this->getSkinUrl('/images/flech_droite.png') ?>" class="height-img"/>
+            </a>
+        </span>
+    <?php endif; ?>
+
+</div>
+

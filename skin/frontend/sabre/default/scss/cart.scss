@@ -1,0 +1,656 @@
+.checkout-cart-index {
+  .header-title {
+    padding: 5px 3%;
+  }
+  .cart-empty{
+    padding: 48px;
+  }
+  button.cart_link{
+    background: $color-cart-red;
+    padding: 0 12px;
+    width: 130px;
+    margin-left: 20px;
+    font-weight: normal;
+    text-transform: uppercase;vertical-align: top;
+    margin-top: 14px;
+    span{
+      line-height: 2em;
+      font-family: Roboto;
+      font-size: 16px;
+      font-weight: inherit;
+      padding: 0;
+      height: 30px;
+    }
+  }
+  .page-title, .title-buttons {
+    margin: 0;
+    height: 70px;
+    background-color: #3f3f48;
+    h1 {
+      margin: 0;
+      font-family: "Josefin sans";
+      color: white;
+      font-weight: 300;
+      text-transform: uppercase;
+      font-size: 40px;
+      padding: 17px 44px 19px 44px;
+    }
+  }
+  .data-table tbody td,.data-table tbody td.last,.data-table tr.last th,tbody{
+    border: 1px solid #eeeeee;
+  }
+  .data-table {
+    width: 94%;
+    margin:20px 41px;
+     tfoot td {
+       background: none no-repeat scroll 0 0 transparent !important;
+      padding: 15px 10px;
+    }
+    .odd,.even, tfoot tr {
+      background: transparent!important;
+    }
+    tbody{
+      td {
+        padding: 32px;
+        text-align: center;
+        span.show_rwd{
+          display: none;
+        }
+        a img{
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          float: none;
+          max-width: 100%;
+          width: 100%;
+        }
+        .product-name {
+          margin: 0 0 5px;
+          color: #262626;
+          font-family: "Josefin sans";
+          font-size: 30.1px;
+          font-weight: normal;
+        }
+        .infos{
+          font-family: "Roboto";
+          font-size: 14.05px;
+          color: #44444d;
+          font-weight: normal;
+          span {
+            display: block;
+          }
+        }
+        a.edit{
+          color:#9f9f9f;
+          text-transform: uppercase;
+          font-family: "Roboto";
+          font-size: 12px;
+        }
+      }
+      .cart-price {
+        line-height: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        .old-price .price{
+          color: #7b7b7b;
+          font-size: 12px;
+          font-weight: normal;
+          text-decoration: line-through;
+        }
+      }
+      .product-cart-price {
+        font-family: Roboto;
+        font-size: 16px;
+      }
+      td.product-cart-total{
+        font-size: 20px;
+        .old-price .price{
+          font-size: 16px;
+        }
+      }
+      td.product-cart-info{
+        text-align: left;
+      }
+      td.product-cart-remove{
+        .btn-remove2 {
+          display: block;
+          width: 23px;
+          height: 23px;
+          font-size: 0;
+          background: url(../images/remove.png) 0 0 no-repeat;
+          margin:auto;
+        }
+      }
+      div.qtyy{
+        background-color: #f5f5f5;
+        border: 1px solid #ebebeb;
+        padding: 2px 4px;
+        input.input-text{
+          background: transparent;
+          border: none;
+          color: $color-cart-red;
+          font-weight: bold;
+          font-size: 20px;
+          text-align: center;
+        }
+        .moin,.plus{
+          margin-top: 6px;
+          a{
+            color:#44444d;
+            border: 1px solid #44444d;
+            padding: 3px 11px;
+            &:focus{
+              text-decoration:none;
+            }
+          }
+        }
+        .moin{
+          float: left;
+        }
+        .plus{
+          float: right;
+        }
+      }
+    }
+    margin-top: 20px;border: 1px solid #eeeeee;
+    thead {
+      th {
+        text-align: center;
+        border-right: 1px solid #eeeeee;
+        background: transparent;
+        padding: 15px 18px;
+        span{
+          font-family: "Josefin sans";
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: 600;
+          color: #44444d;
+        }
+      }
+      th.img_product{
+        width: 136px;
+      }
+      th.name_product{
+        width: 278px;
+      }
+      th.edit{
+        width: 83px;
+      }
+      th.price{
+        width: 107px;
+      }
+      th.qty{
+        width: 158px;
+      }
+      th.subtotal{
+        width: 105px;
+      }
+      th.supp{
+        width: 72px;
+      }
+    }
+
+    tfoot{
+      border-bottom: 1px solid #eeeeee;
+      tr{
+        height: 66px;
+      }
+      .btn-update.upp {
+        margin-left: 0;
+        font-family: "Josefin sans";
+        font-size: 18px;
+        padding: 3px 8px;
+        background-color: white;
+        border: 1px solid;
+        span {
+          border-color: transparent;
+          background: transparent;
+        }
+      }
+    }
+  }
+  .cart-forms{
+    margin: 20px 40px;
+    form#discount-coupon-form,div.shipping,div.cart-totals-wrapper{
+      width: 33%;display: inline-block;vertical-align: top;
+      border:none;
+    }
+    div.shipping{
+      padding-left: 0;
+      .shipping-form{ul{padding-top: 6px;}}
+    }
+    .discount,.shipping{
+      border: none;padding: 46px 15px;
+      h2{
+        padding: 0;
+        color: #3f3f48;
+        text-transform: uppercase;
+        font-size: 20px;
+        font-family: "Josefin sans";
+        font-weight: 600;
+        margin-bottom: 25px;
+      }
+      input.input-text {
+        width: 254px;
+        border: 1px solid #ececec;
+        background-color: #f5f5f5;
+        height: 32px;
+        margin-bottom: 10px;
+      }
+      > label,p,.discount-form label {
+        font-weight: 300;
+        font-family: Roboto;
+        font-size: 14px;
+        color: #68686e;
+        margin-bottom: 15px;
+      }
+      .button-wrapper,.buttons-set{
+        .button2{
+          font-family: "Josefin sans";
+          font-size: 18px;
+          padding: 3px 8px;
+          background-color: white;
+          border: 1px solid;
+          span {
+            border-color: transparent;
+            background: transparent;
+          }
+        }
+      }
+      .form-list select {
+        border: 1px solid #ececec;
+        background-color: #f5f5f5;
+        border-radius: 5px;
+        height: 25px;
+      }
+    }
+    .cart-totals{
+      padding: 70px 0px;
+      table#shopping-cart-totals-table{
+        width: 100%;
+        td{vertical-align: middle;}
+        tbody{
+          border: none;
+          tr{
+            .a-right {
+              text-align: left!important;
+              padding: 7px 29px;
+              .price{float:right;}
+            }
+          }
+        }
+        tfoot{
+          td{color:#3f3f48; padding: 10px 29px;}
+          td.a-left{
+
+            span{
+              font-family: Josefin sans;
+              font-size: 20px;
+              text-transform: uppercase;font-weight: 300;
+            }
+            span.price{
+              font-size: 16px;
+              font-weight: normal;
+              text-align: right;
+            }
+          }
+          td.a-right{
+
+            span.price{
+              font-family: Roboto;
+              font-size: 16px;
+              font-weight: 400;
+            }
+          }
+          td.grand{
+            padding: 8px 29px 5px 29px;
+            color:#000;
+          }
+          tr.grand{
+            background: #eaecec;
+            span.price{
+              font-family: Roboto;
+              font-size: 20px;
+              font-weight: normal;
+              padding-top: 12px;
+            }
+            td.a-right{
+              padding: 8px 29px 5px 29px;
+              color:#000;
+            }
+          }
+          td:first-child.a-right{
+            text-align:left!important;
+          }
+        }
+      }
+        .button2,.method-checkout-cart-methods-onepage-bottom{
+          font-family: "Josefin sans";
+          font-size: 18px;
+          padding: 12px 0px;
+          background-color: white;
+          border: 1px solid;
+          width: 49%;
+          float: left;
+          vertical-align: top;
+          margin-top: 10px;
+          span {
+            border-color: transparent;
+            background: transparent;
+          }
+        }
+      .method-checkout-cart-methods-onepage-bottom{
+        background-color: $color-cart-red;
+        font-family: "Roboto";
+        float: right;
+        font-weight: 300;
+        padding: 0px 8px;
+        text-transform: uppercase;
+        text-align: center;
+        border: none;
+        button{
+          color: white;
+          padding: 7px 0;
+          span:first-child{
+            font-size: 13px;
+          }
+        }
+      }
+      .method-checkout-cart-methods-onepage-bottom{
+        span{
+          font:inherit ; height:inherit ;font-weight: 300;text-transform: uppercase;font-family: Roboto;padding:0;font-size: 21px;line-height: 1.1;
+        }
+      }
+    }
+  }
+
+ .cart .shipping .buttons-set button.button
+  { font-family: "Josefin sans";
+    font-size: 18px;
+    padding: 3px 8px;
+    background-color: white;
+    border: 1px solid;
+    span{
+      border-color: transparent;
+      background: transparent;
+      padding: 0;
+      height: inherit;
+      span{
+        border-color: transparent;
+        background: transparent;
+        color: initial;
+      }
+    }
+  }
+
+}
+
+
+.header-minicart {
+  position: relative;
+  .minicart_head {
+    display: none;
+    width: 321px;
+    float: right;
+    background: white;
+    position: absolute;
+    right:0;
+    top: 78px;
+    z-index: 9;
+    .right{
+      float: none !important;
+      margin-right: 0;
+      background: url("../images/livraison.png") 12% 49% #3f3f48 no-repeat;
+      padding: 3.5px 38px;
+      p{
+        word-wrap: break-word;
+        padding-left: 50px;
+        color: white;
+        width: 78%;
+        text-align: left;
+        padding-top: 10px;
+      }
+    }
+    .mini-products-list {
+      max-height: 450px;margin-bottom: 0;
+      .product_infos,.price,.delete{
+        display: inline-block;text-align: left;
+      }
+      .product_img{
+        width: 25%;
+        vertical-align: top;
+        position: relative;
+        display: inline-block;
+        padding-top: 20px;
+        img {
+          margin: auto;
+          position: relative;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        }
+      }
+      .product_infos {
+        padding-top: 6px;
+        width: 40%;
+        .product-name{
+          font-family: "Josefin sans";
+          font-size: 20px;
+          font-weight: normal;
+          color: #44444d;
+        }
+        .infos{
+          span{
+            font-family: "Roboto";
+            font-size: 14.05px;
+            color: #44444d;
+            font-weight: normal;
+            display: block;
+          }
+        }
+        .infos_{
+          font-family: "Josefin sans";
+          font-weight: normal;
+          color: #a2a3a4;
+          span.price{
+            text-align: right;
+          }
+          span.crois,span.price{
+            font-size: 14px;
+          }
+          span.qty {
+            font-size: 18px;
+          }
+        }
+
+      }
+      .price{
+        width: 16%;
+        font-family: "Roboto";
+        font-weight: 300;
+        color: #a2a3a4;
+        font-size: 17px;
+      }
+      .delete {
+        width: 7%;
+        vertical-align: top;
+        margin-top: 10%;
+        a{
+          background: url(../images/remove.png) 0 0 no-repeat;
+          display: block;
+          width: 100%;
+          height: 23px;
+          font-size: 0;
+        }
+      }
+      li{
+        border-bottom: 1px solid #c4c8c9;
+      }
+    }
+    .block-content {
+      min-height: 42px;
+      background: #eaecec;
+      > p {
+        margin: 0;
+        padding:8px 15px 0 0;
+        display: table;
+        width: 100%;
+        .label {
+          font-family: Josefin sans;
+          font-size: 20px;
+          text-transform: uppercase;
+          font-weight: 300;
+          color: #2f2f2f;
+          display: table-cell;
+          width: 50%;
+          text-align: left;
+        }
+        .price{
+          display: table-cell;
+          width: 50%;
+          font-size: 22px;
+          text-align: right;
+        }
+      }
+      .discount{
+        padding: 8px 15px 0 6px;
+        span{
+          font-size: 14px;
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+  .quick-access {
+    position: absolute;
+    right: 0;
+    .cart-counter#count {
+      font-size: 17px;
+      color: #fff;
+      text-align: center;
+      background: #db2329;
+      border-radius: 20px;
+      min-width: 31px;
+      display: block;
+      text-indent: 0;
+      top: 11px;
+      position: absolute;
+      right: 5px;
+      font-weight: 600;
+    }
+  }
+  .minicart-actions{
+    display: table;width: 100%;padding: 0 15px 15px;
+    > a, > ul{
+      display: table-cell;
+    }
+    > a{
+      font-family: "Josefin sans";
+      font-size: 18px;
+      padding: 2px 0px;
+      background-color: white;
+      border: 1px solid;
+      float: left;
+      vertical-align: top;
+      margin-top: 10px;
+      width: 100%;
+      color: #2f2f2f;
+    }
+    > ul {
+      width: 40%;
+      > li {
+        background-color: #db2329;
+        font-family: "Roboto";
+        float: right;
+        font-weight: 300;
+        padding: 6px 8px;
+        text-transform: uppercase;
+        text-align: center;
+        border: none;
+        width: 90%;
+        a{
+          color: white;font-weight: 500;
+        }
+      }
+    }
+
+
+  }
+}
+
+header .quick-access .links{
+  margin-bottom: 0;
+  li.cart_back{
+    float:right;
+  }
+}
+header .quick-access .links li{
+  margin-left: 0;
+
+}
+.color_back {
+  background: #3f3f48;
+}
+header .quick-access .links li:first-child {
+  margin-left: 0;
+}
+header .quick-access .zone-recherche {
+  padding: 21px 15px 10px 0;
+}
+header .quick-access .links .brightness {
+  -webkit-filter: brightness(10);
+  -moz-filter: brightness(10);
+  -o-filter: brightness(10);
+  -ms-filter: brightness(10);
+  filter: brightness(10);
+
+  span {
+    -webkit-filter: brightness(10%);
+    -moz-filter: brightness(10%);
+    -o-filter: brightness(10%);
+    -ms-filter: brightness(10%);
+    filter: brightness(10%);
+  }
+}
+
+.minicart-wrapper {
+
+  .empty {
+    font-family: "Josefin Sans";
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+    margin: 10px;
+  }
+
+}
+
+// cart empty
+
+.checkout-cart-index .cart-empty p{
+  font-family: Roboto;
+  font-size: 14px;
+  color: #9f9f9f;
+  a{
+    color: #44444d;
+    text-decoration: underline;
+  }
+}
+
+.checkout-onepage-index{
+  .paypal-logo {
+    width: 115px;
+  }
+}
+
+.header-minicart .minicart_head .mini-products-list .product_infos .infos_ span.price span.old-price{
+  display: inline-block;
+  margin: 0 6px;
+}
+.header-minicart .minicart_head .mini-products-list .product_infos .infos_ span.price span.old-price span.price {
+  display: block;
+  color: #7b7b7b;
+  font-size: 12px;
+}

@@ -1,0 +1,51 @@
+<?php
+/** @var $this Mage_Core_Block_Template */
+$checked = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . '/images/pictos/' .'icons.svg';
+?>
+<ul>
+    <?php $clearUrl = $this->getAttributeClearUrl($this->getItems()[0][0]) ?>
+
+    <li>
+        <a class="imagelink" href="<?php echo ($clearUrl)?$this->urlEscape($clearUrl):'#'; ?>">
+
+            <?php /*<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'a_filter_color/tout.jpg' ?>" */ ?>
+            <img src="<?php echo Mage::helper('sabre_catalog')->getProductAttributeImgUrl('a_filter_color', 'tout'); ?>"
+                 alt="<?php echo $this->__('All'); ?>" title="<?php echo $this->__('All'); ?>"/>
+            <?php echo $clearUrl ? '':'<span class="checkedimage"></span>';?>
+        </a>
+    </li>
+    <?php foreach ($this->getItems() as $row_items): ?>
+        <?php foreach ($row_items as $_item): ?>
+    <li>
+        <?php $alt = $this->getAttributeOptionDefaultValue($_item); ?>
+        <?php $_item->setAltTitle($alt); ?>
+        <?php $url = $this->getColorPictoUrl('a_filter_color', $_item->getAltTitle() );?>
+
+        <?php if ($_item->getCount() > 0): ?>
+            <?php $isCurrentFilter = $this->isCurrentFilter($_item)?>
+        <a class="imagelink" href="<?php echo ($isCurrentFilter)?'#':($this->urlEscape($_item->getUrl())); ?>">
+                <img class="imagecolor" <?php echo $url?'src="'.$url.'"':''; ?>
+                     alt="<?php echo Mage::helper('core')->stripTags($_item->getLabel()); ?>" title="<?php echo Mage::helper('core')->stripTags($_item->getLabel()); ?>"/>
+            <?php echo ($isCurrentFilter)?'<span class="checkedimage"></span>':'';?>
+        </a>
+        <?php else:?>
+            <span>
+                <img src="<?php echo $url ?>"
+                     alt="<?php echo Mage::helper('core')->stripTags($_item->getLabel()); ?>"
+                     title="<?php echo Mage::helper('core')->stripTags($_item->getLabel()); ?>"/>
+            </span>
+        <?php endif;?>
+    </li>
+        <?php endforeach; ?>
+    <?php endforeach; ?>
+</ul>
+
+<script>
+    jQuery(document).ready(function() {
+        jQuery('a').on('touchend', function(e) {
+            var el = jQuery(this);
+            var link = el.attr('href');
+            window.location = link;
+        });
+    });
+</script>

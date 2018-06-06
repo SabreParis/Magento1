@@ -1,0 +1,21 @@
+<?php /** @var $this Mage_Page_Block_Switch */ ?>
+
+<?php if (count($this->getStores()) > 1): ?>
+    <ul class="form-language">
+        <?php /** @var $_lang Mage_Core_Model_Store */ ?>
+        <?php foreach ($this->getStores() as $_store): ?>
+            <?php
+            $localeCode = Mage::getStoreConfig('general/locale/code', $_store);
+            $languages = Zend_Locale::getTranslationList('language', $localeCode);
+            $langageCode = substr($localeCode, 0, 2);
+            $language = isset($languages[$langageCode]) ?  $languages[$langageCode] : $_store->getName();
+            ?>
+            <?php $_selected = ($_store->getId()==Mage::app()->getStore()->getId()) ? ' lang-checked' : ''; ?>
+            <li class="<?php echo $langageCode?> <?php echo $_selected; ?>">
+                <a href="<?php echo $_store->getCurrentUrl(); ?>" rel="nofollow">
+                    <span class="lbl"><?php echo $this->escapeHtml(ucfirst($language)); ?></span>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

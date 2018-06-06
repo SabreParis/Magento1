@@ -1,0 +1,48 @@
+#div_closebutton_access_points7172837 {
+  background: transparent url(../images/remove.png) no-repeat scroll 0 0;
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  text-indent: -99999px;
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  right: 15px;
+}
+
+#div_preload_access_points7172837 {
+  background: transparent url(../images/opc-ajax-loader.gif) no-repeat scroll 0 0;
+}
+
+#div_upsap_access_points7172837 {
+  top: 20px !important;
+
+  iframe {
+    display: block;
+  }
+}
+
+#div_substrate_access_points7172837 {
+  width: 100% !important;
+}
+
+@media (min-width: 960px) {
+
+  #div_upsap_access_points7172837 {
+
+    iframe {
+      width: 960px !important;
+    }
+
+  }
+
+}
+
+@media (max-width: 960px) {
+
+  #div_upsap_access_points7172837 {
+    width: 100% !important;
+    left: 0 !important;
+  }
+
+}

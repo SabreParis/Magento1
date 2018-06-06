@@ -1,0 +1,18 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+?>
+<script type="text/javascript">
+    function saveAndContinueEdit(urlTemplate) {
+        var template = new Template(urlTemplate, /(^|.|\r|\n)({{(\w+)}})/);
+        var url = template.evaluate({tab_id: shop_info_tabsJsTabs.activeTab.id});
+        editForm.submit(url);
+    }
+</script>

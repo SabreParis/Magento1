@@ -1,0 +1,94 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+
+$itemsCount = Mage::getSingleton('checkout/cart')->getItemsCount();
+$showMiniCart = Mage::getSingleton('checkout/session')->getData('show_mini_cart', true);
+$layer = Mage::getSingleton('catalog/layer');
+$_category = $layer->getCurrentCategory();
+?>
+<header>
+    <div class="container">
+        <div class="left-menu">
+            <?php if ($this->getIsHomePage()):?>
+                <h1 class="logo">
+                    <a href="<?php echo $this->getUrl('') ?>">
+                        <span>Sabre</span>
+                    </a>
+                </h1>
+            <?php else:?>
+                <div class="logo">
+                    <a href="<?php echo $this->getUrl('') ?>"> </a>
+                </div>
+            <?php endif?>
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+        <div class="quick-access">
+            <ul class="links">
+                <li class="account-back">
+                    <a href="#" data-target-element="#header-account" class="skip-link skip-account account"> <?php echo $this->__("Account"); ?></a>
+                    <div id="header-account" class="skip-content active">
+                        <?php echo $this->getChildHtml('topLinks') ?>
+                    </div>
+                </li>
+                <li class="cart_back">
+                    <a class="cart minicart click <?php echo $showMiniCart ? ' open' : ''; ?>" href="#">
+                        <?php if($itemsCount > 0): ?>
+                            <span class="cart-counter"><?php echo Mage::getSingleton('checkout/cart')->getSummaryQty(); ?></span>
+                        <?php endif; ?>
+                    </a>
+                </li>
+            </ul>
+            <?php echo $this->getChildHtml('topSearch') ?>
+            <?php echo $this->getChildHtml('store_language') ?>
+        </div>
+        <div class="header-minicart">
+            <?php echo $this->getChildHtml('header_minicart_head'); ?>
+        </div>
+        <div class="categories">
+            <div class="caregories_tabs">
+                <?php $_categories = Mage::helper('catalog/category')->getStoreCategories() ?>
+                <?php if (count($_categories) > 0): ?>
+                    <ul>
+                        <?php foreach($_categories as $_cat): ?>
+                            <li class="<?php echo ($_cat->getName() == $_category->getName()) ? 'current' :'' ?>">
+                                <?php if($_cat->getName() == $_category->getName()): ?> <h1> <?php else:?> <h2><?php endif; ?>
+                                        <a href="<?php echo Mage::helper('catalog/category')->getCategoryUrl($_cat) ?>">
+                                            <?php echo $_cat->getName() ?>
+                                         </a>
+                                    <?php if($_cat->getName() == $_category->getName()): ?> </h1><?php else:?> </h2> <?php endif; ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('topContainer'); ?>
+    </div>
+</header>
+

@@ -1,0 +1,135 @@
+/**
+ * created : 10/08/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/* Position */
+.billboards-container {
+    position: relative;
+    height: 180px;
+    border: 1px solid #C4C1BC;
+    overflow: hidden;
+}
+
+.proto-controls, .proto-navigation {
+    position: relative;
+    z-index: 2;
+}
+
+.proto-navigation {
+    top: 160px;
+    float: right;
+    padding: 0 3px 0 0;
+}
+
+.billboards-container .billboards {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.billboards-container .billboards.active-slide {
+    z-index: 1;
+}
+
+.proto-navigation li, .proto-controls li {
+    display: inline;
+    cursor: pointer;
+}
+
+.proto-navigation li a, .proto-controls li a {
+    text-decoration: none;
+}
+
+.proto-controls li.backward a, .proto-controls li.forward a, .proto-controls li.start-stop a {
+    display: block;
+}
+
+.proto-controls li.start-stop a {
+    width: 15px;
+    height: 15px;
+}
+
+.proto-controls li.start-stop {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.proto-controls li.backward a, .proto-controls li.forward a {
+    height: 28px;
+    width: 28px;
+}
+
+.proto-controls li.backward, .proto-controls li.forward {
+    position: absolute;
+    top: 76px;
+}
+
+.proto-controls li.backward {
+    left: 5px;
+}
+
+.proto-controls li.forward {
+    right: 5px;
+}
+
+/* Show / Hide controls */
+.proto-controls {
+    display: none;
+}
+
+.billboards-container:hover .proto-controls {
+    display: inherit;
+}
+
+/* Control and navigation image */
+.proto-controls li a, .proto-navigation li a {
+    background: url("../../images/billboard/billboard.png") 0 0 no-repeat transparent;
+}
+
+.proto-navigation li.navigation a {
+    background-position: -85px 1px;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+}
+
+.proto-navigation li.navigation.current-slide a {
+    background-position: -85px -14px;
+}
+
+.proto-controls li.start-stop a.pause {
+    background-position: -63px -14px;
+}
+
+.proto-controls li.start-stop a.play {
+    background-position: -63px 1px;
+}
+
+.proto-controls li.backward a {
+    background-position: 0 0;
+}
+
+.proto-controls li.forward a {
+    background-position: -30px 0;
+}
+
+/* Small billboard template */
+.billboards-container.small {
+    height: 90px;
+}
+
+.small .proto-navigation {
+    top: 70px;
+}
+
+.small .proto-controls li.backward, .small .proto-controls li.forward {
+    top: 30px;
+}

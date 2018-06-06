@@ -1,0 +1,61 @@
+<?php
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+?>
+<?php if (($_products = $this->getProductsBySkuCollection()) && $_products->getSize()): ?>
+    <div class="widget widget-selected-products">
+        <div class="widget-products">
+            <?php echo $this->getPagerHtml() ?>
+            <?php  $_columnCount = count($this->getProductsBySkuCollection()); ?>
+            <?php /* @var $_product Mage_Catalog_Model_Product */ ?>
+            <?php $i = 0;
+            foreach ($_products->getItems() as $_product): ?>
+                <?php $attributeSetName=strtolower(Mage::getModel('eav/entity_attribute_set')->load($_product->getAttributeSetId())->getAttributeSetName());?>
+                <?php $_customProductName = Mage::helper('sabre_catalog')->getCustomProductName($_product); ?>
+                <?php if ($i++%$_columnCount==0): ?>
+                    <div class="list_produits slider">
+                    <ul class="products-grid slides infobulle">
+                <?php endif ?>
+                <li class="item<?php if (($i - 1) % $_columnCount == 0): ?> first<?php elseif ($i % $_columnCount == 0): ?> last<?php endif; ?>">
+                    <a href="<?php echo $_product->getProductUrl() ?>"
+                       title="<?php //echo $this->stripTags($_customProductName, null, true) ?>" class="product-image">
+                        <img
+                            src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(248) ?>"
+                            width="248" height="248"
+                            alt="<?php echo $this->stripTags($_customProductName, null, true) ?>"/>
+                        <span class="hidden-infos">
+                            <?php echo $this->escapeHtml($_product->getAttributeText('a_article_'.$attributeSetName));?>
+                        </span>
+                    </a>
+                    <div class="infos">
+                        <h3 class="product-name">
+                            <a href="<?php echo $_product->getProductUrl() ?>"
+                               title="<?php echo $this->stripTags($_customProductName, null, true) ?>">
+                               <?php echo $_product->getAttributeText('a_model'); ?>
+                                <span class="couleur"><?php echo '- ' . $_product->getAttributeText('color'); ?></span>
+                            </a>
+                        </h3>
+                        <?php //echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+
+                        <a href="<?php echo $_product->getProductUrl() ?>"
+                           title="<?php echo $this->stripTags($_customProductName, null, true) ?>">
+                            <?php echo $this->getPriceHtml($_product, true, '-widget-new-grid') ?>
+                        </a>
+                    </div>
+                </li>
+                <?php if ($i % $_columnCount == 0 || $i == count($_products)): ?>
+                    </ul>
+                    </div>
+                <?php endif ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>

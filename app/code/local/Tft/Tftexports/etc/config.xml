@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Tft_Tftexports>
+      <version>1.3.0</version>
+    </Tft_Tftexports>
+  </modules>
+  <global>
+    <models>
+      <tftexports>
+        <class>Tft_Tftexports_Model</class>
+      </tftexports>
+    </models>
+    <helpers>
+      <tftexports>
+        <class>Tft_Tftexports_Helper</class>
+      </tftexports>
+    </helpers>
+	<blocks>
+            <tftexports>
+                <class>Tft_Tftexports_Block</class>
+            </tftexports>
+        </blocks>
+  </global>
+  <adminhtml>
+    <acl>
+      <resources>
+        <all>
+          <title>Allow Everything</title>
+        </all>
+        <admin>
+          <children>
+            <system>
+              <children>
+                <config>
+                  <children>
+                    <tftexports>
+                      <title>TftExports - All</title>
+                    </tftexports>
+                  </children>
+                </config>
+              </children>
+            </system>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+  </adminhtml>
+  <adminhtml>
+        <menu>
+            <Tftrequest translate="title" module="Tftrequest">
+                <title>TFT</title>
+                <sort_order>100</sort_order>
+                <children>
+                    <export translate="title" module="Tftrequest">
+                        <title>Export Products</title>
+                        <sort_order>1</sort_order>
+                        <action>tftrequest/productexport/exports</action>
+                    </export>
+                </children>
+            </Tftrequest>
+        </menu>
+		<layout>
+			<updates>
+				<tftexports>
+					<file>tft_tftexports.xml</file>
+				</tftexports>
+			</updates>
+		</layout>
+    </adminhtml>
+	
+</config>

@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+ .page-print {
+  h1{
+    font-family: 'Josefin Sans';
+    font-size: 20px;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+   address{
+     font-family:Roboto;
+     font-size: 14px;
+     font-weight: 400;
+     color:#3f3f48;
+   }
+   h2,h2.h2{
+     font-family: Roboto;
+     font-size: 16px;
+     color: #44444d;
+     font-weight: bold;
+     text-transform: inherit;
+     padding-left:0;
+   }
+
+   h3{
+     color: #44444d;
+     font-family: Roboto;
+     text-transform: inherit;
+     font-size: 15px;
+     line-height: 1.4;
+   }
+
+   p{
+     font-family: Roboto;
+     font-size: 14px;
+     color: #9f9f9f;
+     &.required{
+       font-size: 11px;
+       text-align: right;
+       color: #EB340A;
+     }
+   }
+
+   .col-2 p{color:#333;}
+   .track{
+     ul{display:inline-block;}
+   }
+   .track_title{margin-top:9px;}
+   .data-table{
+     border: solid 1px #eee;
+     thead{
+       tr{
+         border-bottom: 1px solid #eee;
+         height:62px;
+         th{
+           width:9%;
+           background: #fff;
+           font-family: josefin Sans;
+           font-weight: 600;
+           font-size: 12px;
+           color: #44444d;
+           text-transform: uppercase;
+           border-right: 1px solid #eee;
+           border-bottom:solid 1px #eee!important;
+           text-align: center;
+           &.ship{text-align: left;}
+           &.total{width:10%; span{white-space: normal !important;}}
+           &.status{width:10%;}
+           &.view{border-right:0; }}
+         th:first-child{
+           padding-left:20px;
+           text-align: left;
+           width: 60%;
+         }
+         th:last-child{
+           border-right:0;
+         }
+
+       }
+     }
+
+
+     tbody{
+       &.odd tr{
+         background: #eeeded!important;
+       }
+       &.even tr {
+         background:#fff!important;
+       }
+       tr{
+         height:52px;
+         td{
+           font-size: 12px;
+           border-right: solid 1px #eee;
+           border-bottom: solid 1px #eee;
+           text-align: center;
+           vertical-align: middle;
+           color: #3f3f48;
+           font-weight: 400;
+           font-family: Roboto;
+           h3,h4{
+             text-align:left;
+             color: #000;
+             font-size: 14px!important;
+             font-weight: 400!important;
+             font-family: Roboto;
+             padding-left: 12px;
+             span{
+               font-size: 20.7px!important;
+             }
+           }
+
+           .price{
+             color: #3f3f48;
+             font-size: 12px;
+             font-weight: 400;
+             font-family: Roboto;
+           }
+
+           .nobr{
+
+             strong{
+               color: #dd252a;
+               font-weight: 400;
+               font-family: Roboto;
+             }
+           }
+           &.last{
+             .price{
+               font-size:14px;
+             }
+           }
+
+         }
+         td[data-rwd-label="Qté"]{text-align: center!important;}
+         &:last-child{
+           border-bottom: 1px solid #eee;
+         }
+       }
+       tr.border td{
+         border-right: 1px solid #eee;
+         border-bottom: 1px solid #eee;
+       }
+     }
+
+     tfoot{
+       border-bottom:0;
+       tr{
+         background:#fff!important;
+         &:first-child{
+           td{
+             padding-top:48px;
+           }
+         }
+         .a-right{
+           border-right:0;
+           font-family: Roboto;
+           font-weight: 400;
+           font-size: 14px;
+           color: #3f3f48;
+         }
+         .last{
+           color: #68686e;
+           vertical-align: middle;
+         }
+         td.empty{border-right:0;}
+       }
+
+       .grand_total,.grand_total_incl {
+         .a-right{
+           strong{
+             font-family: Josefin sans;
+             font-size: 20px;
+             text-transform: uppercase;
+             font-weight: 300;
+           }
+         }
+         .last{
+           strong{
+             font-family: Roboto;
+             font-weight: 400;
+             font-size: 14px;
+             color: #68686e;
+           }
+         }
+       }
+       .grand_total_incl{
+         .a-right{
+           background: #eaecec;
+           padding-right:0;
+           strong{
+             padding: 3px 8px 3px 8px;
+           }
+         }
+
+         .last{
+
+           strong{
+             font-family: Roboto;
+             font-size: 20px;
+             font-weight: normal;
+           }
+         }
+       }
+     }
+
+   }
+
+
+   .buttons-set{
+     border-top:0;
+     .button{
+       font-family: "Josefin sans";
+       font-size: 18px;
+       padding: 3px 8px;
+       background-color: white;
+       border: 1px solid;
+       margin-right: 10px;
+       span{
+         border-color: transparent;
+         background: transparent;
+         padding: 0;
+         height: inherit;
+         span{
+           border-color: transparent;
+           background: transparent;
+           color: initial;
+         }
+       }
+     }
+   }
+
+}
+
+.data-table {
+  td[data-rwd-label="Prix"],td[data-rwd-label="Sous-total"]{
+    .label{
+      color: #3f3f48;
+      font-size: 12px;
+      font-weight: 400;
+      font-family: Roboto;
+    }
+  }
+}

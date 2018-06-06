@@ -1,0 +1,94 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+?>
+<script type="text/javascript">
+    //<![CDATA[
+    var map;
+    <?php $shop = $this->getShop() ?>
+    <?php
+        if(Mage::app()->getRequest()->isSecure()) {
+            $url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQJ-TlKaGjj6cf2sda4OcIkC4Jt0CNvY&callback=initialize';
+        } else {
+            $url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDfQJ-TlKaGjj6cf2sda4OcIkC4Jt0CNvY&callback=initialize';
+        }
+    ?>
+    function initialize() {
+        var optZoom = 14;
+        var optLatitude = <?php echo $shop->getLatitude()?>;
+        var optLongitude = <?php echo $shop->getLongitude()?>;
+
+        var myLatlng = new google.maps.LatLng(optLatitude, optLongitude);
+        var myOptions = {
+            zoom: optZoom,
+            center: myLatlng,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_shopview"), myOptions);
+
+
+        positionShop = new google.maps.LatLng(<?php echo $shop->getLatitude()?>, <?php echo $shop->getLongitude()?>);
+        <?php $shopMarker = Mage::helper('sabreshop')->getShopMarkerUrl($shop);?>
+        <?php $groupMarker = Mage::helper('sabreshop')->getGroupMarkerUrl((int)$shop->getGroupId());?>
+        <?php if($shop->getMarker() || $groupMarker) : ?>
+        var markerImage =  {
+            url: '<?php echo $shopMarker?$shopMarker:$groupMarker?>',
+            size: new google.maps.Size(60, 60),
+            origin: new google.maps.Point(0, 0),
+            scaledSize: new google.maps.Size(60, 60)
+        };
+
+        console.log(markerImage);
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: positionShop,
+            title: '<?php echo addslashes (  $shop->getTitle()) ?>',
+            icon: markerImage
+        });
+        <?php else : ?>
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: positionShop,
+            title: '<?php echo addslashes ( $shop->getTitle() ) ?>'
+        });
+        <?php endif; ?>
+
+        google.maps.event.addListener(marker, 'click',
+            function () {
+
+            });
+    }
+
+    function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "<?php echo $url; ?>";
+        document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+    //]]>
+</script>
+
+<div id="map_shopview"></div>

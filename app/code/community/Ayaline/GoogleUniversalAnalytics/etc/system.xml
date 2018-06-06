@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2014
+ * 
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <sections>
+        <ayaline_gua translate="label comment tooltip" module="ayaline_gua">
+            <label>Google Universal Analytics</label>
+            <tab>ayaline</tab>
+            <header_css>ayaline-header</header_css>
+            <sort_order>10000</sort_order>
+            <show_in_store>1</show_in_store>
+            <show_in_website>1</show_in_website>
+            <show_in_default>1</show_in_default>
+            <groups>
+                <general>
+                    <label>General</label>
+                    <sort_order>10</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <enabled>
+                            <label>Enable</label>
+                            <sort_order>10</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </enabled>
+                        <web_property_id>
+                            <label>Web Property ID</label>
+                            <sort_order>11</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry</frontend_class>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </web_property_id>
+                        <use_alternative_asynchronous_snippet>
+                            <label>Use Alternative Asynchronous Snippet</label>
+                            <sort_order>12</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/advanced#alternativeSnippet" target="_blank">Doc</a>]]></comment>
+                        </use_alternative_asynchronous_snippet>
+
+                        <anonymize_ip>
+                            <label>Anonymize IP</label>
+                            <sort_order>21</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#anonymizeIp" target="_blank">Doc</a>]]></comment>
+                            <tooltip>Default: No</tooltip>
+                        </anonymize_ip>
+                        <force_ssl>
+                            <label>Force SSL</label>
+                            <sort_order>22</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                            <comment><![CDATA[<a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#forceSSL" target="_blank">Doc</a>]]></comment>
+                            <tooltip>Default: No</tooltip>
+                        </force_ssl>
+
+                        <debug_heading>
+                            <label>Debugging</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </debug_heading>
+                        <debug>
+                            <label>Debug</label>
+                            <sort_order>101</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                            </depends>
+                        </debug>
+                        <trace>
+                            <label>Trace</label>
+                            <sort_order>102</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <enabled>1</enabled>
+                                <debug>1</debug>
+                            </depends>
+                        </trace>
+                    </fields>
+                </general>
+
+                <create>
+                    <label>Create Only Fields</label>
+                    <sort_order>20</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+
+                        <!--<client_id_heading>
+                            <label><![CDATA[Client ID <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#clientId" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </client_id_heading>
+                        <client_id_customize>
+                            <label>Customize</label>
+                            <sort_order>21</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </client_id_customize>
+                        <client_id_value>
+                            <label>Value</label>
+                            <sort_order>22</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <client_id_customize>1</client_id_customize>
+                            </depends>
+                            <tooltip>Default: leave empty</tooltip>
+                        </client_id_value>-->
+
+                        <sample_rate_heading>
+                            <label><![CDATA[Sample Rate <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#sampleRate" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sample_rate_heading>
+                        <sample_rate_customize>
+                            <label>Customize</label>
+                            <sort_order>31</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </sample_rate_customize>
+                        <sample_rate_value>
+                            <label>Value</label>
+                            <sort_order>32</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry validate-digit</frontend_class>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <sample_rate_customize>1</sample_rate_customize>
+                            </depends>
+                            <tooltip>Default: 100</tooltip>
+                        </sample_rate_value>
+
+                        <site_speed_sample_rate_heading>
+                            <label><![CDATA[Site Speed Sample Rate <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#siteSpeedSampleRate" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </site_speed_sample_rate_heading>
+                        <site_speed_sample_rate_customize>
+                            <label>Customize</label>
+                            <sort_order>41</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </site_speed_sample_rate_customize>
+                        <site_speed_sample_rate_value>
+                            <label>Value</label>
+                            <sort_order>42</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry validate-digit</frontend_class>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <site_speed_sample_rate_customize>1</site_speed_sample_rate_customize>
+                            </depends>
+                            <tooltip>Default: 1</tooltip>
+                        </site_speed_sample_rate_value>
+
+                        <always_send_referrer_heading>
+                            <label><![CDATA[Always Send Referrer <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#alwaysSendReferrer" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </always_send_referrer_heading>
+                        <always_send_referrer_customize>
+                            <label>Customize</label>
+                            <sort_order>51</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </always_send_referrer_customize>
+                        <always_send_referrer_value>
+                            <label>Value</label>
+                            <sort_order>52</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <always_send_referrer_customize>1</always_send_referrer_customize>
+                            </depends>
+                            <tooltip>Default: No</tooltip>
+                        </always_send_referrer_value>
+
+                        <allow_anchor_heading>
+                            <label><![CDATA[Allow Anchor Parameters <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#allowAnchor" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_anchor_heading>
+                        <allow_anchor_customize>
+                            <label>Customize</label>
+                            <sort_order>61</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </allow_anchor_customize>
+                        <allow_anchor_value>
+                            <label>Value</label>
+                            <sort_order>62</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <allow_anchor_customize>1</allow_anchor_customize>
+                            </depends>
+                            <tooltip>Default: Yes</tooltip>
+                        </allow_anchor_value>
+
+                        <cookie_name_heading>
+                            <label><![CDATA[Cookie Name <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#cookieName" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_name_heading>
+                        <cookie_name_customize>
+                            <label>Customize</label>
+                            <sort_order>71</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </cookie_name_customize>
+                        <cookie_name_value>
+                            <label>Value</label>
+                            <sort_order>72</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry</frontend_class>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <cookie_name_customize>1</cookie_name_customize>
+                            </depends>
+                            <tooltip>Default: _ga</tooltip>
+                        </cookie_name_value>
+
+                        <cookie_domain_heading>
+                            <label><![CDATA[Cookie Domain <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#cookieDomain" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_domain_heading>
+                        <cookie_domain_customize>
+                            <label>Customize</label>
+                            <sort_order>81</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </cookie_domain_customize>
+                        <cookie_domain_value>
+                            <label>Value</label>
+                            <sort_order>82</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <cookie_domain_customize>1</cookie_domain_customize>
+                            </depends>
+                            <tooltip>Default: leave empty</tooltip>
+                        </cookie_domain_value>
+
+                        <cookie_expires_heading>
+                            <label><![CDATA[Cookie Expiration <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#cookieExpires" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cookie_expires_heading>
+                        <cookie_expires_customize>
+                            <label>Customize</label>
+                            <sort_order>91</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </cookie_expires_customize>
+                        <cookie_expires_value>
+                            <label>Value</label>
+                            <sort_order>92</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry</frontend_class>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <cookie_expires_customize>1</cookie_expires_customize>
+                            </depends>
+                            <tooltip>Default: 63072000 (two years)</tooltip>
+                        </cookie_expires_value>
+
+                        <legacy_cookie_domain_heading>
+                            <label><![CDATA[Legacy Cookie Domain <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#legacyCookieDomain" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </legacy_cookie_domain_heading>
+                        <legacy_cookie_domain_customize>
+                            <label>Customize</label>
+                            <sort_order>101</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </legacy_cookie_domain_customize>
+                        <legacy_cookie_domain_value>
+                            <label>Value</label>
+                            <sort_order>102</sort_order>
+                            <frontend_type>text</frontend_type>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <legacy_cookie_domain_customize>1</legacy_cookie_domain_customize>
+                            </depends>
+                            <tooltip>Default: leave empty</tooltip>
+                        </legacy_cookie_domain_value>
+
+                        <allow_linker_heading>
+                            <label><![CDATA[Allow Linker Parameters <a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#allowLinker" target="_blank">Doc</a>]]></label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allow_linker_heading>
+                        <allow_linker_customize>
+                            <label>Customize</label>
+                            <sort_order>111</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                        </allow_linker_customize>
+                        <allow_linker_value>
+                            <label>Value</label>
+                            <sort_order>112</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <depends>
+                                <allow_linker_customize>1</allow_linker_customize>
+                            </depends>
+                            <tooltip>Default: No</tooltip>
+                        </allow_linker_value>
+
+                    </fields>
+                </create>
+
+                <user>
+                    <label>User</label>
+                    <sort_order>30</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <user_id>
+                            <label>User ID</label>
+                            <sort_order>11</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <comment><![CDATA[<a href="https://support.google.com/analytics/answer/4574780" target="_blank">Doc</a>]]></comment>
+                        </user_id>
+                    </fields>
+                </user>
+
+                <ecommerce>
+                    <label>Ecommerce</label>
+                    <sort_order>40</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <enable_category>
+                            <label>Enable Order Item Category</label>
+                            <sort_order>21</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <comment>Add closest category for order item.</comment>
+                        </enable_category>
+                    </fields>
+                </ecommerce>
+
+                <onepage_tracking>
+                <label>Onepage tracking</label>
+                <sort_order>50</sort_order>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <enabled_onepage>
+                            <label>Enable</label>
+                            <sort_order>10</sort_order>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_store>1</show_in_store>
+                            <show_in_website>1</show_in_website>
+                            <show_in_default>1</show_in_default>
+                            <comment>Enable Onepage Checkout must be set to "yes": Sales > Checkout > Checkout Options.</comment>
+                        </enabled_onepage>
+                    </fields>
+                </onepage_tracking>
+
+                <onepage_tracking_step>
+                    <label>Onepage steps tracking</label>
+                    <sort_order>60</sort_order>
+                    <clone_fields>1</clone_fields>
+                    <clone_model>ayaline_gua/system_config_clone_step_label</clone_model>
+                    <show_in_store>1</show_in_store>
+                    <show_in_website>1</show_in_website>
+                    <show_in_default>1</show_in_default>
+                    <fields>
+                        <label>
+                            <label></label>
+                            <frontend_type>text</frontend_type>
+                            <frontend_class>required-entry</frontend_class>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </label>
+                    </fields>
+                </onepage_tracking_step>
+
+            </groups>
+        </ayaline_gua>
+    </sections>
+
+</config>

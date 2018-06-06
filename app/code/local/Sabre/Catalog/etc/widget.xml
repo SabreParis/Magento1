@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created : 2015
+ *
+ * @category Sabre
+ * @package Sabre_Catalog
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+<widgets>
+    <selected_products type="sabre_catalog/product_widget_skuFilter" translate="name description" module="sabre_catalog">
+        <name>Catalog Selected Products List</name>
+        <description>List of Products that are selected by sku</description>
+        <is_email_compatible>0</is_email_compatible>
+        <parameters>
+            <template>
+                <required>1</required>
+                <visible>1</visible>
+                <label>Template</label>
+                <type>select</type>
+                <value>sabre/catalog/product/widget/skufilter/content/products_grid.phtml</value>
+                <values>
+                    <default translate="label">
+                        <value>sabre/catalog/product/widget/skufilter/content/products_grid.phtml</value>
+                        <label>default Products Grid Template</label>
+                    </default>
+                </values>
+            </template>
+            <products_sku translate="label description">
+                <label>Products SKU</label>
+                <description>insert the products SKU, that  you want to be displayed .</description>
+                <visible>1</visible>
+                <type>text</type>
+            </products_sku>
+        </parameters>
+    </selected_products>
+</widgets>

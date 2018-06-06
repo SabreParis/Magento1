@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * created: 2014
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+ 
+<layout>
+
+    <!-- DataflowManager Management -->
+    <adminhtml_ayaline_dataflowmanager_index>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ayaline_dataflowmanager/adminhtml_dataflowManager"
+                   name="ayaline.dataflow-manager.dataflow-manager" />
+        </reference>
+    </adminhtml_ayaline_dataflowmanager_index>
+
+    <adminhtml_ayaline_dataflowmanager_grid>
+        <block type="ayaline_dataflowmanager/adminhtml_dataflowManager_grid" name="root" output="toHtml" />
+    </adminhtml_ayaline_dataflowmanager_grid>
+
+</layout>

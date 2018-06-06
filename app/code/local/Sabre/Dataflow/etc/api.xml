@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* created: 2015
+*
+* @category  Ayaline
+* @package   Sabre_Dataflow
+* @author    aYaline
+* @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+* @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+*/
+-->
+
+<config>
+    <api>
+        <resources>
+            <sabre_dataflow translate="title" module="sabre_dataflow">
+                <title>Sabre Dataflow</title>
+                <model>sabre_dataflow/api</model>
+                <acl>sabre_dataflow</acl>
+                <methods>
+                    <exportOrders translate="title" module="sabre_dataflow">
+                        <title>Export orders</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </exportOrders>
+                    <importProducts translate="title" module="sabre_dataflow">
+                        <title>Import products</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </importProducts>
+                    <importPricing translate="title" module="sabre_dataflow">
+                        <title>Import pricing</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </importPricing>
+                    <importInventory translate="title" module="sabre_dataflow">
+                        <title>Import inventory</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </importInventory>
+                    <importShops translate="title" module="sabre_dataflow">
+                        <title>Import shops</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </importShops>
+                    <updateOrderStatus translate="title" module="sabre_dataflow">
+                        <title>Update order status</title>
+                        <acl>sabre_dataflow/sabre_dataflow</acl>
+                    </updateOrderStatus>
+                </methods>
+                <faults module="sabre_dataflow">
+                    <order_not_exists>
+                        <code>100</code>
+                        <message>Order not found.</message>
+                    </order_not_exists>
+                    <status_not_exists>
+                        <code>200</code>
+                        <message>Invalid status</message>
+                    </status_not_exists>
+                    <processing_error>
+                        <code>300</code>
+                        <message>Processing error</message>
+                    </processing_error>
+                </faults>
+            </sabre_dataflow>
+        </resources>
+        <resources_alias>
+            <sabre_dataflow>sabre_dataflow</sabre_dataflow>
+        </resources_alias>
+        <v2>
+            <resources_function_prefix>
+                <sabre_dataflow>sabredataflow</sabre_dataflow>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <sabre_dataflow translate="title" module="sabre_dataflow">
+                    <title>Sabre Dataflow</title>
+                    <sabre_dataflow translate="title" module="sabre_dataflow">
+                        <title>Export / Import Sabre datas</title>
+                    </sabre_dataflow>
+                </sabre_dataflow>
+            </resources>
+        </acl>
+    </api>
+</config>

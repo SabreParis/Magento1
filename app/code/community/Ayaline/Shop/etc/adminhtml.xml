@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/03/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Shop
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+-->
+<config>
+
+    <menu>
+        <system>
+            <children>
+                <ayalineshop translate="title" module="ayalineshop">
+                    <title>Shops</title>
+                    <sort_order>10</sort_order>
+                    <children>
+                        <ayalineshop_manage_shop translate="title" module="ayalineshop">
+                            <title>Manage Shops</title>
+                            <action>adminhtml/ayaline_shop</action>
+                            <sort_order>10</sort_order>
+                        </ayalineshop_manage_shop>
+                        <ayalineshop_manage_group translate="title" module="ayalineshop">
+                            <title>Manage Group</title>
+                            <action>adminhtml/ayaline_shop_group</action>
+                            <sort_order>10</sort_order>
+                        </ayalineshop_manage_group>
+                    </children>
+                </ayalineshop>
+            </children>
+        </system>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ayalineshop translate="title" module="ayalineshop">
+                                        <title>Ayaline Shops</title>
+                                    </ayalineshop>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

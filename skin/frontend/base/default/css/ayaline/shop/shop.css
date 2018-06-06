@@ -1,0 +1,236 @@
+/**
+ * created : 10/03/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Shop
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/***** Shops list ********/
+.clear {
+    clear: both !important;
+}
+
+.box-bis-shops h4 {
+    background: url('../../../images/ayaline/shop/bg-h4.gif') 0 0 repeat-x;
+    padding: 5px 0 5px 16px;
+    margin: 0 0px 0 0;
+}
+
+.box-bis-shops {
+    overflow: hidden;
+    height: 1%;
+    border: 1px solid #C6C6C8;
+    margin: 20px 0 0 0;
+    padding: 0 0 20px 0;
+}
+
+.box-bis-shops ul li {
+    float: left;
+    padding: 0 28px 5px 11px;
+    width: 886px;
+
+}
+
+.box-bis-shops ul {
+    overflow: hidden;
+    height: 1%;
+    margin: 10px 0 0 0;
+    position: relative;
+    padding: 0 0 45px 0;
+}
+
+.box-bis-shops ul li {
+
+}
+
+.list-shops-left {
+    float: left;
+    width: 443px;
+}
+
+.list-shops-left li {
+    padding: 3px 0 5px 5px;
+    font-size: 12px;
+}
+
+.list-shops-right {
+    float: left;
+    width: 443px;
+}
+
+.list-shops-right li {
+    padding: 3px 0 5px 5px;
+    font-size: 12px;
+}
+
+.puce-list-shops-dep {
+    font-weight: bold;
+    color: #96BB20 !important;
+    float: left;
+    padding: 5px 0 0 2px;
+}
+
+.puce-list-shops-title {
+    width: 190px;
+    float: left;
+    margin-right: 3px;
+    padding: 5px 0 0 0;
+}
+
+.puce-list-shops-city {
+    width: 135px;
+    float: left;
+    text-transform: uppercase;
+    padding: 5px 0 0 0;
+}
+
+.shopscolumn {
+    margin-left: 10px;
+}
+
+.shopviewcolumn {
+    margin-top: 10px;
+}
+
+.puce-list-shops-new {
+    /*background:url('../images/shop-new.jpg') 0 0 no-repeat;*/
+    width: 24px;
+    height: 24px;
+    float: left;
+    cursor: pointer;
+}
+
+.puce-list-shops-colis {
+    /*background:url('../images/shop-colis.jpg') 0 0 no-repeat;*/
+    width: 24px;
+    height: 24px;
+    float: left;
+    cursor: pointer;
+}
+
+.puce-list-last {
+    background: url('../../../images/ayaline/shop/shop-separation.jpg') 0 0 no-repeat;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+#map_shops {
+    height: 433px;
+    width: 900px;
+}
+
+#map_shopview {
+    height: 279px;
+    width: 430px;
+    float: left;
+    margin-top: 92px;
+}
+
+.view-shop {
+    width: 430px;
+    margin-left: 30px;
+    float: left
+}
+
+.shop-view-content {
+    margin: 10px 10px 10px 20px;
+}
+
+.shop-view-content-line {
+    margin-bottom: 10px;
+    margin: 10px 20px;
+}
+
+.shop-view-content-facebook {
+    margin-top: 20px;
+}
+
+.shop-view-title-container {
+}
+
+.shop-view-title {
+    font-size: 20px;
+}
+
+.shop-view-group {
+
+}
+
+.link-all-shops a {
+    color: #0066CB;
+    font-weight: bold;
+}
+
+.shop-view-description {
+}
+
+.shop-view-type {
+    margin-left: 55px;
+    width: 120px;
+}
+
+.shop-view-type-title {
+    font-size: 13px;
+    font-weight: bold;
+    padding-top: 12px;
+    margin-left: 2px;
+}
+
+.shop-view-address-title {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.shop-view-address-line {
+    margin-top: 3px;
+}
+
+.shop-view-schedules-title {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.shop-view-schedules-list {
+    margin-top: 5px;
+}
+
+.shop-view-schedules-tab td {
+    margin-top: 10px;
+}
+
+.shop-view-schedules-tab .day {
+    width: 75px;
+}
+
+.specials-schedules {
+    margin-left: 10px;
+}
+
+.shop-view-back-link {
+    float: right;
+}
+
+/* Magasins : espace client */
+button.btn-shop-save {
+    float: right;
+    margin-right: 0;
+}
+
+.form-aj-compte .box-bottom-shop {
+    border: none;
+    margin: 25px 0px 0 0px;
+}
+
+/* Mon magasin : col droite */
+.bloc-in-list .text-left {
+    float: left;
+}
+
+.bloc-in-list .text-right {
+    float: left;
+    width: 100px;
+}

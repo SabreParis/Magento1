@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * created :    2016
+ *
+ * @category    Sabre
+ * @package     Sabre_GeoRedirect
+ * @author      aYaline
+ * @copyright   Ayaline - 2016 - http://magento-shop.ayaline.com
+ * @license     http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <label>All Pages</label>
+        <reference name="before_body_end" >
+            <block type="sabre_georedirect/popin"
+                   name="sabre.redirectpopin"
+                   after="-"
+                   template="sabre/georedirect/popin.phtml"
+            />
+        </reference>
+    </default>
+</layout>

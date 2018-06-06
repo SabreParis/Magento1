@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 08/10/2015
+ *
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <modules>
+        <Sabre_Shop>
+            <version>0.0.1</version>
+        </Sabre_Shop>
+    </modules>
+    <default>
+        <carriers>
+            <sabreshop>
+                <active>1</active>
+                <sallowspecific>0</sallowspecific>
+                <model>sabreshop/carrier_sabreshop</model>
+                <name>Sabre Shop</name>
+                <price>0.00</price>
+                <title>sabre shop</title>
+                <specificerrmsg>This shipping method is currently unavailable. If you would like to ship using this
+                    shipping method, please contact us.
+                </specificerrmsg>
+                <moreinfo>Command to withdraw shop on presentation of your order and your identity card. You can withdraw it after receiving an email confirming the availability in stores Time: usually under 48 hours</moreinfo>
+            </sabreshop>
+        </carriers>
+    </default>
+    <global>
+        <blocks>
+            <sabreshop>
+                <class>Sabre_Shop_Block</class>
+            </sabreshop>
+            <ayalineshop>
+                <rewrite>
+                    <adminhtml_shop_group_edit_tab_general>Sabre_Shop_Block_Adminhtml_Shop_Group_Edit_Tab_General</adminhtml_shop_group_edit_tab_general>
+                    <adminhtml_shop_edit_tab_general>Sabre_Shop_Block_Adminhtml_Shop_Edit_Tab_General</adminhtml_shop_edit_tab_general>
+                    <adminhtml_shop_group_edit_form>Sabre_Shop_Block_Adminhtml_Shop_group_Edit_Form</adminhtml_shop_group_edit_form>
+                </rewrite>
+            </ayalineshop>
+        </blocks>
+        <helpers>
+            <sabreshop>
+                <class>Sabre_Shop_Helper</class>
+            </sabreshop>
+        </helpers>
+        <models>
+            <sabreshop>
+                <class>Sabre_Shop_Model</class>
+            </sabreshop>
+            <ayalineshop>
+                <rewrite>
+                    <shop_group>Sabre_Shop_Model_Shop_Group</shop_group>
+                </rewrite>
+            </ayalineshop>
+
+        </models>
+        <fieldsets>
+            <sales_convert_quote>
+                <shop_id>
+                    <to_order>*</to_order>
+                </shop_id>
+            </sales_convert_quote>
+            <sales_convert_order>
+                <shop>
+                    <to_quote>*</to_quote>
+                </shop>
+            </sales_convert_order>
+        </fieldsets>
+        <resources>
+            <sabreshop_setup>
+                <setup>
+                    <module>Sabre_Shop</module>
+                </setup>
+            </sabreshop_setup>
+        </resources>
+        <events>
+            <ayalineshop_shop_group_load_after>
+                <observers>
+                    <sabershop_shop_group_model_observer>
+                        <class>sabreshop/Observer</class>
+                        <method>groupAfterLoad</method>
+                    </sabershop_shop_group_model_observer>
+                </observers>
+            </ayalineshop_shop_group_load_after>
+        </events>
+    </global>
+
+    <frontend>
+        <events>
+            <checkout_controller_onepage_save_shipping_method>
+                <observers>
+                    <sabreshop_checkout_controller_onepage_save_shipping_method>
+                        <class>Sabre_Shop_Model_Observer</class>
+                        <method>saveShippingAgency</method>
+                    </sabreshop_checkout_controller_onepage_save_shipping_method>
+                </observers>
+            </checkout_controller_onepage_save_shipping_method>
+        </events>
+    </frontend>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <sabre_shop before="Ayaline_Shop_Adminhtml">Sabre_Shop_Adminhtml</sabre_shop>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Sabre_Shop>
+                    <files>
+                        <default>Sabre_Shop.csv</default>
+                    </files>
+                </Sabre_Shop>
+            </modules>
+        </translate>
+    </adminhtml>
+
+</config>

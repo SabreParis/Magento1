@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+	<adminhtml_system_config_edit>
+		<reference name="head">
+			<action method="addJs"><file>tftorders/tftorders.js</file></action>
+		</reference>
+	 </adminhtml_system_config_edit>
+	 <adminhtml_sales_order_view>
+        <reference name="sales_order_tabs">
+            <action method="addTab">
+                <name>TAB_NAME</name>
+                <block>tftorders/adminhtml_order_tab</block>
+            </action>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <tftorders translate="label" module="tftorders">
+            <label>The French Talents</label>
+            <sort_order>100</sort_order>
+        </tftorders>
+    </tabs>
+    <sections>
+        <tftorders translate="label" module="tftorders">
+            <label>TFT Orders Settings</label>
+            <tab>tftorders</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <tftorders_group translate="label" module="tftorders">
+                    <label>Configuration Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <tftorders_ip_address translate="label">
+                            <label>TFT IP Address: </label>
+                            <comment>[ multiple IP seperator is : semicolon (;) ]</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_ip_address>
+						<tftorders_website_id translate="label">
+                            <label>Website ID: </label>
+                            <comment>[ set website id ]</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_website_id>
+						<tftorders_store_id translate="label">
+                            <label>Store ID: </label>
+                            <comment>[ set store id ]</comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_store_id>
+                        <tftorders_ref_type translate="label">
+                            <label>TFT Product Ref. Type: </label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>tftorders/reftype</source_model>
+                        </tftorders_ref_type>
+						<tftorders_create_customer translate="label">
+                            <label>Always Create Customer?: </label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </tftorders_create_customer>
+						 <tftorders_customer_id translate="label">
+                            <label>Existing Customer Id: </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_customer_id>
+						<tftorders_shipping_methods translate="label">
+                            <label>Shipping Methods: </label>
+                            <comment></comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>26</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>tftorders/shippingmethods</source_model>
+                        </tftorders_shipping_methods>
+						<tftorders_item_tax_rate translate="label">
+                            <label>Item Tax Rate(%): </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>27</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_item_tax_rate>
+						<tftorders_carrier_tax_rate translate="label">
+                            <label>Carrier Tax Rate(%): </label>
+                            <comment></comment>
+                            <frontend_type>text</frontend_type>
+							<validate>validate-number</validate>
+                            <sort_order>28</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </tftorders_carrier_tax_rate>
+                    </fields>
+                </tftorders_group>
+            </groups>
+        </tftorders>
+		  <payment>
+            <groups>
+                <tftpay translate="label" module="tftorders">
+                    <label>TFT Payment Method</label>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <order_status translate="label">
+                            <label>New order status</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_processing</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </order_status>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <message translate="label">
+							<label>Displayed Message</label>
+							<frontend_type>textarea</frontend_type>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</message>
+                    </fields>
+                </tftpay>
+            </groups>
+        </payment>
+    </sections>
+</config>

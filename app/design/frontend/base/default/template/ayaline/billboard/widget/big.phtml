@@ -1,0 +1,66 @@
+<?php
+/**
+ * created : 10/08/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Billboard
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+?>
+<?php /* @var $this Ayaline_Billboard_Block_Billboard */ ?>
+
+<?php $billboards = $this->getBillboards(); ?>
+<?php $_elementId = $this->getUniqueId(); ?>
+
+<?php if (count($billboards) > 0): ?>
+    <?php /* @var $_billboard Ayaline_Billboard_Model_Billboard */ ?>
+    <div id="<?php echo $_elementId; ?>" class="billboards-container big">
+        <?php foreach ($billboards as $_billboard): ?>
+            <div id="billboard_container_<?php echo $_billboard->getId(); ?>" class="billboards show">
+                <?php echo $_billboard->toHtml(); ?>
+            </div>
+        <?php endforeach; ?>
+
+        <ul class="proto-controls" <?php if (count($billboards) == 1): ?>style="display:none;"<?php endif; ?>>
+            <li class="start-stop"><a href="#"
+                                      title="<?php echo Mage::helper('ayalinebillboard')->__('Start-Pause'); ?>">
+                    &nbsp;</a></li>
+            <li class="backward"><a href="#" title="<?php echo Mage::helper('ayalinebillboard')->__('Previous'); ?>">
+                    &nbsp;</a></li>
+            <li class="forward"><a href="#" title="<?php echo Mage::helper('ayalinebillboard')->__('Next'); ?>">
+                    &nbsp;</a></li>
+        </ul>
+
+        <ul class="proto-navigation">
+            <?php reset($billboards); ?>
+            <?php foreach ($billboards as $_billboard): ?>
+                <li class="navigation"><a href="#<?php echo $this->getTitle($_billboard); ?>"
+                                          title="<?php echo Mage::helper('ayalinebillboard')->__("Show '%s'", $this->getTitle($_billboard)); ?>">
+                        &nbsp;</a></li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+    <?php /* We don't need instantiate the JS, if we have only one billboard. */ ?>
+    <?php if (count($billboards) > 1): ?>
+        <script type="text/javascript">
+            <!--
+            document.observe('dom:loaded', function () {
+                new protoShow('<?php echo $_elementId; ?>', {
+                    selector: '.billboards',
+                    buildNavigation: false,
+                    navElements: '.proto-navigation li.navigation',
+                    stopText: '&nbsp;',
+                    playText: '&nbsp;',
+                    autoplay: <?php echo $this->getConfig()->getProtoshowAutoplay(); ?>,
+                    interval: <?php echo $this->getConfig()->getProtoshowInterval(); ?>,
+                    transitionTime: <?php echo $this->getConfig()->getProtoshowTransitionTime(); ?>,
+                    manTransitionTime: <?php echo $this->getConfig()->getProtoshowManTransitionTime(); ?>
+                });
+            });
+            //-->
+        </script>
+    <?php endif; ?>
+
+<?php endif; ?>

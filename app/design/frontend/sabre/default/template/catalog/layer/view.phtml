@@ -1,0 +1,70 @@
+<?php
+/**
+ * Created : 2015
+ *
+ * @category Sabre
+ * @package Sabre_Catalog
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+/* @var $this Sabre_Catalog_Block_Layer_View */
+?>
+<?php if ($this->canShowBlock()): ?>
+    <div class="filter-nav">
+        <ul class="level-1">
+            <?php $_filters = $this->getFilters() ?>
+            <?php foreach ($_filters as $_filter): ?>
+                <?php if ($this->canShowOptions()): ?>
+                    <?php if ($_filter->getItemsCount()): ?>
+                        <?php $colorFilter = $_filter->getAttributeModel()->getAttributeCode();?>
+                        <?php $isColorFilter = $_filter->getAttributeModel()->getAttributeCode()=='a_filter_color'?>
+                        <?php $isModelCFilter = $_filter->getAttributeModel()->getAttributeCode() == 'a_model_cutlery'?>
+                        <?php $isModelPFilter = $_filter->getAttributeModel()->getAttributeCode() == 'a_model_porcelain'?>
+                        <?php $isModelAFilter = $_filter->getAttributeModel()->getAttributeCode() == 'a_model_accessory'?>
+
+                        <li class="item <?php echo $isColorFilter?'couleurs':''?>">
+                            <span class="arrow-down"></span>
+                            <div class="category-title">
+                                <span><?php echo $this->__($_filter->getName()) ?></span>
+                                <?php $filteredLabel = $this->getFilteredLabel($_filter)?>
+                                <span class="selected <?php echo $isColorFilter ? 'color' : '' ?>">
+                                    <?php if($isColorFilter):?>
+                                        <?php $adminSelectedLabelColor = $this->getSelectedFilterAdminLabel($colorFilter);?>
+                                        <?php $colorPicto = $_filter->getColorPictoUrl($colorFilter,$adminSelectedLabelColor);?>
+                                        <?php echo $filteredLabel?'<span class="selected color" style="background-image: url('.$colorPicto.');"></span>':$this->__('All colors');?>
+                                    <?php else:?>
+                                        <?php if($filteredLabel):?>
+                                            <?php echo $filteredLabel;?>
+                                        <?php elseif ($isModelCFilter || $isModelPFilter || $isModelAFilter) :?>
+                                            <?php echo $this->__('All models');?>
+                                        <?php else:?>
+                                            <?php echo $this->__('All items');?>
+                                        <?php endif;?>
+                                    <?php endif;?>
+                                </span>
+                            </div>
+                            <?php $attributeCode = $_filter->getAttributeModel()->getAttributeCode()?>
+                            <div class="level-2 <?php if($attributeCode == 'a_filter_color'): echo"min-height"; endif;?>">
+                                <?php echo $_filter->getHtml() ?>
+                            </div>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+            <?php if ($this->getLayer()->getState()->getFilters()): ?>
+                <li class="filter-delete">
+                    <a href="<?php echo $this->getClearUrl();?>" title="<?php echo $this->escapeHtml($this->__('Clear All Filters')) ?>">
+                        <div class="delete-filtre">
+                            <span><?php echo $this->__('Clear All Filters'); ?></span>
+                            <button class="clear">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                    </a>
+                </li>
+            <?php endif;?>
+        </ul>
+    </div>
+<?php endif; ?>

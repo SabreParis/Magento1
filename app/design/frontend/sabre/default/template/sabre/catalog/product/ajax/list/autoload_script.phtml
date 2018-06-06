@@ -1,0 +1,43 @@
+<?php $_productCollection = $this->getLoadedProductCollection()?>
+<script>
+    jQuery(function ($) {
+        <?php if($_productCollection->getLastPageNumber() == 1):?>
+            var _iscrollUpdateWidthContainer = function(){
+                var _widthTotal = 0;
+                $('#iscroll-wrapper .scroller-page-container.only-one-item .products-grid:first .item').each(function(){
+                    _widthTotal += $(this).outerWidth();
+                });
+
+                $('#iscroll-wrapper .scroller-page-container.only-one-item').width(_widthTotal + 10);
+            };
+            _iscrollUpdateWidthContainer();
+        <?php endif;?>
+
+        //Init iscroll
+        var _myScroll = new IScroll('#iscroll-wrapper', { eventPassthrough: true, scrollX: true, scrollY: false, mouseWheel: false, probeType: 3 , preventDefault: false});
+
+        //Init Autoload
+        new $.aYaAutoload({
+            scroller: $('#iscroll-wrapper'),
+            container: $('#iscroll-scroller'),
+            pagesUrl: <?php echo json_encode($this->getAjaxPagesUrl(2)) ?>,
+            onInit: function(ayaAutoload){
+                _myScroll._aYaAutoloadInst = ayaAutoload;
+            },
+            onSuccessResponseProcess:function(ayaAutoload, response){
+                ayaAutoload.container.append(response);
+                
+                _myScroll.refresh();
+            },
+            lazyLoadingHandler: function (ayaAutoload) {
+                
+                _myScroll._aYaAutoloadInst = ayaAutoload;
+                _myScroll.on('scroll', function () {
+                    if ( this.x < -600 ) {
+                        this._aYaAutoloadInst.fireLoadingPage();
+                    }
+                });
+            }
+        });
+    });
+</script>

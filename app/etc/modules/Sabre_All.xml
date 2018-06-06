@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+
+<config>
+
+    <modules>
+        <Sabre_Configuration>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Core />
+            </depends>
+        </Sabre_Configuration>
+        <Sabre_Billboard>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Ayaline_Billboard />
+            </depends>
+        </Sabre_Billboard>
+        <Sabre_Shop>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Ayaline_Shop />
+            </depends>
+        </Sabre_Shop>
+        <Sabre_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Catalog />
+            </depends>
+        </Sabre_Catalog>
+        <Sabre_CatalogSearch>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Sabre_Catalog />
+            </depends>
+        </Sabre_CatalogSearch>
+        <Sabre_Checkout>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Checkout />
+                <Sabre_Configuration />
+            </depends>
+        </Sabre_Checkout>
+        <Sabre_Wishlist>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Wishlist />
+                <Sabre_Configuration />
+            </depends>
+        </Sabre_Wishlist>
+        <Sabre_Dataflow>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Ayaline_DataflowManager />
+                <Sabre_Configuration />
+            </depends>
+        </Sabre_Dataflow>
+        <Sabre_Adminhtml>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Sabre_Configuration />
+            </depends>
+        </Sabre_Adminhtml>
+        <Sabre_Upsap>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Infomodus_Upsap />
+            </depends>
+        </Sabre_Upsap>
+        <Sabre_MobileApp>
+            <active>false</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mage_Api2 />
+            </depends>
+        </Sabre_MobileApp>
+        <Sabre_GeoRedirect>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Ayaline_Core />
+                <Sandfox_GeoIP />
+            </depends>
+        </Sabre_GeoRedirect>
+    </modules>
+
+</config>

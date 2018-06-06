@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Created : 2015
+ * 
+ * @category Ayaline
+ * @package Sabre_Adminhtml
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+
+    <modules>
+        <Sabre_Adminhtml>
+            <version>0.0.1</version>
+        </Sabre_Adminhtml>
+    </modules>
+
+    <global>
+        <helpers>
+            <sabre_adminhtml>
+                <class>Sabre_Adminhtml_Helper</class>
+            </sabre_adminhtml>
+        </helpers>
+        <blocks>
+            <sabre_adminhtml>
+                <class>Sabre_Adminhtml_Block</class>
+            </sabre_adminhtml>
+        </blocks>
+    </global>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Sabre_Adminhtml>
+                    <files>
+                        <default>Sabre_Adminhtml.csv</default>
+                    </files>
+                </Sabre_Adminhtml>
+            </modules>
+        </translate>
+    </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <sabre_adminhtml before="Mage_Adminhtml">Sabre_Adminhtml</sabre_adminhtml>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>default</name>
+                </package>
+                <theme>
+                    <default>sabre</default>
+                </theme>
+            </design>
+        </admin>
+    </stores>
+</config>

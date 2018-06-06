@@ -1,0 +1,6 @@
+autoloaders:
+  Ayaline: %module%/src
+
+commands:
+  customCommands:
+    - Ayaline\EnhancedAdmin\DumpConfigCommand

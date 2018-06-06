@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/03/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Shop
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+
+    <modules>
+        <Ayaline_Shop>
+            <version>1.0.2</version>
+        </Ayaline_Shop>
+    </modules>
+
+    <global>
+        <blocks>
+            <ayalineshop>
+                <class>Ayaline_Shop_Block</class>
+            </ayalineshop>
+        </blocks>
+        <helpers>
+            <ayalineshop>
+                <class>Ayaline_Shop_Helper</class>
+            </ayalineshop>
+        </helpers>
+        <models>
+            <ayalineshop>
+                <class>Ayaline_Shop_Model</class>
+                <resourceModel>ayalineshop_entity</resourceModel>
+            </ayalineshop>
+            <ayalineshop_entity>
+                <class>Ayaline_Shop_Model_Mysql4</class>
+                <entities>
+                    <shop>
+                        <table>ayaline_shop</table>
+                    </shop>
+                    <shop_store>
+                        <table>ayaline_shop_store</table>
+                    </shop_store>
+                    <shop_group>
+                        <table>ayaline_shop_group</table>
+                    </shop_group>
+                    <postcodes>
+                        <table>ayaline_postcodes</table>
+                    </postcodes>
+                    <schedules>
+                        <table>ayaline_schedules</table>
+                    </schedules>
+                    <special_schedules>
+                        <table>ayaline_special_schedules</table>
+                    </special_schedules>
+                </entities>
+            </ayalineshop_entity>
+        </models>
+        <resources>
+            <ayalineshop_setup>
+                <setup>
+                    <module>Ayaline_Shop</module>
+                </setup>
+            </ayalineshop_setup>
+        </resources>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Ayaline_Shop>
+                    <files>
+                        <default>Ayaline_Shop.csv</default>
+                    </files>
+                </Ayaline_Shop>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <ayalineshop module="Ayaline_Shop">
+                    <file>ayaline/shop.xml</file>
+                </ayalineshop>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ayalineshop before="Mage_Adminhtml">Ayaline_Shop_Adminhtml</ayalineshop>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <frontend>
+        <secure_url>
+            <ayalineshop>/ayalineshop/index/updateShopList/</ayalineshop>
+        </secure_url>
+        <routers>
+            <ayalineshop>
+                <use>standard</use>
+                <args>
+                    <module>Ayaline_Shop</module>
+                    <frontName>shop</frontName>
+                </args>
+            </ayalineshop>
+        </routers>
+        <translate>
+            <modules>
+                <Ayaline_Shop>
+                    <files>
+                        <default>Ayaline_Shop.csv</default>
+                    </files>
+                </Ayaline_Shop>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <ayalineshop module="Ayaline_Shop">
+                    <file>ayaline/shop.xml</file>
+                </ayalineshop>
+            </updates>
+        </layout>
+    </frontend>
+
+</config>

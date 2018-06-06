@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Tft_Tftorders>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Tft_Tftorders>
+    </modules>
+</config>

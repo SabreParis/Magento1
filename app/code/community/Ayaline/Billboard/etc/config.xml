@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/08/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <modules>
+        <Ayaline_Billboard>
+            <version>1.2.6</version>
+        </Ayaline_Billboard>
+    </modules>
+    <global>
+        <blocks>
+            <ayalinebillboard>
+                <class>Ayaline_Billboard_Block</class>
+            </ayalinebillboard>
+        </blocks>
+
+        <helpers>
+            <ayalinebillboard>
+                <class>Ayaline_Billboard_Helper</class>
+            </ayalinebillboard>
+        </helpers>
+
+        <models>
+            <ayalinebillboard>
+                <class>Ayaline_Billboard_Model</class>
+                <resourceModel>ayalinebillboard_mysql4</resourceModel>
+            </ayalinebillboard>
+            <ayalinebillboard_mysql4>
+                <class>Ayaline_Billboard_Model_Mysql4</class>
+                <entities>
+                    <billboard>
+                        <table>ayaline_billboard</table>
+                    </billboard>
+                    <billboard_store>
+                        <table>ayaline_billboard_store</table>
+                    </billboard_store>
+                    <billboard_type>
+                        <table>ayaline_billboard_type</table>
+                    </billboard_type>
+                    <billboard_type_index>
+                        <table>ayaline_billboard_type_index</table>
+                    </billboard_type_index>
+                    <billboard_category>
+                        <table>ayaline_billboard_category</table>
+                    </billboard_category>
+                    <billboard_product>
+                        <table>ayaline_billboard_product</table>
+                    </billboard_product>
+                    <billboard_customer_group>
+                        <table>ayaline_billboard_customer_group</table>
+                    </billboard_customer_group>
+                </entities>
+            </ayalinebillboard_mysql4>
+        </models>
+
+        <resources>
+            <ayalinebillboard_setup>
+                <setup>
+                    <module>Ayaline_Billboard</module>
+                </setup>
+            </ayalinebillboard_setup>
+        </resources>
+
+        <billboards>
+            <billboard>
+                <related_cache_types>
+                    <block_html />
+                </related_cache_types>
+                <tempate_filter>widget/template_filter</tempate_filter>
+            </billboard>
+        </billboards>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ayalinebillboard before="Mage_Adminhtml">Ayaline_Billboard_Adminhtml</ayalinebillboard>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Ayaline_Billboard>
+                    <files>
+                        <default>Ayaline_Billboard.csv</default>
+                    </files>
+                </Ayaline_Billboard>
+            </modules>
+        </translate>
+
+        <layout>
+            <updates>
+                <ayalinebillboard>
+                    <file>ayaline/billboard.xml</file>
+                </ayalinebillboard>
+            </updates>
+        </layout>
+
+        <events>
+            <adminhtml_catalog_category_tabs>
+                <observers>
+                    <ayalinebillboard_add_tab_in_category>
+                        <class>ayalinebillboard/observer</class>
+                        <method>addTabInCategory</method>
+                    </ayalinebillboard_add_tab_in_category>
+                </observers>
+            </adminhtml_catalog_category_tabs>
+            <catalog_category_prepare_save>
+                <observers>
+                    <ayalinebillboard_prepare_save_billboard_category>
+                        <class>ayalinebillboard/observer</class>
+                        <method>prepareSaveBillboardCategory</method>
+                    </ayalinebillboard_prepare_save_billboard_category>
+                </observers>
+            </catalog_category_prepare_save>
+            <catalog_category_save_after>
+                <observers>
+                    <ayalinebillboard_save_billboard_category>
+                        <class>ayalinebillboard/observer</class>
+                        <method>saveBillboardCategory</method>
+                    </ayalinebillboard_save_billboard_category>
+                </observers>
+            </catalog_category_save_after>
+            <ayaline_core_adminhtml_catalog_product_tabs_initializer>
+                <observers>
+                    <ayalinebillboard_add_tab_in_product>
+                        <class>ayalinebillboard/observer</class>
+                        <method>addTabInProduct</method>
+                    </ayalinebillboard_add_tab_in_product>
+                </observers>
+            </ayaline_core_adminhtml_catalog_product_tabs_initializer>
+            <catalog_product_prepare_save>
+                <observers>
+                    <ayalinebillboard_prepare_save_billboard_product>
+                        <class>ayalinebillboard/observer</class>
+                        <method>prepareSaveBillboardProduct</method>
+                    </ayalinebillboard_prepare_save_billboard_product>
+                </observers>
+            </catalog_product_prepare_save>
+            <catalog_product_save_after>
+                <observers>
+                    <ayalinebillboard_save_billboard_product>
+                        <class>ayalinebillboard/observer</class>
+                        <method>saveBillboardProduct</method>
+                    </ayalinebillboard_save_billboard_product>
+                </observers>
+            </catalog_product_save_after>
+        </events>
+    </adminhtml>
+
+    <frontend>
+        <translate>
+            <modules>
+                <Ayaline_Billboard>
+                    <files>
+                        <default>Ayaline_Billboard.csv</default>
+                    </files>
+                </Ayaline_Billboard>
+            </modules>
+        </translate>
+
+        <layout>
+            <updates>
+                <ayalinebillboard>
+                    <file>ayaline/billboard.xml</file>
+                </ayalinebillboard>
+            </updates>
+        </layout>
+    </frontend>
+
+    <default>
+        <ayalinebillboard>
+            <backend>
+                <multi_type>0</multi_type>
+            </backend>
+            <frontend>
+                <filter_datetime>1</filter_datetime>
+                <default_cache_lifetime>86400</default_cache_lifetime>
+            </frontend>
+            <protoshow>
+                <interval>3</interval>
+                <autoplay>1</autoplay>
+                <transition_time>1.5</transition_time>
+                <man_transition_time>0.5</man_transition_time>
+            </protoshow>
+        </ayalinebillboard>
+    </default>
+
+</config>

@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Tft_Tftrequest>
+      <version>1.3.0</version>
+    </Tft_Tftrequest>
+  </modules>
+  <frontend>
+    <routers>
+      <tftrequest>
+        <use>standard</use>
+        <args>
+          <module>Tft_Tftrequest</module>
+          <frontName>tftrequest</frontName>
+        </args>
+      </tftrequest>
+    </routers>
+  </frontend>
+  <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Tft_Tftrequest after="Mage_Adminhtml">Tft_Tftrequest</Tft_Tftrequest>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	<global>
+        <helpers>
+            <Tftrequest>
+                <class>Tft_Tftrequest_Helper</class>
+            </Tftrequest>
+        </helpers>
+    </global>
+	
+</config>

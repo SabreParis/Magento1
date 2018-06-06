@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ * created : 04/02/2014
+ *
+ * @category Ayaline
+ * @package Ayaline_X3Notifications
+ * @author lbourrel
+ * @copyright Ayaline - 2014 - http://www.ayaline.com
+ * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Sabre_MultiWebsites>
+			<version>0.0.6</version>
+		</Sabre_MultiWebsites>
+	</modules>
+	<global>
+		<helpers>
+			<sabre_multiwebsites>
+				<class>Sabre_MultiWebsites_Helper</class>
+			</sabre_multiwebsites>
+		</helpers>
+		<blocks>
+			<sabre_multiwebsites>
+				<class>Sabre_MultiWebsites_Block</class>
+			</sabre_multiwebsites>
+		</blocks>
+		<resources>
+			<sabre_multiwebsites_general_setup>
+				<setup>
+					<module>Sabre_MultiWebsites</module>
+				</setup>
+			</sabre_multiwebsites_general_setup>
+		</resources>
+	</global>
+	<frontend>
+		<layout>
+			<updates>
+				<sabre_multiwebsites>
+					<file>sabre/multiwebsites.xml</file>
+				</sabre_multiwebsites>
+			</updates>
+		</layout>
+	</frontend>
+	<adminhtml>
+		<translate>
+			<modules>
+				<Sabre_MultiWebsites>
+					<files>
+						<default>Sabre_MultiWebsites.csv</default>
+					</files>
+				</Sabre_MultiWebsites>
+			</modules>
+		</translate>
+	</adminhtml>
+	<default>
+		<sabre_multiwebsites>
+			<general>
+				<show_countries>0</show_countries>
+			</general>
+		</sabre_multiwebsites>
+	</default>
+</config>

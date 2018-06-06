@@ -1,0 +1,30 @@
+<?php
+/**
+ * created : 2013
+ *
+ * @category  Ayaline
+ * @package   Ayaline_EnhancedAdmin
+ * @author    aYaline
+ * @copyright Ayaline - 2013 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/** @var $this Ayaline_EnhancedAdmin_Block_Adminhtml_Setup_View_File */
+
+?>
+<?php if ($this->getFiles()): ?>
+    <div class="entry-edit">
+        <?php foreach ($this->getFiles() as $_type => $_fileContent): ?>
+            <?php if ($_fileContent): ?>
+                <div class="entry-edit-head">
+                    <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__($_type); ?></h4>
+                </div>
+                <div class="fieldset fieldset-wide">
+                    <div class="hor-scroll">
+                        <?php echo highlight_string($_fileContent, true); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

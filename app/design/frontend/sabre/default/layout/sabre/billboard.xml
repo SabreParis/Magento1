@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 02/10/2015
+ *
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<layout>
+
+    <sabrebillboard_index_index>
+        <reference name="root">
+            <action method="setTemplate">
+                <template>page/1column.phtml</template>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="sabrebillboard/landingpage" name="sabre.billboard.landingpage" template="sabre/billboard/landingpage.phtml" >
+
+            </block>
+        </reference>
+    </sabrebillboard_index_index>
+
+</layout>

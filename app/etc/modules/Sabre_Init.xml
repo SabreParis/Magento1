@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+
+<config>
+
+    <modules>
+        <Sabre_Init>
+            <active>false</active>
+            <codePool>local</codePool>
+        </Sabre_Init>
+    </modules>
+
+</config>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/08/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <menu>
+        <cms>
+            <children>
+                <ayalinebillboard>
+                    <title>Billboards</title>
+                    <sort_order>70</sort_order>
+                    <children>
+                        <billboard>
+                            <title>Manage Billboards</title>
+                            <action>adminhtml/ayaline_billboard</action>
+                            <sort_order>10</sort_order>
+                        </billboard>
+                        <billboard_type>
+                            <title>Manage Billboard Types</title>
+                            <action>adminhtml/ayaline_billboard_type</action>
+                            <sort_order>20</sort_order>
+                        </billboard_type>
+                    </children>
+                </ayalinebillboard>
+            </children>
+        </cms>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <cms>
+                        <children>
+                            <ayalinebillboard>
+                                <title>Billboards</title>
+                                <children>
+                                    <billboard_type>
+                                        <title>Manage Billboard Types</title>
+                                        <children>
+                                            <delete>
+                                                <title>Delete</title>
+                                            </delete>
+                                            <save>
+                                                <title>Save</title>
+                                            </save>
+                                            <view>
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </billboard_type>
+                                    <billboard>
+                                        <title>Manage Billboards</title>
+                                        <children>
+                                            <delete>
+                                                <title>Delete</title>
+                                            </delete>
+                                            <save>
+                                                <title>Save</title>
+                                            </save>
+                                            <view>
+                                                <title>View</title>
+                                            </view>
+                                        </children>
+                                    </billboard>
+                                </children>
+                            </ayalinebillboard>
+                        </children>
+                    </cms>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <ayalinebillboard>
+                                        <title>Ayaline Billboard</title>
+                                    </ayalinebillboard>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* created: 2015
+*
+* @category  Ayaline
+* @package   Sabre_Dataflow
+* @author    aYaline
+* @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+* @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+*/
+-->
+
+<dataflow>
+    <export>
+        <sales>
+            <order>
+                <name>aYaline Sales Export Order</name>
+                <model>sabre_dataflow/export_sales_order</model>
+                <export_directory>sales/order</export_directory>
+                <transport>
+                    <type>ftp</type>
+                    <model>ayaline_dataflowmanager/export_transport_ftp</model>
+                    <config>
+                        <enabled>ayaline_dataflowmanager/export_sales_order/transport_ftp_enabled</enabled>
+                        <remote_directory>ayaline_dataflowmanager/export_sales_order/transport_ftp_path</remote_directory>
+                    </config>
+                </transport>
+            </order>
+        </sales>
+    </export>
+    <import>
+        <sales>
+            <order_status>
+                <name>aYaline Sales Import Order Status</name>
+                <model>sabre_dataflow/import_sales_orderStatus</model>
+                <import_directory>sales/order_status</import_directory>
+                <files_name_pattern>order_status_*.csv</files_name_pattern>
+            </order_status>
+        </sales>
+        <catalog>
+            <pricing>
+                <name>aYaline Catalog Import Pricing</name>
+                <model>sabre_dataflow/import_catalog_pricing</model>
+                <import_directory>catalog/pricing</import_directory>
+                <files_name_pattern>pricing.xml</files_name_pattern>
+            </pricing>
+            <inventory>
+                <name>aYaline Catalog Import Inventory</name>
+                <model>sabre_dataflow/import_catalog_inventory</model>
+                <import_directory>catalog/inventory</import_directory>
+                <files_name_pattern>inventory.txt</files_name_pattern>
+            </inventory>
+            <shops>
+                <name>aYaline Catalog Import Shops</name>
+                <model>sabre_dataflow/import_catalog_shops</model>
+                <import_directory>catalog/shop</import_directory>
+                <files_name_pattern>shops.xml</files_name_pattern>
+            </shops>
+        </catalog>
+    </import>
+</dataflow>

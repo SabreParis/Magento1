@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created : 2013
+ * 
+ * @category Ayaline
+ * @package Ayaline_EnhancedAdmin
+ * @author aYaline
+ * @copyright Ayaline - 2013 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <modules>
+        <Ayaline_EnhancedAdmin>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Ayaline_Core />
+            </depends>
+        </Ayaline_EnhancedAdmin>
+    </modules>
+
+</config>

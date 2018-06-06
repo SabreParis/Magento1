@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 2014
+ * 
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <modules>
+        <Ayaline_DataflowManager>
+            <version>0.0.5</version>
+        </Ayaline_DataflowManager>
+    </modules>
+
+    <global>
+        <blocks>
+            <ayaline_dataflowmanager>
+                <class>Ayaline_DataflowManager_Block</class>
+            </ayaline_dataflowmanager>
+        </blocks>
+        <helpers>
+            <ayaline_dataflowmanager>
+                <class>Ayaline_DataflowManager_Helper</class>
+            </ayaline_dataflowmanager>
+        </helpers>
+        <models>
+            <ayaline_dataflowmanager>
+                <class>Ayaline_DataflowManager_Model</class>
+                <resourceModel>ayaline_dataflowmanager_resource</resourceModel>
+            </ayaline_dataflowmanager>
+            <ayaline_dataflowmanager_resource>
+                <class>Ayaline_DataflowManager_Model_Resource</class>
+                <entities>
+                    <import_cache>
+                        <table>ayaline_dataflowmanager_import_cache</table>
+                    </import_cache>
+                </entities>
+            </ayaline_dataflowmanager_resource>
+        </models>
+
+        <resources>
+            <ayaline_dataflowmanager_setup>
+                <setup>
+                    <module>Ayaline_DataflowManager</module>
+                </setup>
+            </ayaline_dataflowmanager_setup>
+            <ayaline_dataflowmanager_catalog_setup>
+                <setup>
+                    <module>Ayaline_DataflowManager</module>
+                    <class>Mage_Catalog_Model_Resource_Setup</class>
+                </setup>
+            </ayaline_dataflowmanager_catalog_setup>
+        </resources>
+
+        <template>
+            <email>
+                <ayaline_dataflowmanager_email_email_template>
+                    <label>DataflowManager Email</label>
+                    <type>html</type>
+                    <file>ayaline/dataflow_manager/default.html</file>
+                </ayaline_dataflowmanager_email_email_template>
+                <ayaline_dataflowmanager_import_email_template>
+                    <label>Import DataflowManager Email</label>
+                    <type>html</type>
+                    <file>ayaline/dataflow_manager/import.html</file>
+                </ayaline_dataflowmanager_import_email_template>
+                <ayaline_dataflowmanager_export_email_template>
+                    <label>Export DataflowManager Email</label>
+                    <type>html</type>
+                    <file>ayaline/dataflow_manager/export.html</file>
+                </ayaline_dataflowmanager_export_email_template>
+            </email>
+        </template>
+
+        <cache>
+            <types>
+                <ayaline_dataflowmanager translate="label,description" module="ayaline_dataflowmanager">
+                    <label>Cache for aYaline Dataflow Manager</label>
+                    <description><![CDATA[Dataflow Manager configuration (dataflow.xml).]]></description>
+                    <tags>AYALINE_DATAFLOW_MANAGER</tags>
+                </ayaline_dataflowmanager>
+            </types>
+        </cache>
+    </global>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <ayaline_dataflowmanager>
+                    <files>
+                        <default>Ayaline_DataflowManager.csv</default>
+                    </files>
+                </ayaline_dataflowmanager>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <ayaline_dataflowmanager>
+                    <file>ayaline/dataflow_manager.xml</file>
+                </ayaline_dataflowmanager>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <ayaline_dataflowmanager before="Mage_Adminhtml">Ayaline_DataflowManager_Adminhtml</ayaline_dataflowmanager>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <default>
+        <ayaline_dataflowmanager>
+            <email>
+                <email_template>ayaline_dataflowmanager_email_email_template</email_template>
+            </email>
+            <log>
+                <relative_path>1</relative_path>
+                <path>/var/log/dataflow</path>
+            </log>
+            <import>
+                <email_template>ayaline_dataflowmanager_import_email_template</email_template>
+            </import>
+            <export>
+                <email_template>ayaline_dataflowmanager_export_email_template</email_template>
+            </export>
+            <import_product>
+                <image_source>http</image_source>
+            </import_product>
+            <import_category>
+                <image_source>http</image_source>
+            </import_category>
+        </ayaline_dataflowmanager>
+    </default>
+
+</config>

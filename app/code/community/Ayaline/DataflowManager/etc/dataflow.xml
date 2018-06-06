@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 2014
+ * 
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<dataflow>
+
+    <!-- Sample script -->
+    <!--
+    <sample>
+        <name>Sample script</name>
+        <model>ayaline_dataflowmanager/sample_script</model>
+        <exclude_script>
+            <sample_import_1>sample_import_1</sample_import_1>
+            <sample_export_1>sample_export_1</sample_export_1>
+        </exclude_script>
+    </sample>
+    -->
+
+    <!-- Sample import script -->
+    <!--
+    <import>
+        <sample>
+            <name>Sample import script</name>
+            <model>ayaline_dataflowmanager/sample_import_script</model>
+            <import_directory>sample</import_directory>
+            <files_name_pattern>import_*.csv</files_name_pattern>
+            <exclude_script>
+                <sample_import_1>sample_import_1</sample_import_1>
+                <sample_import_2>sample_import_2</sample_import_2>
+            </exclude_script>
+        </sample>
+    </import>
+    -->
+
+    <!-- Sample export script -->
+    <!--
+    <export>
+        <sample>
+            <name>Sample import script</name>
+            <model>ayaline_dataflowmanager/sample_export_script</model>
+            <export_directory>sample</export_directory>
+            <exclude_script>
+                <exclude_1>sample_import_1</exclude_1>
+                <exclude_2>sample_export_1</exclude_2>
+                <exclude_3>utils/archive_log</exclude_3>
+            </exclude_script>
+            
+            <transport>
+                <model>ayaline_dataflowmanager/export_transport_sample</model>
+                <config>
+                    <enabled>ayaline_dataflowmanager/export_sales_order/transport_ftp_enabled</enabled>
+                    <remote_directory>ayaline_dataflowmanager/export_sales_order/transport_ftp_path</remote_directory>
+                </config>
+            </transport>
+        </sample>
+    </export>
+    -->
+
+    <utils>
+        <!-- Archive log -->
+        <archive_log>
+            <name>Archive script log files</name>
+            <model>ayaline_dataflowmanager/utils_log_archive</model>
+        </archive_log>
+
+    </utils>
+
+    <!-- @todo Add transport config -->   
+    <transport>
+        <export>
+            <ftp>
+                <model>ayaline_dataflowmanager/export_transport_ftp</model>
+                <system_config>
+                    <host>ayaline_dataflowmanager/export/transport_ftp_host</host>
+                    <port>ayaline_dataflowmanager/export/transport_ftp_port</port>
+                    <user>ayaline_dataflowmanager/export/transport_ftp_user</user>
+                    <password>ayaline_dataflowmanager/export/transport_ftp_password</password>
+                    <ssl>ayaline_dataflowmanager/export/transport_ftp_ssl</ssl>
+                    <passive>ayaline_dataflowmanager/export/transport_ftp_passivemode</passive>
+                    <file_mode>ayaline_dataflowmanager/export/transport_ftp_filemode</file_mode>
+                </system_config>
+            </ftp>
+        </export>
+    </transport>
+    
+    <import>
+        <catalog>
+            <product>
+                <name>aYaline Catalog Product Import</name>
+                <model>ayaline_dataflowmanager/import_catalog_product</model>
+                <import_directory>catalog/product</import_directory>
+                <files_name_pattern>AYALINE_PRODUCT_*.xml</files_name_pattern>
+                <exclude_script />
+                <indexers>
+                    <attribute>catalog_product_attribute</attribute>
+                    <price>catalog_product_price</price>
+                    <url>catalog_url</url>
+                    <flat>catalog_product_flat</flat>
+                    <category>catalog_category_product</category>
+                    <search>catalogsearch_fulltext</search>
+                    <stock>cataloginventory_stock</stock>
+                    <tag>tag_summary</tag>
+                </indexers>
+            </product>
+        </catalog>
+    </import>
+
+
+
+</dataflow>

@@ -1,0 +1,6 @@
+<?php
+$urls = $this->getAlternateUrls();
+?>
+<?php foreach ($urls as $url): ?>
+    <link rel="alternate" href="<?php echo $url["base_url"]?><?php echo $url["uri"]?>" hreflang="<?php echo $url["lang"]?>-<?php echo $url["country"]?>” />
+<?php endforeach; ?>

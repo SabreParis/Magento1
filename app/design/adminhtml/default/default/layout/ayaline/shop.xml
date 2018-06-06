@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * created : 10/03/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Shop
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+-->
+<layout>
+
+    <adminhtml_ayaline_shop_index>
+        <reference name="content">
+            <block type="adminhtml/store_switcher" name="store_switcher" as="store_switcher">
+                <action method="setUseConfirm">
+                    <params>0</params>
+                </action>
+            </block>
+        </reference>
+    </adminhtml_ayaline_shop_index>
+
+    <adminhtml_ayaline_shop_edit>
+        <reference name="head">
+            <action method="addCss">
+                <stylesheet>ayaline_shop.css</stylesheet>
+            </action>
+        </reference>
+        <reference name="content">
+            <block type="ayalineshop/adminhtml_shop_edit" name="shop_edit" />
+        </reference>
+        <reference name="left">
+            <block type="ayalineshop/adminhtml_shop_edit_tabs" name="shop_edit_tabs" />
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" template="ayaline/shop/edit/js.phtml" name="shop.edit.js"
+                   as="shop_edit_js" />
+        </reference>
+    </adminhtml_ayaline_shop_edit>
+
+    <adminhtml_ayaline_shop_group_edit>
+        <reference name="content">
+            <block type="ayalineshop/adminhtml_shop_group_edit" name="group_edit" />
+        </reference>
+        <reference name="left">
+            <block type="ayalineshop/adminhtml_shop_group_edit_tabs" name="group_edit_tabs" />
+        </reference>
+        <reference name="js">
+            <block type="adminhtml/template" template="ayaline/shop/group/edit/js.phtml" name="group.edit.js"
+                   as="group_edit_js" />
+        </reference>
+    </adminhtml_ayaline_shop_group_edit>
+
+</layout>

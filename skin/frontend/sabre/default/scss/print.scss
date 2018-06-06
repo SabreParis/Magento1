@@ -1,0 +1,19 @@
+@media print {
+  table tbody tr td:before,
+  table tbody tr td:after,table tfoot tr td:before,
+  table tfoot tr td:after {
+    content : "" ;
+    height : 2px ;
+    display : block ;
+  }
+  .page-print {
+   background: #000;
+    .label {
+      border: 0;
+    }
+    .buttons-set {
+      display: none;
+    }
+  }
+}
+

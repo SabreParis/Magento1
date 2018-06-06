@@ -1,0 +1,140 @@
+<?xml version="1.0"?><!--
+/**
+ * created: 2014
+ * 
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <modules>
+        <Ayaline_GoogleUniversalAnalytics>
+            <version>0.0.1</version>
+        </Ayaline_GoogleUniversalAnalytics>
+    </modules>
+
+    <global>
+        <blocks>
+            <ayaline_gua>
+                <class>Ayaline_GoogleUniversalAnalytics_Block</class>
+            </ayaline_gua>
+        </blocks>
+        <helpers>
+            <ayaline_gua>
+                <class>Ayaline_GoogleUniversalAnalytics_Helper</class>
+            </ayaline_gua>
+        </helpers>
+        <models>
+            <ayaline_gua>
+                <class>Ayaline_GoogleUniversalAnalytics_Model</class>
+                <resourceModel>ayaline_gua_resource</resourceModel>
+            </ayaline_gua>
+            <ayaline_gua_resource>
+                <class>Ayaline_GoogleUniversalAnalytics_Model_Resource</class>
+            </ayaline_gua_resource>
+        </models>
+    </global>
+
+    <frontend>
+        <layout>
+            <updates>
+                <ayaline_gua>
+                    <file>ayaline/google_universal_analytics.xml</file>
+                </ayaline_gua>
+            </updates>
+        </layout>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <googleanalytics_order_success>
+                        <type>disabled</type>
+                    </googleanalytics_order_success>
+                    <ayaline_gua>
+                        <class>ayaline_gua/observer</class>
+                        <method>setOrderIds</method>
+                    </ayaline_gua>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <googleanalytics_order_success>
+                        <type>disabled</type>
+                    </googleanalytics_order_success>
+                    <ayaline_gua>
+                        <class>ayaline_gua/observer</class>
+                        <method>setOrderIds</method>
+                    </ayaline_gua>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Ayaline_GoogleUniversalAnalytics>
+                    <files>
+                        <default>Ayaline_GoogleUniversalAnalytics.csv</default>
+                    </files>
+                </Ayaline_GoogleUniversalAnalytics>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <ayaline_gua>
+            <general>
+                <debug>0</debug>
+                <debug_trace>0</debug_trace>
+                <anonymize_ip>1</anonymize_ip>
+                <force_ssl>1</force_ssl>
+            </general>
+            <create>
+                <client_id_customize>0</client_id_customize>
+                <client_id_value />
+                <sample_rate_customize>0</sample_rate_customize>
+                <sample_rate_value>100</sample_rate_value>
+                <site_speed_sample_rate_customize>0</site_speed_sample_rate_customize>
+                <site_speed_sample_rate_value>1</site_speed_sample_rate_value>
+                <always_send_referrer_customize>0</always_send_referrer_customize>
+                <always_send_referrer_value>0</always_send_referrer_value>
+                <allow_anchor_customize>0</allow_anchor_customize>
+                <allow_anchor_value>1</allow_anchor_value>
+                <cookie_name_customize>0</cookie_name_customize>
+                <cookie_name_value>_ga</cookie_name_value>
+                <cookie_domain_customize>0</cookie_domain_customize>
+                <cookie_domain_value />
+                <cookie_expires_customize>0</cookie_expires_customize>
+                <cookie_expires_value>63072000</cookie_expires_value>
+                <legacy_cookie_domain_customize>0</legacy_cookie_domain_customize>
+                <legacy_cookie_domain_value />
+                <allow_linker_customize>0</allow_linker_customize>
+                <allow_linker_value>0</allow_linker_value>
+            </create>
+            <user>
+                <user_id>1</user_id>
+            </user>
+            <ecommerce>
+                <enable_category>1</enable_category>
+            </ecommerce>
+            <onepage_tracking>
+                <enabled_onepage>1</enabled_onepage>
+            </onepage_tracking>
+            <onepage_tracking_step>
+                <opc-register_label>Register</opc-register_label>
+                <opc-billing_label>Billing</opc-billing_label>
+                <opc-shipping_label>Shipping</opc-shipping_label>
+                <opc-shipping_method_label>Shipping method</opc-shipping_method_label>
+                <opc-payment_label>Payment</opc-payment_label>
+                <opc-review_label>Review</opc-review_label>
+                <opc-save_order_label>Save order</opc-save_order_label>
+            </onepage_tracking_step>
+        </ayaline_gua>
+    </default>
+
+</config>

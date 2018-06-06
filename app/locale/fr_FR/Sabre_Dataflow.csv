@@ -1,0 +1,13 @@
+"Orders: Export settings","Commandes: Les paramètres d'exportation"
+"Export orders with state","Exporter les commandes ayant l'état"
+"No template file %s","Fichier de template %s non trouvé"
+"No website defined","Aucun website défini"
+"Could not create directory %s","Erreur lors de la création du répertoire %s"
+"Could not write file %s","Erreur lors de la création du fichier %s"
+"XSLT File has been generated with success","Le fichier de paramétrage XSLT a été généré avec succès"
+"Import pricing","Import des tarifs
+"Export / Import Sabre datas","Export / Import des données Sabre"
+"Import inventory","Import des stocks"
+"Import shops","Import des magasins"
+"Update order status","Mise à jour des statuts de commande"
+"XML File with websites has been generated with success","Le fichier XML des websites a été généré avec succès"

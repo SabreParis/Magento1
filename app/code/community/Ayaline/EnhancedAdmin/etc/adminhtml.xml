@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created : 2013
+ * 
+ * @category Ayaline
+ * @package Ayaline_EnhancedAdmin
+ * @author aYaline
+ * @copyright Ayaline - 2013 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <menu>
+        <system>
+            <children>
+                <ayaline_enhancedadmin translate="title" module="ayaline_enhancedadmin">
+                    <title>Enhanced Admin</title>
+                    <sort_order>95</sort_order>
+                    <children>
+                        <setup_management>
+                            <title>Setup Management</title>
+                            <sort_order>10</sort_order>
+                            <action>adminhtml/ayaline_setup</action>
+                        </setup_management>
+                    </children>
+                </ayaline_enhancedadmin>
+            </children>
+        </system>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <ayaline_enhancedadmin translate="title" module="ayaline_enhancedadmin">
+                                <title>Enhanced Admin</title>
+                                <children>
+                                    <setup_management>
+                                        <title>Setup Management</title>
+                                        <children>
+                                            <view>
+                                                <title>View</title>
+                                            </view>
+                                            <default_apply>
+                                                <title>Apply Updates</title>
+                                            </default_apply>
+                                            <custom_apply>
+                                                <title>Apply Un-applied Updates</title>
+                                            </custom_apply>
+                                            <setup_class_cache>
+                                                <title>Flush Setup Class Cache</title>
+                                            </setup_class_cache>
+                                            <check_setups>
+                                                <title>Check setups</title>
+                                            </check_setups>
+                                        </children>
+                                    </setup_management>
+                                </children>
+                            </ayaline_enhancedadmin>
+
+                            <config>
+                                <children>
+                                    <ayaline_enhancedadmin translate="title" module="ayaline_enhancedadmin">
+                                        <title>aYaline: Enhanced Admin</title>
+                                    </ayaline_enhancedadmin>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+
+</config>

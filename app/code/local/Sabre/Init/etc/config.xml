@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* created: 2015
+*
+* @category  Ayaline
+* @package   Sabre_Dataflow
+* @author    aYaline
+* @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+* @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+*/
+-->
+
+<config>
+
+    <modules>
+        <Sabre_Init>
+            <version>0.1.0</version>
+        </Sabre_Init>
+    </modules>
+
+    <global>
+
+        <helpers>
+            <sabre_init>
+                <class>Sabre_Init_Helper</class>
+            </sabre_init>
+        </helpers>
+
+        <models>
+            <sabre_init>
+                <class>Sabre_Init_Model</class>
+            </sabre_init>
+        </models>
+
+        <resources>
+            <source_init>
+                <connection>
+                    <host><![CDATA[]]></host>
+                    <username><![CDATA[]]></username>
+                    <password><![CDATA[]]></password>
+                    <dbname><![CDATA[]]></dbname>
+                    <initStatements><![CDATA[SET NAMES utf8]]></initStatements>
+                    <model><![CDATA[mysql4]]></model>
+                    <type><![CDATA[pdo_mysql]]></type>
+                    <pdoType><![CDATA[]]></pdoType>
+                    <active>1</active>
+                </connection>
+            </source_init>
+        </resources>
+
+    </global>
+
+    <crontab>
+        <jobs>
+            <sabre_init_customer>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/eavEntity_customer::main</model>
+                </run>
+            </sabre_init_customer>
+            <sabre_init_customer_address>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/eavEntity_customerAddress::main</model>
+                </run>
+            </sabre_init_customer_address>
+            <sabre_init_order>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/flat_order::main</model>
+                </run>
+            </sabre_init_order>
+            <sabre_init_order_invoice>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/flat_invoice::main</model>
+                </run>
+            </sabre_init_order_invoice>
+            <sabre_init_order_creditmemo>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/flat_creditmemo::main</model>
+                </run>
+            </sabre_init_order_creditmemo>
+            <sabre_init_order_shipment>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/flat_shipment::main</model>
+                </run>
+            </sabre_init_order_shipment>
+            <sabre_init_everything>
+                <schedule>
+                    <cron_expr></cron_expr>
+                </schedule>
+                <run>
+                    <model>sabre_init/DoEverything::main</model>
+                </run>
+            </sabre_init_everything>
+        </jobs>
+    </crontab>
+
+    <init_from_old_prod>
+        <mappings>
+            <stores>
+                <store4>
+                    <src>4</src>
+                    <dest>1</dest>
+                </store4>
+                <store5>
+                    <src>5</src>
+                    <dest>2</dest>
+                </store5>
+                <store6>
+                    <src>6</src>
+                    <dest>1</dest>
+                </store6>
+                <store7>
+                    <src>7</src>
+                    <dest>2</dest>
+                </store7>
+            </stores>
+            <websites>
+                <website2>
+                    <src>3</src>
+                    <dest>1</dest>
+                </website2>
+            </websites>
+            <groups>
+                <group2>
+                    <src>2</src>
+                    <dest>1</dest>
+                </group2>
+                <group3>
+                    <src>3</src>
+                    <dest>1</dest>
+                </group3>
+                <group4>
+                    <src>4</src>
+                    <dest>1</dest>
+                </group4>
+                <group5>
+                    <src>5</src>
+                    <dest>1</dest>
+                </group5>
+                <group6>
+                    <src>6</src>
+                    <dest>1</dest>
+                </group6>
+            </groups>
+        </mappings>
+    </init_from_old_prod>
+
+    <default>
+        <sabre_init>
+            <source_database>
+                <host>localhost</host>
+                <username>root</username>
+                <password>pouf</password>
+                <dbname>sabre_production_20150709</dbname>
+                <prefix>sab_</prefix>
+            </source_database>
+            <params>
+                <enabled>0</enabled>
+                <anonymise>1</anonymise>
+            </params>
+        </sabre_init>
+    </default>
+
+</config>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 10/08/2011
+ * 
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<layout>
+
+    <!-- Billboard Type -->
+    <adminhtml_ayaline_billboard_type_index>
+        <reference name="content">
+            <block type="ayalinebillboard/adminhtml_type" name="ayaline.billboard.type">
+                <block type="ayalinebillboard/adminhtml_type_grid" name="ayaline.billboard.type.grid" as="grid" />
+            </block>
+        </reference>
+    </adminhtml_ayaline_billboard_type_index>
+
+    <adminhtml_ayaline_billboard_type_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_type_grid" name="ayaline.billboard.type.grid" />
+        </block>
+    </adminhtml_ayaline_billboard_type_grid>
+
+    <adminhtml_ayaline_billboard_type_new>
+        <update handle="adminhtml_ayaline_billboard_type_edit" />
+    </adminhtml_ayaline_billboard_type_new>
+
+    <adminhtml_ayaline_billboard_type_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="ayalinebillboard/adminhtml_type_edit" name="ayaline.billboard.type.edit" />
+        </reference>
+    </adminhtml_ayaline_billboard_type_edit>
+
+    <!-- Billboards -->
+    <adminhtml_ayaline_billboard_index>
+        <reference name="content">
+            <block type="ayalinebillboard/adminhtml_billboard" name="ayaline.billboard.billboard">
+                <block type="ayalinebillboard/adminhtml_billboard_grid" name="ayaline.billboard.billboard.grid"
+                       as="grid" />
+            </block>
+        </reference>
+    </adminhtml_ayaline_billboard_index>
+
+    <adminhtml_ayaline_billboard_grid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_billboard_grid" name="ayaline.billboard.billboard.grid" />
+        </block>
+    </adminhtml_ayaline_billboard_grid>
+
+    <adminhtml_ayaline_billboard_new>
+        <update handle="adminhtml_ayaline_billboard_edit" />
+    </adminhtml_ayaline_billboard_new>
+
+    <adminhtml_ayaline_billboard_edit>
+        <update handle="editor" />
+        <reference name="head">
+            <action method="setCanLoadTinyMce">
+                <flag>1</flag>
+            </action>
+        </reference>
+        <reference name="left">
+            <block type="ayalinebillboard/adminhtml_billboard_edit_tabs" name="ayaline.billboard.billboard.edit.tabs">
+                <block type="ayalinebillboard/adminhtml_billboard_edit_tab_main"
+                       name="ayaline.billboard.billboard.edit.tab.main" />
+                <block type="ayalinebillboard/adminhtml_billboard_edit_tab_content"
+                       name="ayaline.billboard.billboard.edit.tab.content" />
+
+                <action method="addTab">
+                    <name>billboard_edit_tab_main</name>
+                    <block>ayaline.billboard.billboard.edit.tab.main</block>
+                </action>
+                <action method="addTab">
+                    <name>billboard_edit_tab_content</name>
+                    <block>ayaline.billboard.billboard.edit.tab.content</block>
+                </action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="ayalinebillboard/adminhtml_billboard_edit" name="ayaline.billboard.billboard.edit" />
+        </reference>
+    </adminhtml_ayaline_billboard_edit>
+
+
+    <!-- Category: add billbords -->
+    <adminhtml_ayaline_billboard_category_billboard>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_catalog_category_tab_billboard"
+                   name="ayaline.billboard.category.edit.tab.billboard" />
+            <block type="adminhtml/widget_grid_serializer" name="ayaline_billboard_category_grid_serializer">
+                <reference name="ayaline_billboard_category_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>ayaline.billboard.category.edit.tab.billboard</grid_block_name>
+                        <data_callback>getSelectedBillboards</data_callback>
+                        <hidden_input_name>links[billboard]</hidden_input_name>
+                        <reload_param_name>category_billboards</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_ayaline_billboard_category_billboard>
+    <adminhtml_ayaline_billboard_category_billboardgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_catalog_category_tab_billboard"
+                   name="ayaline.billboard.category.edit.tab.billboard" />
+        </block>
+    </adminhtml_ayaline_billboard_category_billboardgrid>
+
+
+    <!-- Product: add billboards -->
+    <adminhtml_ayaline_billboard_product_billboard>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_catalog_product_edit_tab_billboard"
+                   name="ayaline.billboard.billboard.product.grid" />
+            <block type="adminhtml/widget_grid_serializer" name="billboard_product_grid_serializer">
+                <reference name="billboard_product_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>ayaline.billboard.billboard.product.grid</grid_block_name>
+                        <data_callback>getSelectedBillboards</data_callback>
+                        <hidden_input_name>links[billboard]</hidden_input_name>
+                        <reload_param_name>ayaline_billboard_product</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>position</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </adminhtml_ayaline_billboard_product_billboard>
+
+    <adminhtml_ayaline_billboard_product_billboardgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="ayalinebillboard/adminhtml_catalog_product_edit_tab_billboard"
+                   name="ayaline.billboard.billboard.product.grid" />
+        </block>
+    </adminhtml_ayaline_billboard_product_billboardgrid>
+
+</layout>

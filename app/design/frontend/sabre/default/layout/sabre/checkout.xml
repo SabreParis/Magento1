@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+/**
+ * created: 2015
+ *
+ * @category  Ayaline
+ * @package   Ayaline_XXXX
+ * @author    aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+
+<layout>
+
+    <catalog_product_view>
+        <reference name="bottom-js">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/jquery/jquery.numeric.min.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/product/express.js</name>
+            </action>
+        </reference>
+    </catalog_product_view>
+
+    <checkout_cart_expresstable>
+        <block type="sabre_checkout/express_table" name="root" output="toHtml"
+               template="sabre/checkout/express/table.phtml" />
+    </checkout_cart_expresstable>
+
+    <checkout_cart_expresstable_header_minicart>
+        <block type="checkout/cart_minicart" name="root" template="checkout/cart/header_minicart.phtml" output="toHtml">
+            <block type="sabre_checkout/cart_sidebar" name="minicart_content"
+                   template="checkout/cart/header_minicart/items.phtml">
+                <action method="addItemRender">
+                    <type>default</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/header_minicart/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>simple</type>
+                    <block>checkout/cart_item_renderer</block>
+                    <template>checkout/cart/header_minicart/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>grouped</type>
+                    <block>checkout/cart_item_renderer_grouped</block>
+                    <template>checkout/cart/header_minicart/default.phtml</template>
+                </action>
+                <action method="addItemRender">
+                    <type>configurable</type>
+                    <block>checkout/cart_item_renderer_configurable</block>
+                    <template>checkout/cart/header_minicart/default.phtml</template>
+                </action>
+                <block type="cms/block" name="livraison-offerte" as="livraison-offerte">
+                    <action method="setBlockId">
+                        <block_id>livraison-offerte</block_id>
+                    </action>
+                </block>
+                <block type="core/text_list" name="cart_sidebar.cart_promotion" as="cart_promotion" translate="label"
+                       module="checkout">
+                    <label>Mini-cart promotion block</label>
+                </block>
+                <block type="core/text_list" name="cart_sidebar.extra_actions" as="extra_actions" translate="label"
+                       module="checkout">
+                    <label>Shopping Cart Sidebar Extra Actions</label>
+                </block>
+            </block>
+        </block>
+    </checkout_cart_expresstable_header_minicart>
+
+</layout>

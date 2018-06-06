@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created :    2016
+ *
+ * @category    Ayaline
+ * @package     PHS_GeoRedirect
+ * @author      aYaline
+ * @copyright   Ayaline - 2016 - http://magento-shop.ayaline.com
+ * @license     http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <sections>
+        <sabre_georedirect translate="label" module="sabre_georedirect">
+            <label>IP GeoRedirection</label>
+            <tab>ayaline</tab>
+            <header_css>ayaline-header</header_css>
+            <sort_order>2000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label comment" module="sabre_georedirect">
+                    <label>General configuration</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <comment><![CDATA[
+                          <p><strong>This module depends from Sandfox/GeoIP</strong></p>
+                          <p>Please, check configuration of GeoIP database in System Configuration > General > General > Country options</p>
+                          <p>Source code of this module is at : <a href="https://github.com/magento-hackathon/Sandfox_GeoIP" target="_blank">https://github.com/magento-hackathon/Sandfox_GeoIP</a></p>
+                    ]]></comment>
+                    <fields>
+                        <enabled translate="label" module="sabre_georedirect">
+                            <label>Enable GeoIP Redirection</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_enabledisable</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </enabled>
+                        <force_redirection translate="label comment" module="sabre_georedirect">
+                            <label>Force Redirection</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Forcing the redirect will prevent the popin display.</comment>
+                            <depends><enabled>1</enabled></depends>
+                        </force_redirection>
+                        <allow_ips translate="label comment" module="sabre_georedirect">
+                            <label>Allowed IPs (comma separated)</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <comment>Allowed IPs will not be redirected.</comment>
+                            <depends><enabled>1</enabled><force_redirection>1</force_redirection></depends>
+                        </allow_ips>
+                        <default_redirection_website translate="label" module="sabre_georedirect">
+                            <label>Default website to redirect</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_website</source_model>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><enabled>1</enabled><force_redirection>1</force_redirection></depends>
+                        </default_redirection_website>
+                        <log_redirections translate="label comment" module="sabre_georedirect">
+                            <label>Log redirections</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><enabled>1</enabled><force_redirection>1</force_redirection></depends>
+                        </log_redirections>
+                        <allowedcountries translate="label">
+                            <label>Allowed countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>60</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <depends><enabled>1</enabled></depends>
+                        </allowedcountries>
+                        <excludedbots translate="label" module="sabre_georedirect">
+                            <label>Excluded bots</label>
+                            <frontend_model>sabre_georedirect/system_config_bots</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </excludedbots>
+                        <country_emulate translate="label" module="sabre_georedirect">
+                            <label>Country Emulate</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <can_be_empty>1</can_be_empty>
+                            <depends><enabled>1</enabled></depends>
+                        </country_emulate>
+                    </fields>
+                </general>
+                <wordings translate="label" module="sabre_georedirect">
+                    <label>Wordings</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <website_name translate="label comment" module="sabre_georedirect">
+                            <label>Website name</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>0</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>This name will be used in the popin. If empty, default werbsite name will be displayed</comment>
+                        </website_name>
+                        <title translate="label comment" module="sabre_georedirect">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use {{var dest}} or {{var current}} for destination or current website name</comment>
+                        </title>
+                        <text translate="label comment" module="sabre_georedirect">
+                            <label>Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use {{var dest}} or {{var current}} for destination or current website name</comment>
+                        </text>
+                        <stay translate="label comment" module="sabre_georedirect">
+                            <label>Link to stay</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use {{var dest}} or {{var current}} for destination or current website name</comment>
+                        </stay>
+                        <leave translate="label comment" module="sabre_georedirect">
+                            <label>Link to leave</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <comment>Use {{var dest}} or {{var current}} for destination or current website name</comment>
+                        </leave>
+                    </fields>
+                </wordings>
+            </groups>
+        </sabre_georedirect>
+    </sections>
+</config>

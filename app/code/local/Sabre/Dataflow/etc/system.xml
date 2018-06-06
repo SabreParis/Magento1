@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* created: 2015
+*
+* @category  Ayaline
+* @package   Sabre_Dataflow
+* @author    aYaline
+* @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+* @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+*/
+-->
+
+<config>
+    <sections>
+        <ayaline_dataflowmanager translate="label comment tooltip" module="sabre_dataflow">
+            <groups>
+                <export_sales_order translate="label comment tooltip">
+                    <label>Orders: Export settings</label>
+                    <sort_order>600</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <filter_states translate="label comment tooltip">
+                            <label>Export orders with state</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>sabre_dataflow/system_config_source_order_state</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </filter_states>
+                        <heading_transport_ftp>
+                            <label>Transfer file : FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_transport_ftp>
+                        <transport_ftp_enabled>
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </transport_ftp_enabled>
+                        <transport_ftp_path translate="label comment tooltip">
+                            <label>Remote directory path</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </transport_ftp_path>
+                    </fields>
+                </export_sales_order>
+                <import_product>
+                    <fields>
+                        <heading_ftp>
+                            <label>Transfert de fichier FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_ftp>
+                        <ftp_source_path translate="label">
+                            <label>Source path on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_path>
+                        <ftp_source_file translate="label">
+                            <label>Filename on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_file>
+                        <ftp_destination_directory translate="label">
+                            <label>Local destination directory</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>25</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_destination_directory>
+                        <heading_config_xslt>
+                            <label>Configuration des données</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_config_xslt>
+                        <config_website_france_id>
+                            <label>France Website</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_website</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_website_france_id>
+                        <config_tax_group_product>
+                            <label>Classe de taxe par défaut</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_shipping_taxclass</source_model>
+                            <sort_order>120</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_tax_group_product>
+                        <config_mapping_website>
+                            <label>Mapping des sites webs / ERP</label>
+                            <frontend_model>sabre_dataflow/system_mapping_website</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>125</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_mapping_website>
+                        <config_mapping_category>
+                            <label>Informations de catégories</label>
+                            <frontend_model>sabre_dataflow/system_mapping_category</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>130</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_mapping_category>
+                        <config_mapping_locale_language>
+                            <label>Mapping locale / langue</label>
+                            <frontend_model>sabre_dataflow/system_mapping_locale</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>140</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_mapping_locale_language>
+                        <config_mapping_generate_xslt_params>
+                            <label>Generate XSLT Params</label>
+                            <frontend_type>generate_xslt_params</frontend_type>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </config_mapping_generate_xslt_params>
+                    </fields>
+                </import_product>
+                <import_sales_orderstatus>
+                    <label>Orders status : Import settings</label>
+                    <sort_order>700</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_ftp>
+                            <label>Transfert de fichier FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_ftp>
+                        <ftp_source_path translate="label comment tooltip">
+                            <label>Source path on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_path>
+                        <ftp_source_file translate="label comment tooltip">
+                            <label>Filename on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_file>
+                    </fields>
+                </import_sales_orderstatus>
+                <import_inventory>
+                    <label>Inventory : Import settings</label>
+                    <sort_order>800</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_ftp>
+                            <label>Transfert de fichier FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_ftp>
+                        <ftp_source_path translate="label">
+                            <label>Source path on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_path>
+                        <ftp_source_file translate="label">
+                            <label>Filename on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_file>
+                    </fields>
+                </import_inventory>
+                <import_price>
+                    <label>Pricing : Import settings</label>
+                    <sort_order>900</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_ftp>
+                            <label>Transfert de fichier FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_ftp>
+                        <ftp_source_path translate="label">
+                            <label>Source path on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_path>
+                        <ftp_source_file translate="label">
+                            <label>Filename on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_file>
+                    </fields>
+                </import_price>
+                <import_shops>
+                    <label>Shops : Import settings</label>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <heading_ftp>
+                            <label>Transfert de fichier FTP</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_ftp>
+                        <ftp_source_path translate="label">
+                            <label>Source path on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_path>
+                        <ftp_source_file translate="label">
+                            <label>Filename on FTP</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>24</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </ftp_source_file>
+                        <heading_groupe>
+                            <label>Groupes de magasins</label>
+                            <frontend_model>adminhtml/system_config_form_field_heading</frontend_model>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </heading_groupe>
+                        <group_revendeur>
+                            <label>Groupe "Revendeur"</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sabre_dataflow/adminhtml_system_config_source_shopGroup</source_model>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </group_revendeur>
+                        <group_pdv>
+                            <label>Groupe "Point de vente"</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>sabre_dataflow/adminhtml_system_config_source_shopGroup</source_model>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </group_pdv>
+                    </fields>
+                </import_shops>
+                <export>
+                    <fields>
+                        <transport_ftp_password>
+                            <frontend_type>text</frontend_type>
+                        </transport_ftp_password>
+                    </fields>
+                </export>
+            </groups>
+        </ayaline_dataflowmanager>
+    </sections>
+
+</config>

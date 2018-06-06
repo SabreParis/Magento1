@@ -1,0 +1,279 @@
+$link-color: #000000 !default;
+$label-color: $link-color !default;
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,600,700);
+
+@import "../bootstrap";
+@import "../sabre-vars";
+
+body {
+  background: #FFFFFF none no-repeat scroll 0 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: $font-size-base;
+}
+
+h2, h3 {
+  margin: 0;
+}
+
+h3 {
+  font-size: $font-size-base;
+}
+
+p:empty {
+  display: none;
+}
+
+.iframeDialog {
+  margin: 0 auto;
+}
+
+.label {
+
+  &.outdent,
+  &.infoAnchor {
+    font-size: 100%;
+    padding: 5px 0;
+    white-space: normal;
+  }
+
+}
+
+#Link {
+  text-transform: lowercase;
+}
+
+.secLvlPad {
+
+  .value {
+    padding: 0.2em 0.6em 0.3em;
+  }
+
+}
+
+.tooltip {
+  opacity: 1;
+  border-color: #333333;
+
+  .label {
+    font-size: 100%;
+  }
+}
+
+.appBody.noHead {
+
+  .alignCenter {
+    float: right;
+  }
+
+}
+
+.step .secHead,
+.mod .slider .secFooter {
+  background: #d9d9da none no-repeat scroll 0 0;
+  
+  h3 {
+    color: #3f3f48;
+    padding: 16px 0;
+    text-transform: uppercase;
+    font: 300 $font-size-base/$font-size-price-regular Roboto;
+    text-align: center;
+    width: 100%;
+  }
+  
+}
+
+.step .secHead {
+  padding: 0;
+}
+
+div.resultsDiv,
+div.step,
+div.btnBar {
+  background-color: #fff;
+}
+
+div.resultsDiv {
+  margin: 0;
+}
+
+div.btnBar {
+  border: none;
+}
+
+div.step,
+.secFooter div.btnBar,
+div.resultsDiv ul.mappedResultList li,
+.dataTable {
+  border-color: #eeeeee;
+}
+
+.dataTable {
+  background-color: #eeeeee;
+}
+
+div.resultsDiv ul.mappedResultList li {
+  margin: 0;
+}
+
+button,
+input[type="button"] {
+
+  &.btnGroupLnk,
+  &.btn,
+  &.btnArw {
+    border: 1px solid #333333;
+    background: #FFFFFF none no-repeat scroll 0 0;
+    color: #000000;
+    border-radius: 0;
+    padding: 3px 7px 3px 7px;
+    font-family: "Josefin sans", sans-serif;
+    font-size: $font-size-price-regular;
+    font-weight: 400;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+  }
+
+}
+
+.secBody h3 {
+  font-size: $font-size-price-regular;
+}
+
+#mapContainer div.secBody p:first-child {
+  display: none;
+}
+
+#locationInfotip,
+.tab-off {
+  background: #f8f8f8 none no-repeat scroll 0 0;
+}
+
+.subTab li,
+.secLvl.step.tab {
+  border-color: #333333;
+}
+
+.tab-on,
+.tab-off {
+  color: $c-black;
+}
+
+.iframeDialog .tipTop {
+  background: transparent none no-repeat scroll 0 0 !important;
+}
+
+a:focus,
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+}
+
+.secLvl.step.noHead {
+  padding: 5px !important;
+}
+
+label.sel {
+  padding: 3px 0 0 0;
+}
+
+.TB_overlayMacFFBGHack {
+  background: $c-black none no-repeat scroll 0 0;
+  opacity: 0.5;
+}
+
+#TB_window {
+  border: none;
+
+  img {
+    border: none !important;
+  }
+}
+
+@media (max-width: 960px) {
+
+  .iframeDialog {
+    width: 95% !important;
+  }
+
+  #mapDiv,
+  .MicrosoftMap.MapTypeId_auto {
+    width: 100% !important;
+  }
+
+  .seccol7 {
+    width: 30%;
+  }
+
+  .seccol16 {
+    width: 66%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .appHead {
+    padding: 5px 0;
+
+    h2 {
+      font-size: $font-size-h3;
+    }
+
+  }
+
+  .appBody {
+    padding: 0;
+
+    &.noHead {
+      padding: 0 5px;
+    }
+
+  }
+
+  .seccol7,
+  .seccol16 {
+    width: 100%;
+  }
+
+  .seccol16 {
+    margin: 0;
+  }
+
+  .subcol5 {
+    width: 85%;
+  }
+
+  .subcol2 {
+    width: 10%;
+  }
+
+  .resultDetails.full {
+
+    div.group {
+      padding: 10px;
+      display: inline-block;
+    }
+
+    a {
+      display: block;
+    }
+
+  }
+
+  .slider .secBody.scrollWin.resultsDiv {
+    height: 230px;
+  }
+
+  .tooltip {
+    right: 10px !important;
+    left: inherit !important;
+  }
+
+}

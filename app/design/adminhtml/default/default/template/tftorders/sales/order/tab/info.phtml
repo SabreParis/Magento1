@@ -1,0 +1,36 @@
+<?php
+$fields = $this->getFields();
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-account">TFT information</h4>
+    </div>
+</div>
+<div class="fieldset">
+    <?php
+    if($this->isTFTOrder()) {
+    ?>
+    <table cellspacing="0" class="form-list">
+        <tbody>
+            <?php
+            foreach($fields as $field) {
+                ?>
+            <tr>
+                <td class="label">
+                    <label><?php echo $field['label']; ?></label>
+                </td>
+                <td class="value">
+                    <label><?php echo $field['value']; ?></label>
+                </td>
+            </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+    <?php
+    } else {
+        echo '<p>'.$this->__('This is not a TFT order.').'</p>';
+    }
+    ?>
+</div>

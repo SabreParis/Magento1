@@ -1,0 +1,84 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+
+/**
+ * @see Ayaline_Shop_Block_List
+ */
+?>
+<!--<h2><?php echo $this->__('Shops') ?></h2>
+<div class="bandeau-right-one-in white-back">
+    <div class="box-right-one-in">
+        <h3><?php echo $this->__('All Shops') ?></h3>
+
+        <form method="get" action="<?php echo $this->getUrl('ayalineshop/index/index') ?>" id="search_mini_form">
+            <div class="form-search">
+                <label for="country"><?php echo $this->__('Country') ?></label>
+                <select name="country" id="country">
+                    <?php foreach ($this->helper('ayalineshop')->getCountriesOption() as $key => $value): ?>
+                        <option value="<?php echo $key ?>"
+                                <?php if ($key == $this->getCountryFilterValue()): ?>selected="selected"<?php endif; ?>><?php echo $value ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <label for="postcode"><?php echo $this->helper('ayalineshop')->__('Postcode') ?></label>
+                <input type="text" class="input-text" name="postcode" id="postcode"
+                       value="<?php echo $this->getPostcodeFilterValue() ?>">
+                <button class="button" title="Search" type="submit">
+                    <span><span><?php echo $this->helper('ayalineshop')->__('Search') ?></span></span></button>
+            </div>
+        </form>
+
+        <p class="bloc-parag">
+            <?php echo $this->__('Find the shop nearest you by clicking on the interactive map or the full list of shops') ?>
+        </p>
+           -->
+        <div>
+            <div class="float-left"><?php echo $this->getChildHtml('shops_map_all') ?></div>
+            <div class="clear"></div>
+        </div>
+        <!--
+        <div class="box-bis-shops">
+            <h4><?php echo $this->__('Shop List by Department') ?></h4>
+            <?php $_shops = $this->getShops() ?>
+            <?php $_size = $_shops->getSize() ?>
+            <?php $_middleSize = round($_size / 2) ?>
+            <?php $_nb = 0 ?>
+            <div class="left">
+                <ul class="list-shops-left">
+                    <?php $_dep = '' ?>
+                    <?php foreach ($_shops as $shop) : ?>
+                    <?php if ($_dep != substr($shop->getPostcode(), 0, 2)) : ?>
+                        <?php if ($_dep != '') : ?>
+                            <li>
+                                <div class="puce-list-last">&nbsp;</div>
+                            </li>
+                        <?php endif; ?>
+                        <?php $_dep = substr($shop->getPostcode(), 0, 2) ?>
+                    <?php endif; ?>
+                    <li>
+                        <div class="puce-list-shops-dep"><?php echo $_dep ?></div>
+                        <div class="puce-list-shops-title">&nbsp;-&nbsp;<a
+                                href="<?php echo $this->getViewUrl($shop->getId()) ?>"><?php echo $shop->getTitle() ?></a>
+                        </div>
+                        <div class="puce-list-shops-city"><?php echo $shop->getCity() ?></div>
+                    </li>
+
+                    <?php $_nb++ ?>
+                    <?php if ($_nb == $_middleSize) : ?>
+                </ul>
+                <ul class="list-shops-right">
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+        -->

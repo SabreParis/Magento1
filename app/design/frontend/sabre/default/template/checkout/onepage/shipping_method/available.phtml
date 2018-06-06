@@ -1,0 +1,192 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php /** @var $this Mage_Checkout_Block_Onepage_Shipping_Method_Available */ ?>
+<?php $_shippingRateGroups = $this->getShippingRates(); ?>
+<?php if (!$_shippingRateGroups): ?>
+    <p><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></p>
+<?php else: ?>
+    <dl class="sp-methods">
+        <?php $shippingCodePrice = array(); ?>
+        <?php $_sole = count($_shippingRateGroups) == 1;
+        foreach ($_shippingRateGroups as $code => $_rates): ?>
+            <dt>  <?php echo $this->escapeHtml($this->getCarrierName($code)) ?></dt>
+            <dd>
+                <ul>
+                    <?php $_sole = $_sole && count($_rates) == 1;
+                    foreach ($_rates as $_rate): ?>
+                        <?php $shippingCodePrice[] = "'" . $_rate->getCode() . "':" . (float)$_rate->getPrice(); ?>
+                        <li>
+                            <div class="shipping_col_left">
+                                <img id="s_method_<?php echo $_rate->getCode(); ?>_img"
+                                    src="<?php echo Mage::helper('sabre_checkout')->getShippingMethodImage($_rate->getCode()); ?>"
+                                    alt="<?php echo $this->escapeHtml($_rate->getCode()) ?>" />
+                            </div>
+                            <div class="shipping_col_right">
+                                <?php if ($_rate->getErrorMessage()): ?>
+                                    <ul class="messages">
+                                        <li class="error-msg">
+                                            <ul>
+                                                <li><?php echo $this->escapeHtml($_rate->getErrorMessage()) ?></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                <?php else: ?>
+                                    <?php if ($_sole) : ?>
+                                        <span class="no-display">
+                                            <input name="shipping_method" type="radio"
+                                                   value="<?php echo $_rate->getCode() ?>"
+                                                   id="s_method_<?php echo $_rate->getCode() ?>"
+                                                   checked="checked"/>
+                                        </span>
+                                    <?php else: ?>
+                                        <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>"
+                                               id="s_method_<?php echo $_rate->getCode() ?>"
+                                            <?php
+                                            if (Mage::registry('Withdraw_rate')) {
+                                                if ($_rate->getCode() == 'sabreshop_sabreshop') {
+                                                    echo ' checked="checked"';
+                                                }
+                                            } else if (Mage::registry('Shipping_ups')) {
+                                                if (strpos($_rate->getCode(), 'owebiashipping2') !== false) {
+                                                    echo ' checked="checked"';
+                                                }
+                                            } else {
+                                                if ($_rate->getCode() === $this->getAddressShippingMethod()) {
+                                                    echo ' checked="checked"';
+                                                }
+                                            } ?>
+                                               class="radio"/>
+
+                                        <?php if ($_rate->getCode() === $this->getAddressShippingMethod()): ?>
+                                            <script type="text/javascript">
+                                                //<![CDATA[
+                                                lastPrice = <?php echo (float)$_rate->getPrice(); ?>;
+                                                //]]>
+                                            </script>
+                                        <?php endif; ?>
+
+                                    <?php endif; ?>
+                                    <label
+                                        for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $this->escapeHtml($_rate->getMethodTitle()) ?>
+                                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                                        <?php echo $_excl; ?>
+                                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                                            (<?php echo $this->__('Incl. Tax'); ?><?php echo $_incl; ?>)
+                                        <?php endif; ?>
+                                    </label>
+                                    <p><?php echo Mage::getStoreConfig('carriers/' . $_rate->getCarrier() . '/moreinfo', Mage::app()->getStore()); ?></p>
+
+                                    <?php if ($_rate->getCode() == 'sabreshop_sabreshop') : ?>
+                                        <div class="agence-retrait">
+                                            <label for="shop">
+                                                <?php echo Mage::helper('sabreshop')->__("Withdrawal agency") ?>
+                                                <em>*</em>
+                                            </label>
+
+                                            <div class="input-box-shipping">
+                                                <select name="shop" id="shop" class="validate-agency-select">
+                                                    <option value="0">
+                                                        <?php echo Mage::helper('sabreshop')->__('Please select an agency'); ?>
+                                                    </option>
+                                                    <?php foreach (Mage::helper('sabreshop')->getAllshippingAgencies() as $_shop): ?>
+                                                        <option value="<?php echo $_shop['value'] ?>">
+                                                            <?php echo $this->escapeHtml($_shop['label']); ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    <?php elseif (strpos($_rate->getCode(), 'owebiashipping4') !== false): ?>
+                                        <p id="ups_ap_selected"></p>
+                                    <?php endif; ?>
+
+                                <?php endif ?>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </dd>
+        <?php endforeach; ?>
+    </dl>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var _updateInputsRadio = function (selector) {
+            jQuery(selector).each(function () {
+                jQuery(this).next().removeClass("checked");
+                if (jQuery(this).is(':checked')) {
+                    jQuery(this).next().addClass("checked");
+                }
+            });
+        };
+
+        _updateInputsRadio('.col-main .opc  input');
+        jQuery('.col-main .opc  input').change(function () {
+            _updateInputsRadio('.col-main .opc  input');
+        });
+
+        <?php if (!empty($shippingCodePrice)): ?>
+        var shippingCodePrice = {<?php echo implode(',',$shippingCodePrice); ?>};
+        <?php endif; ?>
+
+        Validation.add('validate-agency-select', '<?php echo $this->jsQuoteEscape($this->__('You must select an agency to continue')); ?>', function (v, elm) {
+            if ($('s_method_sabreshop_sabreshop').checked) {
+                return document.getElementById('shop').options[document.getElementById('shop').selectedIndex].value > 0;
+            }
+            return true;
+        });
+
+        $$('input[type="radio"][name="shipping_method"]').each(function (el) {
+            Event.observe(el, 'click', function () {
+                if (el.checked == true) {
+                    var getShippingCode = el.getValue();
+                    <?php if (!empty($shippingCodePrice)): ?>
+                    var newPrice = shippingCodePrice[getShippingCode];
+                    if (!lastPrice) {
+                        lastPrice = newPrice;
+                        quoteBaseGrandTotal += newPrice;
+                    }
+                    if (newPrice != lastPrice) {
+                        quoteBaseGrandTotal += (newPrice - lastPrice);
+                        lastPrice = newPrice;
+                    }
+                    <?php endif; ?>
+                    checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+                    return false;
+                }
+            });
+        });
+        $$('#checkout-shipping-method-load .shipping_col_left img').each(function(_img) {
+            Event.observe(_img, 'click', function() {
+                _img.up().next().down('input').click();
+                _updateInputsRadio('.col-main .opc  input');
+            });
+        });
+        //]]>
+    </script>
+<?php endif; ?>

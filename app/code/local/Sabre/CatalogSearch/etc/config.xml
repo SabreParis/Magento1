@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+* Created : 2015
+* 
+* @category Sabre
+* @package Sabre_CatalogSearch
+* @author aYaline
+* @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+* @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+*/
+-->
+<config>
+    <modules>
+        <Sabre_CatalogSearch>
+            <version>0.0.1</version>
+        </Sabre_CatalogSearch>
+    </modules>
+    <global>
+        <helpers>
+            <sabre_catalogsearch>
+                <class>Sabre_CatalogSearch_Helper</class>
+            </sabre_catalogsearch>
+        </helpers>
+        <blocks>
+            <sabre_catalogsearch>
+                <class>Sabre_CatalogSearch_Block</class>
+            </sabre_catalogsearch>
+            <catalogsearch>
+                <rewrite>
+                    <layer_filter_attribute>Sabre_CatalogSearch_Block_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite>
+            </catalogsearch>
+        </blocks>
+        <models>
+            <sabre_catalogsearch>
+                <class>Sabre_CatalogSearch_Model</class>
+            </sabre_catalogsearch>
+            <catalogsearch>
+                <rewrite>
+                    <layer_filter_attribute>Sabre_CatalogSearch_Model_Layer_Filter_Attribute</layer_filter_attribute>
+                </rewrite>
+            </catalogsearch>
+        </models>
+    </global>
+    <frontend>
+        <routers>
+            <catalogsearch>
+                <args>
+                    <modules>
+                        <sabre_catalogsearch before="Mage_CatalogSearch">Sabre_CatalogSearch</sabre_catalogsearch>
+                    </modules>
+                </args>
+            </catalogsearch>
+        </routers>
+        <layout>
+            <updates>
+                <sabre_catalogsearch module="Sabre_CatalogSearch">
+                    <file>sabre/catalogsearch.xml</file>
+                </sabre_catalogsearch>
+            </updates>
+        </layout>
+    </frontend>
+</config>

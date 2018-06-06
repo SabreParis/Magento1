@@ -1,0 +1,26 @@
+/** Fonts **/
+$font-size-price-regular: ceil(($font-size-base * 1.1)); // ~16px
+
+
+/** Cart **/
+$color-cart-red: #db2329;
+
+
+/** Messages **/
+$c-green: #11B400;
+$c-black: #000000;
+$c-danger: #DF280A;
+$c-danger-background: #FAEBE7;
+$c-success: $c-green;
+$c-success-background: #EFF5EA;
+$c-warn: #E26703;
+$c-warn-background: #F9EBE6;
+$c-module-background: #f8f8f8;
+
+
+/** Express Order **/
+$color-express-border-table: #4C4C4C;
+$color-express-bg-ua: #EFEFEF;
+$color-express-color-ua: #757575;
+$color-price-regular: #44444D;
+$color-price-old: #7B7B7B;

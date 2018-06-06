@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created : 2014
+ *
+ * @category Ayaline
+ * @package Ayaline_XXXX
+ * @author aYaline
+ * @copyright Ayaline - 2014 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+
+<config>
+
+    <modules>
+        <Ayaline_DataflowManager>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Ayaline_DataflowManager>
+    </modules>
+
+</config>

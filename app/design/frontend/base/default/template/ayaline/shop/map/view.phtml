@@ -1,0 +1,77 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+?>
+<script type="text/javascript">
+    //<![CDATA[
+    var map;
+    <?php $shop = $this->getShop() ?>
+    <?php
+        if(Mage::app()->getRequest()->isSecure()) {
+            $url = 'https://maps.google.com/maps/api/js?sensor=false&callback=initialize';
+        } else {
+            $url = 'http://maps.google.com/maps/api/js?sensor=false&callback=initialize';
+        }
+    ?>
+    function initialize() {
+        var optZoom = 14;
+        var optLatitude = <?php echo $shop->getLatitude()?>;
+        var optLongitude = <?php echo $shop->getLongitude()?>;
+
+        var myLatlng = new google.maps.LatLng(optLatitude, optLongitude);
+        var myOptions = {
+            zoom: optZoom,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_shopview"), myOptions);
+
+
+        positionShop = new google.maps.LatLng(<?php echo $shop->getLatitude()?>, <?php echo $shop->getLongitude()?>);
+        <?php if($shop->getMarker()) : ?>
+        var markerImage = new google.maps.MarkerImage('<?php echo $shop->getMarker()?>',
+            new google.maps.Size(30, 30),
+            new google.maps.Point(0, 0)
+        );
+        console.log(markerImage);
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: positionShop,
+            title: '<?php echo addslashes (  $shop->getTitle()) ?>',
+            icon: markerImage
+        });
+        <?php else : ?>
+        marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            position: positionShop,
+            title: '<?php echo addslashes ( $shop->getTitle() ) ?>'
+        });
+        <?php endif; ?>
+
+        google.maps.event.addListener(marker, 'click',
+            function () {
+
+            });
+    }
+
+    function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "<?php echo $url; ?>";
+        document.body.appendChild(script);
+    }
+
+    window.onload = loadScript;
+    //]]>
+</script>
+
+<div id="map_shopview"></div>

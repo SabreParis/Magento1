@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+/**
+ * created: 2016
+ *
+ * @category  XXXXXXX
+ * @package   Ayaline
+ * @author    aYaline Magento <support.magento-shop@ayaline.com>
+ * @copyright 2016 - aYaline Magento
+ * @license   aYaline - http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ * @link      http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+ -->
+ 
+<config>
+
+    <api2>
+        <resources>
+            <product>
+                <attributes>
+                    <color>Real color</color>
+                    <a_filter_color>Sabre: Filter color</a_filter_color>
+                    <a_is_set>Sabre: Is a Set</a_is_set>
+                    <a_model>Sabre: Model</a_model>
+                    <a_model_cutlery>Sabre: Model Cutlery</a_model_cutlery>
+                    <a_model_porcelain>Sabre: Model Porcelain</a_model_porcelain>
+                    <a_model_accessory>Sabre: Model Accessory</a_model_accessory>
+                    <a_article>Sabre: Article</a_article>
+                    <a_article_cutlery>Sabre: Article Cutlery</a_article_cutlery>
+                    <a_article_porcelain>Sabre: Article Porcelain</a_article_porcelain>
+                    <a_article_accessory>Sabre: Article Accessory</a_article_accessory>
+                </attributes>
+                <!--<include_attributes>-->
+                    <!--<guest>-->
+                        <!--<read>-->
+                            <!--<color>1</color>-->
+                            <!--<a_filter_color>1</a_filter_color>-->
+                            <!--<a_is_set>1</a_is_set>-->
+                            <!--<a_model>1</a_model>-->
+                            <!--<a_model_cutlery>1</a_model_cutlery>-->
+                            <!--<a_model_porcelain>1</a_model_porcelain>-->
+                            <!--<a_model_accessory>1</a_model_accessory>-->
+                            <!--<a_article>1</a_article>-->
+                            <!--<a_article_cutlery>1</a_article_cutlery>-->
+                            <!--<a_article_porcelain>1</a_article_porcelain>-->
+                            <!--<a_article_accessory>1</a_article_accessory>-->
+                        <!--</read>-->
+                    <!--</guest>-->
+                <!--</include_attributes>-->
+            </product>
+        </resources>
+    </api2>
+
+</config>

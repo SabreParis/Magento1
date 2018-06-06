@@ -1,0 +1,9 @@
+/app/etc/local.xml
+/var
+/media
+/bower_components
+.sass-cache
+deploy.sh
+# SCM files
+.git
+.gitignore

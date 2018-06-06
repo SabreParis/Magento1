@@ -1,0 +1,313 @@
+<?php
+/**
+ * created : 10/03/2011
+ *
+ * @category  Ayaline
+ * @package   Ayaline_Shop
+ * @author    aYaline
+ * @copyright Ayaline - 2012 - http://magento-shop.ayaline.com
+ * @license   http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+/* @var $this Mage_Core_Block_Template */
+?>
+<?php
+if (Mage::app()->getRequest()->isSecure()) {
+    $url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDfQJ-TlKaGjj6cf2sda4OcIkC4Jt0CNvY&callback=initialize';
+} else {
+    $url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDfQJ-TlKaGjj6cf2sda4OcIkC4Jt0CNvY&callback=initialize';
+}
+?>
+
+<?php // foreach ($this->getShops() as $shop ) :?>
+<?php //var_dump($shop->getData()); ?>
+<?php //endforeach; ?>
+<!--<script type="text/javascript" src="http://www.msg360.co.uk/emails/sample/Scripts/infobubble-compiled.js"></script> -->
+<script type="text/javascript">
+    //<![CDATA[
+    var map;
+
+    function initialize() {
+        var optZoom = 10;
+        var optLatitude = 46.227638;
+        var optLongitude = 2.213749;
+
+        // Try W3C Geolocation (Preferred)
+        if (navigator.geolocation) {
+            //navigator.geolocation.getCurrentPosition(success_callback_function,errorCallback );
+            initializeMap(optLatitude, optLongitude, optZoom);
+            // Try Google Gears Geolocation
+        } else if (google.gears) {
+            browserSupportFlag = true;
+            var geo = google.gears.factory.create('beta.geolocation');
+            //geo.geolocation.getCurrentPosition(success_callback_function,errorCallback );
+            initializeMap(optLatitude, optLongitude, optZoom);
+            // Browser doesn't support Geolocation
+        } else {
+            initializeMap(optLatitude, optLongitude, optZoom);
+        }
+    }
+
+    function success_callback_function(position) {
+        initializeMap(position.coords.latitude, position.coords.longitude, 10);
+    }
+
+    function errorCallback(position) {
+        initializeMap(optLatitude, optLongitude, optZoom);
+    }
+
+    function initializeMap(optLatitude, optLongitude, optZoom) {
+        // latitude 15.7 à 16.6 longitude -62 à -60.9 ==> GUADELOUPE
+        if (optLatitude > 15.7 && optLatitude < 16.6 && optLongitude > -62 && optLongitude < -60.9) {
+            // latitude 15.7 à 16.6 longitude -62 à -60.9 ==> GUADELOUPE
+            optLatitude = 15.416615;
+            optLongitude = -61.375122;
+            optZoom = 8;
+        } else if (optLatitude > 14.3 && optLatitude < 15 && optLongitude > -61.3 && optLongitude < -60.7) {
+            // latitude 14.3 à 15 longitude -61.3 à -60.7 ==> MARTINIQUE
+            optLatitude = 15.416615;
+            optLongitude = -61.375122;
+            optZoom = 8;
+        } else if (optLatitude > 2 && optLatitude < 5.8 && optLongitude > -54.7 && optLongitude < -51.5) {
+            // latitude 2 à 5.8 longitude -54.7 à -51.5 ==> GUYANE
+            optLatitude = 4.056056;
+            optLongitude = -53.300171;
+            optZoom = 8;
+        } else if (optLatitude > -21.4 && optLatitude < -20.8 && optLongitude > 55.2 && optLongitude < 55.9) {
+            // latitude -21.4 à -20.8 longitude 55.2 à 55.9 ==> REUNION
+            optLatitude = -21.1151410;
+            optLongitude = 55.5363840;
+            optZoom = 10;
+        } else {
+            // ailleurs => on centre sur la france
+            optLatitude = 46.227638;
+            optLongitude = 2.213749;
+            optZoom = 6;
+        }
+
+        var myLatlng = new google.maps.LatLng(optLatitude, optLongitude);
+        var myOptions = {
+            zoom: optZoom,
+            center: myLatlng,
+            mapTypeControlOptions: {
+                style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                position: google.maps.ControlPosition.RIGHT_TOP
+            },
+            streetViewControl: true,
+            streetViewControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+            zoomControl: true,
+            zoomControlOptions: {
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_shops"), myOptions);
+
+
+        <?php $_nb = 0 ?>
+        var mapBounds = new google.maps.LatLngBounds();
+        <?php foreach ($this->getShops() as $shop ) :?>
+        positionShop_<?php echo $_nb ?> = new google.maps.LatLng(<?php echo $shop->getLatitude()?>, <?php echo $shop->getLongitude()?>);
+        mapBounds.extend(positionShop_<?php echo $_nb ?>);
+        <?php $shopMarker = Mage::helper('sabreshop')->getShopMarkerUrl($shop);?>
+        <?php $groupMarker = Mage::helper('sabreshop')->getGroupMarkerUrl((int)$shop->getGroupId());?>
+       <?php if($shopMarker || $groupMarker) : ?>
+       <?php /*
+        //        var markerImage_<?php echo $_nb ?> = new google.maps.MarkerImage('<?php echo $groupMarker?$groupMarker:$shopMarker?>',
+        //            new google.maps.Size(70, 75),
+        //            new google.maps.Point(0,0)
+        //        );
+       */ ?>
+        var markerImage_<?php echo $_nb ?> = {
+            url: '<?php echo $shopMarker?$shopMarker:$groupMarker?>',
+            size: new google.maps.Size(60, 60),
+            origin: new google.maps.Point(0, 0),
+            scaledSize: new google.maps.Size(60, 60)
+        };
+        //console.log(markerImage_<?php echo $_nb ?>);
+        marker<?php echo $_nb ?> = new google.maps.Marker({
+            map: map,
+            draggable: false,
+            position: positionShop_<?php echo $_nb ?>,
+            title: '<?php echo addslashes ( $shop->getTitle()) ?>',
+            icon: markerImage_<?php echo $_nb ?>
+        });
+
+        <?php else : ?>
+          marker<?php echo $_nb ?> = new google.maps.Marker({
+            map: map,
+            draggable: false,
+            position: positionShop_<?php echo $_nb ?>,
+            title: '<?php echo addslashes ( $shop->getTitle()) ?>'
+        });
+        <?php endif; ?>
+       ;
+        google.maps.event.addListener(marker<?php echo $_nb ?>, 'click',
+            function () {
+                var myWindowOptions = {
+                    content: '<div class="left">'+
+                    '<div class="img_sabre"></div>'+
+                    '<h6><?php echo addslashes ( $shop->getTitle() ) ?></h6>' +
+                    <?php if($shop->getStreet1()) : ?>
+                    '<div class="shop-view-address-line"><?php echo addslashes ( $shop->getStreet1() )?></div>' +
+                    <?php endif;?>
+
+                    <?php if($shop->getStreet2()) : ?>
+                    '<div class="shop-view-address-line"><?php echo addslashes ( $shop->getStreet2() )?></div>' +
+                    <?php endif;?>
+                    '<div class="shop-view-address-line"><?php echo $shop->getPostcode()?>&nbsp;<?php echo addslashes ( $shop->getCity() )?></div>' +
+                    '<div class="shop-view-address-line pays"><?php echo addslashes ( $shop->getCountry() )?></div>' +
+                    <?php if($shop->getTelephone()) : ?>
+                    '<div class="shop-view-address-line tel"><?php echo $shop->getTelephone()?></div>' +
+                    <?php endif;?>
+                    <?php if($shop->getFax()) : ?>
+                    '<div class="shop-view-address-line"><?php echo $this->__('Fax')?>&nbsp;:&nbsp;<?php echo $shop->getFax()?></div>' +
+                    <?php endif;?>
+                    <?php if($shop->getEmail()) : ?>
+                    <?php $_emails = explode("\n", $shop->getEmail()); ?>
+                    <?php foreach($_emails as $_email): ?>
+                    <?php if(!empty($_email)): ?>
+                    '<div class="shop-view-address-line"><?php echo $_email; ?></div>' +
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif;?>
+
+                    <?php if($shop->getPicture()) : ?>
+                    <?php  $_picturs = Mage::getBaseUrl('media').Ayaline_Shop_Model_Shop::PICTO_PATH_FOLDER.'/'.$shop->getPicture(); ?>
+                    '<div class="shop-view-address-line overvisible"><img src="<?php echo $_picturs; ?>"></div>' +
+                    <?php endif;?>
+
+                    <?php if($shop->getWebsite()) : ?>
+                    <?php $_websites = explode("\n", $shop->getWebsite()); ?>
+                    <?php foreach($_websites as $_website): ?>
+                    <?php if(!empty($_website)): ?>
+                    '<div class="shop-view-address-line">' +
+                    '<a href="<?php echo $_website; ?>" target="_bank">' +
+                    '<?php echo $_website; ?>' +
+                    '</a>' +
+                    '</div>' +
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php endif;?>
+                    '</div>'+
+
+                    '<div class="right">'+
+                    '<div class="horloge">'+
+                    '</div>'+
+                    '<div class="parag">'+
+                    '<table border="0" cellpadding="0" cellspacing="0" class="shop-view-schedules-tab">'+
+                    '<tbody>'+
+                    <?php foreach ($shop->getSchedules() as $_schedules) : ?>
+                    <?php $_hasHourPm = ($_schedules->getHourStartPm() && $_schedules->getHourEndPm()) ?>
+                    <?php $_hasHourAm = ($_schedules->getHourStartAm() && $_schedules->getHourEndAm()) ?>
+                    <?php if ($_hasHourPm || $_hasHourAm) : ?>
+                    '<tr>'+
+                    '<td class="day"><?php echo $_schedules->getDay() ?></td>'+
+                    '<td class="schedules">'+
+                    <?php if ($_hasHourPm) : ?>
+                    '<?php echo $_schedules->getHourStartPm() ?>-<?php echo $_schedules->getHourEndPm() ?>'+
+                    <?php endif; ?>
+                    <?php if ($_hasHourPm && $_hasHourAm) : ?>
+                    '/'+
+                    <?php endif; ?>
+                    <?php if ($_hasHourAm) : ?>
+                    '<?php echo $_schedules->getHourStartAm() ?>-<?php echo $_schedules->getHourEndAm() ?>'+
+                    <?php endif; ?>
+                    '</td>'+
+                    '</tr>'+
+                    <?php endif; ?>
+                    <?php endforeach; ?>
+                    '</tbody>'+
+                    '</table>'+
+                    '</div>'+
+                    '</div>'+
+                    '<a href="<?php echo $this->getViewUrl($shop->getId()) ?>" title="<?php echo $this->jsQuoteEscape($this->stripTags($this->__('More Informations'))) ?>">'+
+                    '</a>'
+
+
+                };
+
+                var myInfoWindow = new google.maps.InfoWindow(myWindowOptions);
+                myInfoWindow.open(map, marker<?php echo $_nb ?>);
+                myInfoWindow.setOptions({
+                    position:marker<?php echo $_nb ?>.getPosition(),
+                    pixelOffset:new google.maps.Size(0,0),
+                    map:map});
+
+                if (window.matchMedia("(max-width: 480px)").matches){
+                    myInfoWindow.setOptions({
+                        pixelOffset:new google.maps.Size(88,35)
+                        });
+                }
+                jQuery(window).resize(function () {
+                    if (window.matchMedia("(max-width: 480px)").matches){
+                        myInfoWindow.setOptions({
+
+                            pixelOffset:new google.maps.Size(88,35)
+                        });
+                    }
+                });
+                /*infoBubble = new InfoBubble({
+                    map: map,
+                    content: '<div class="phoneytext">Some label</div>',
+                    //position: new google.maps.LatLng(-35, 151),
+                    shadowStyle: 1,
+                    padding: '10px',
+                    //backgroundColor: 'rgb(57,57,57)',
+                    borderRadius: 5,
+                    minWidth: 200,
+                    arrowSize: 10,
+                    borderWidth: 1,
+                    borderColor: '#2c2c2c',
+                    disableAutoPan: true,
+                    hideCloseButton: false,
+                    arrowPosition: 7,
+                    backgroundClassName: 'phoney',
+                    pixelOffset: new google.maps.Size(130, 120),
+                    arrowStyle: 2
+                });
+                infoBubble.open(map, marker);*/
+            });
+        <?php $_nb++;?>
+        <?php //break;?>
+        <?php endforeach;?>
+        map.fitBounds(mapBounds);
+        var icons = {
+            Sabre: {
+                name: '<?php echo $this->escapeHtml($this->__("map_Shop"))?>',
+                icon: '<?php echo $this->getSkinUrl('/images/pointeur_boutiques_sabre.png')?>'
+            },
+            Gallery: {
+                name: '<?php echo $this->escapeHtml($this->__("map_PointOfSale"))?>',
+                icon: '<?php echo $this->getSkinUrl('/images/pointeur_point_vente_sabre.png')?>'
+            }
+        };
+        var legend = document.getElementById('legend');
+        for (var key in icons) {
+            var type = icons[key];
+            var name = type.name;
+            var icon = type.icon;
+            var div = document.createElement('div');
+            div.innerHTML = '<img src="' + icon + '"> ' + name;
+            legend.appendChild(div);
+        }
+
+        map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+    }
+
+    function loadScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "<?php echo $url; ?>";
+        document.body.appendChild(script);
+    }
+
+    //jQuery('.gm-style-iw').next('div').hide();
+    window.onload = loadScript;
+    //]]>
+</script>
+
+<div id="map_shops"></div>
+<div id="legend"></div>

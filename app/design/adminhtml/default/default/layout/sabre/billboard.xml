@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * created : 02/10/2015
+ *
+ * @category Ayaline
+ * @package Ayaline_Billboard
+ * @author aYaline
+ * @copyright Ayaline - 2015 - http://magento-shop.ayaline.com
+ * @license http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<layout>
+    <adminhtml_ayaline_billboard_edit>
+        <update handle="editor" />
+        <reference name="left">
+            <reference name="ayaline.billboard.billboard.edit.tabs">
+                <block type="sabrebillboard/adminhtml_billboard_edit_tab_additionalContent"
+                       name="sabre.billboard.billboard.edit.tab.additionalcontent" />
+                <action method="addTab">
+                    <name>billboard_edit_tab_additionalcontent</name>
+                    <block>sabre.billboard.billboard.edit.tab.additionalcontent</block>
+                </action>
+
+            </reference>
+        </reference>
+    </adminhtml_ayaline_billboard_edit>
+</layout>

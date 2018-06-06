@@ -1,0 +1,61 @@
+<?php
+$parentBlock = $this->getParentBlock();
+/** @var $this Sabre_Catalog_Block_Layer_Filter_Attribute */
+$attributeName = $this->getAttributeModel()->getData('frontend_label');
+$attributeName = explode(' ',$attributeName);
+$attributeName = $attributeName[0].'s';
+$attributeName = lcfirst($attributeName);
+
+?>
+
+<div class="all">
+    <?php $clearUrl = $this->getAttributeClearUrl($this->getItems()[0][0]) ?>
+    <a class="imagelink" id="all" href="<?php echo $clearUrl ? $this->urlEscape($clearUrl) : '#'; ?>">
+        <?php echo $clearUrl ? '' : '<span class="checkedtext"></span>';
+        echo $this->__('All ').$attributeName; ?>
+    </a>
+    <div class="exportimage"></div>
+</div>
+<?php $count = 0;?>
+<?php /*$all_items = array_chunk($this->getItems(),4);*/?>
+<?php $all_items = $this->getItems();?>
+
+
+<ul class="filters-menu">
+    <?php foreach($all_items as $key_row => $row_items):  ?>
+        <?php foreach($row_items as $key_col => $_item): ?>
+            <?php $count++;?>
+            <?php $attributeImagePath = $this->getAttributeTextImage($this->getAttributeModel()->getAttributeCode(), $_item) ?>
+            <li class="imagelink" <?php echo $attributeImagePath ? 'data-background="' . $attributeImagePath . '""' : ''; ?>>
+                <?php if ($_item->getCount() > 0): ?>
+                    <?php $isCurrentFilter = $this->isCurrentFilter($_item) ?>
+                    <a href="<?php echo ($isCurrentFilter) ? '#' : ($this->urlEscape($_item->getUrl())); ?>">
+                        <?php echo ($isCurrentFilter) ? '<span class="checkedtextoption"></span>' : ''; ?>
+                        <?php echo Mage::helper('core')->stripTags($_item->getLabel()) ?>
+                        <?php if ($this->shouldDisplayProductCount()): ?>
+                            <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                        <?php endif; ?>
+                    </a>
+                <?php else: ?>
+                    <span class="normalstate">
+                        <?php echo Mage::helper('core')->stripTags($_item->getLabel()); ?>
+                        <?php if ($this->shouldDisplayProductCount()): ?>
+                            <span class="count">(<?php echo $_item->getCount() ?>)</span>
+                        <?php endif; ?>
+                    </span>
+                <?php endif; ?>
+            </li>
+        <?php endforeach; ?>
+        </ul><ul class="filters-menu">
+    <?php endforeach; ?>
+</ul>
+
+<script>
+    jQuery(document).ready(function() {
+        jQuery('a').on('touchend', function(e) {
+            var el = jQuery(this);
+            var link = el.attr('href');
+            window.location = link;
+        });
+    });
+</script>

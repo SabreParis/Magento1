@@ -1,0 +1,37 @@
+# IDE
+/.idea/
+/.modgit/
+/.settings/
+/.buildpath
+/.project
+/.classpath
+/.phpstorm.meta.php
+
+#Compilation
+/bower_components/
+/node_modules/
+/.sass-cache/
+/skin/frontend/sabre/default/css/
+
+# local.xml
+/app/etc/local.xml
+
+# var
+/var/cache/
+/var/locks/
+/var/log/
+/var/session/
+
+# media
+/media/*
+!/media/.htaccess
+!/media/customer/
+/media/customer/*
+!/media/customer/.htaccess
+!/media/downloadable/
+/media/downloadable/*
+!/media/downloadable/.htaccess
+
+
+# Misc
+/favicon.ico

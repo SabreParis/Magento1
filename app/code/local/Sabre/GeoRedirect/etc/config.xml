@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * created :    2016
+ *
+ * @category    Ayaline
+ * @package     PHS_GeoRedirect
+ * @author      aYaline
+ * @copyright   Ayaline - 2016 - http://magento-shop.ayaline.com
+ * @license     http://shop.ayaline.com/magento/fr/conditions-generales-de-vente.html
+ */
+-->
+<config>
+    <modules>
+        <Sabre_GeoRedirect>
+            <version>0.0.1</version>
+        </Sabre_GeoRedirect>
+    </modules>
+    <global>
+        <helpers>
+            <sabre_georedirect>
+                <class>Sabre_GeoRedirect_Helper</class>
+            </sabre_georedirect>
+        </helpers>
+        <blocks>
+            <sabre_georedirect>
+                <class>Sabre_GeoRedirect_Block</class>
+            </sabre_georedirect>
+        </blocks>
+        <models>
+            <sabre_georedirect>
+                <class>Sabre_GeoRedirect_Model</class>
+            </sabre_georedirect>
+            <geoip>
+                <rewrite>
+                    <country>Sabre_GeoRedirect_Model_Geoip_Country</country>
+                </rewrite>
+            </geoip>
+        </models>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <sabre_georedirect>
+                    <file>sabre/georedirect.xml</file>
+                </sabre_georedirect>
+            </updates>
+        </layout>
+        <routers>
+            <sabre_georedirect>
+                <use>standard</use>
+                <args>
+                    <module>Sabre_GeoRedirect</module>
+                    <frontName>georedirect</frontName>
+                </args>
+            </sabre_georedirect>
+        </routers>
+    </frontend>
+
+    <frontend>
+        <events>
+            <controller_action_predispatch>
+                <observers>
+                    <geo_redirect_force_redirection>
+                        <class>sabre_georedirect/observer</class>
+                        <method>forceRedirection</method>
+                    </geo_redirect_force_redirection>
+                </observers>
+            </controller_action_predispatch>
+        </events>
+    </frontend>
+
+    <adminhtml>
+        <translate>
+            <modules>
+                <Sabre_GeoRedirect>
+                    <files>
+                        <default>Sabre_GeoRedirect.csv</default>
+                    </files>
+                </Sabre_GeoRedirect>
+            </modules>
+        </translate>
+    </adminhtml>
+
+    <default>
+        <sabre_georedirect>
+            <general>
+                <enabled>1</enabled>
+                <force_redirection>1</force_redirection>
+                <log_redirections>0</log_redirections>
+                <excludedbots>a:4:{i:0;a:2:{s:4:"name";s:6:"Google";s:10:"user_agent";s:9:"googlebot";}i:1;a:2:{s:4:"name";s:5:"Yahoo";s:10:"user_agent";s:5:"yahoo";}i:2;a:2:{s:4:"name";s:4:"Bing";s:10:"user_agent";s:7:"bingbot";}i:3;a:2:{s:4:"name";s:6:"MSNBot";s:10:"user_agent";s:6:"msnbot";}}</excludedbots>
+            </general>
+            <wordings>
+                <title><![CDATA[Visitez notre site {{var dest}}]]></title>
+                <text><![CDATA[Vous êtes sur notre site <span><strong>{{var current}}</strong></span>.<br>
+                    Peut-être préfèreriez-vous continuer sur notre site <span><strong>{{var dest}}</strong></span> ?]]></text>
+                <stay><![CDATA[Non, rester sur {{var current}}]]></stay>
+                <leave><![CDATA[Oui, je souhaite aller sur {{var dest}}]]></leave>
+            </wordings>
+        </sabre_georedirect>
+    </default>
+</config>

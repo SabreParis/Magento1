@@ -1,0 +1,28 @@
+<?php
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+/* @var $this Sabre_Catalog_Block_Product_View_ProductsVariant */
+$curProduct = $this->getProduct();
+$productsColorVariant = $this->getProductsColorVariant();
+?>
+<ul class="product-colors">
+    <span class="color-label"><?php echo $this->__('Choose your color');?></span>
+    <?php $i = 1; ?>
+    <?php
+    /*@var $_product Mage_Catalog_Model_Product */
+    foreach ($productsColorVariant as $_product): ?>
+        <li>
+            <a href="<?php echo $_product->getProductUrl() ?>">
+                <label id="<?php echo "product-variant-{$_product->getId()}"?>" <?php if ($_product->getData('color') == $curProduct->getData('color')): ?> class="checked" <?php endif; ?>>
+                    <img src="<?php echo $this->getAttributeColorImgUrl($_product) ?>" alt="<?php echo $this->escapeHtml($_product->getAttributeText('color')); ?>"
+                         title="<?php echo $this->escapeHtml($_product->getAttributeText('color')); ?>"/>
+                </label>
+            </a>
+        </li>
+        <?php $i++; ?>
+<?php endforeach; ?>
+</ul>

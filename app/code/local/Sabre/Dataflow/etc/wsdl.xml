@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+             xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+             name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+        </schema>
+    </types>
+
+    <!-- IMPORTS -->
+    <message name="sabredataflowImportProductsRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="sabredataflowImportProductsResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+    <message name="sabredataflowExportOrdersRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="sabredataflowExportOrdersResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+
+    <message name="sabredataflowImportPricingRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="sabredataflowImportPricingResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+
+    <message name="sabredataflowImportInventoryRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="sabredataflowImportInventoryResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+
+    <message name="sabredataflowImportShopsRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="sabredataflowImportShopsResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="sabredataflowImportProducts">
+            <documentation>Sabre Import Products</documentation>
+            <input message="typens:sabredataflowImportProductsRequest" />
+            <output message="typens:sabredataflowImportProductsResponse" />
+        </operation>
+        <operation name="sabredataflowExportOrders">
+            <documentation>Sabre Import Products</documentation>
+            <input message="typens:sabredataflowExportOrdersRequest" />
+            <output message="typens:sabredataflowExportOrdersResponse" />
+        </operation>
+        <operation name="sabredataflowImportPricing">
+            <documentation>Sabre Import Products</documentation>
+            <input message="typens:sabredataflowImportPricingRequest" />
+            <output message="typens:sabredataflowImportPricingResponse" />
+        </operation>
+        <operation name="sabredataflowImportInventory">
+            <documentation>Sabre Import Products</documentation>
+            <input message="typens:sabredataflowImportInventoryRequest" />
+            <output message="typens:sabredataflowImportInventoryResponse" />
+        </operation>
+        <operation name="sabredataflowImportShops">
+            <documentation>Sabre Import Shops</documentation>
+            <input message="typens:sabredataflowImportShopsRequest" />
+            <output message="typens:sabredataflowImportShopsResponse" />
+        </operation>
+    </portType>
+
+    <service name="{{var wsdl.name}}Service">
+        <port name="{{var wsdl.handler}}Port" binding="typens:{{var wsdl.handler}}Binding">
+            <soap:address location="{{var wsdl.url}}" />
+        </port>
+    </service>
+
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="sabredataflowImportProducts">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="sabredataflowExportOrders">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="sabredataflowImportPricing">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="sabredataflowImportInventory">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="sabredataflowImportShops">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+
+</definitions>

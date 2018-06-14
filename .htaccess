@@ -1,7 +1,13 @@
 # HTTP -> HTTPS
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteCond %{HTTP_HOST} !.test$
-RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L] 
+RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
+#vue sabre_de_deutsch
+SetEnvIf Host www\.sabre-paris\.de MAGE_RUN_CODE=sabre_de
+SetEnvIf Host www\.sabre-paris\.de MAGE_RUN_TYPE=website
+SetEnvIf Host ^sabre-paris\.de MAGE_RUN_CODE=sabre_de
+SetEnvIf Host ^sabre-paris\.de MAGE_RUN_TYPE=website 
 
 ############################################
 ## uncomment these lines for CGI mode

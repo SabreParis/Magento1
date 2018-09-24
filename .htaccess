@@ -15,6 +15,12 @@ SetEnvIf Host www\.sabre-paris\.uk MAGE_RUN_TYPE=website
 SetEnvIf Host ^sabre-paris\.uk MAGE_RUN_CODE=sabre_uk
 SetEnvIf Host ^sabre-paris\.uk MAGE_RUN_TYPE=website
 
+#sabre_us_english
+SetEnvIf Host www\.sabre-paris\.us MAGE_RUN_CODE=sabre_us
+SetEnvIf Host www\.sabre-paris\.us MAGE_RUN_TYPE=website
+SetEnvIf Host ^sabre-paris\.us MAGE_RUN_CODE=sabre_uk
+SetEnvIf Host ^sabre-paris\.us MAGE_RUN_TYPE=website
+
 ############################################
 ## uncomment these lines for CGI mode
 ## make sure to specify the correct cgi php binary file name

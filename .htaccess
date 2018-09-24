@@ -7,7 +7,13 @@ RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
 SetEnvIf Host www\.sabre-paris\.de MAGE_RUN_CODE=sabre_de
 SetEnvIf Host www\.sabre-paris\.de MAGE_RUN_TYPE=website
 SetEnvIf Host ^sabre-paris\.de MAGE_RUN_CODE=sabre_de
-SetEnvIf Host ^sabre-paris\.de MAGE_RUN_TYPE=website 
+SetEnvIf Host ^sabre-paris\.de MAGE_RUN_TYPE=website
+
+#sabre_uk_english
+SetEnvIf Host www\.sabre-paris\.uk MAGE_RUN_CODE=sabre_uk
+SetEnvIf Host www\.sabre-paris\.uk MAGE_RUN_TYPE=website
+SetEnvIf Host ^sabre-paris\.uk MAGE_RUN_CODE=sabre_uk
+SetEnvIf Host ^sabre-paris\.uk MAGE_RUN_TYPE=website
 
 ############################################
 ## uncomment these lines for CGI mode
